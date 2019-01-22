@@ -1,0 +1,64 @@
+{
+    "author": "mania_fish<mania_fish@163.com>",
+    "description": "technology note",
+    "extension": null,
+    "generator": "site",
+    "links": {
+        "sharing": {
+            "all": null,
+            "facebook": null,
+            "google": null,
+            "twitter": null,
+            "weibo": null
+        },
+        "sidebar": {
+            "mania_fish's github": "https://github.com/maniafish"
+        }
+    },
+    "output": null,
+    "pdf": {
+        "fontSize": 12,
+        "footerTemplate": null,
+        "headerTemplate": null,
+        "margin": {
+            "bottom": 36,
+            "left": 62,
+            "right": 62,
+            "top": 36
+        },
+        "pageNumbers": false,
+        "paperSize": "a4"
+    },
+    "title": "maniafish's technology blog",
+    "variables": {},
+    "plugins": [
+        "-lunr",
+        "-search",
+        "search-pro",
+        "anchor-navigation-ex",
+        "-highlight",
+        "prism",
+        "prism-themes"
+    ],
+    "pluginsConfig": {
+        "anchor-navigation-ex": {
+            "associatedWithSummary": false,
+            "isShowTocTitleIcon": true,
+            "tocLevel2Icon": "fa fa-hand-o-right",
+            "tocLevel3Icon": "fa fa-hand-o-right",
+            "tocLevel4Icon": "fa fa-hand-o-right"
+        },
+        "prism": {
+            "css": [
+                "prism-themes/themes/prism-base16-ateliersulphurpool.light.css"
+            ],
+            "lang": {
+                "flow": "typescript"
+            },
+            "ignore": [
+                "mermaid",
+                "eval-js"
+            ]
+        }
+    }
+}
