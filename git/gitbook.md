@@ -169,7 +169,8 @@ Serving book on http://localhost:4000
 # 集成发布到github pages
 
 1. 在项目目录下执行`git init`新建git仓库
-1. 执行`git remote add origin <远端github仓库地址>`添加github仓库
+1. `git remote add origin <远端github仓库地址>` 添加github仓库
+1. `git checkout --orphan gh-pages` 创建孤儿分支gh-pages
 
 > 参考链接：
 > 
