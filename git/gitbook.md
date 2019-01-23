@@ -170,7 +170,48 @@ Serving book on http://localhost:4000
 
 1. 在项目目录下执行`git init`新建git仓库
 1. `git remote add origin <远端github仓库地址>` 添加github仓库
+1. `touch .gitignore` 并且在里面添加以下内容
+    
+    ```javascript
+    *~
+    *.swp
+    *.DS_Store
+    _book/
+    node_modules/
+    ```
+
+1. `git add .` 添加文件到git版本控制
+1. `git commit -m 'git init'` 提交变动
+1. `git push origin master` 推送分支
 1. `git checkout --orphan gh-pages` 创建孤儿分支gh-pages
+1. `git rm --cached -r .` 删除暂存区目录
+1. `git clean -df` 删除未track的目录，不影响.gitignore中的文件
+1. `touch .gitignore` 并且在里面添加以下内容
+
+    ```javascript
+    *~
+    *.swp
+    *.DS_Store
+    _book/
+    node_modules/
+    *.md
+    ```
+
+1. `cp -r _book/* .` 将生成的书籍html内容copy出来
+1. `git add .`
+1. `git commit -m 'publish book'`
+1. `git push origin gh-pages`
+1. 推送完成后，进入github仓库主页，会多出一个`environment`图标
+
+    ![](./image/gitbook_3.png)
+
+1. 点击`environment`图标后，进入如下页面
+
+    ![](./image/gitbook_4.jpg)
+
+1. 点击`view deployment`图标，即可看到发布的gitbook书籍
+
+    ![](./image/gitbook_5.jpg)
 
 > 参考链接：
 > 
