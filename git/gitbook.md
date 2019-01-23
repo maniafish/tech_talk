@@ -168,6 +168,8 @@ Serving book on http://localhost:4000
 
 # 集成发布到github pages
 
+## 添加git仓库
+
 1. 在项目目录下执行`git init`新建git仓库
 1. `git remote add origin <远端github仓库地址>` 添加github仓库
 1. `touch .gitignore` 并且在里面添加以下内容
@@ -183,6 +185,9 @@ Serving book on http://localhost:4000
 1. `git add .` 添加文件到git版本控制
 1. `git commit -m 'git init'` 提交变动
 1. `git push origin master` 推送分支
+
+## 发布github pages
+
 1. `git checkout --orphan gh-pages` 创建孤儿分支gh-pages
 1. `git rm --cached -r .` 删除暂存区目录
 1. `git clean -df` 删除未track的目录，不影响.gitignore中的文件
