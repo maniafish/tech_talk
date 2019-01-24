@@ -188,7 +188,8 @@ Serving book on http://localhost:4000
 
 ## 发布github pages
 
-1. `git checkout --orphan gh-pages` 创建孤儿分支gh-pages
+1. `git clone <远端仓库地址> <目的目录>`
+1. 在<目的目录>下执行`git checkout --orphan gh-pages` 创建孤儿分支gh-pages
 1. `git rm --cached -r .` 删除暂存区目录
 1. `git clean -df` 删除未track的目录，不影响.gitignore中的文件
 1. `touch .gitignore` 并且在里面添加以下内容
@@ -197,11 +198,9 @@ Serving book on http://localhost:4000
     *~
     *.swp
     *.DS_Store
-    _book/
-    *.md
     ```
 
-1. `cp -r _book/* .` 将生成的书籍html内容copy出来
+1. `cp -rf <源目录>/_book/* ./` 将生成的书籍html内容copy出来
 1. `git add .`
 1. `git commit -m 'publish book'`
 1. `git push origin gh-pages`
@@ -216,6 +215,10 @@ Serving book on http://localhost:4000
 1. 点击`view deployment`图标，即可看到发布的gitbook书籍
 
     ![](./image/gitbook_5.jpg)
+
+## 后续更新github pages
+
+* 只需执行上述6 - 9 步即可
 
 > 参考链接：
 > 
