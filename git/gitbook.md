@@ -198,7 +198,6 @@ Serving book on http://localhost:4000
     *.swp
     *.DS_Store
     _book/
-    node_modules/
     *.md
     ```
 
