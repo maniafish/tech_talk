@@ -1,8 +1,6 @@
+MAIN_VER=1
+GIT_CNT=$(shell git rev-list --count HEAD)
+VER=${MAIN_VER}.${GIT_CNT}
+
 all:
-	/bin/rm -rf _book/
-	/bin/rm -rf node_modules/
-	gitbook install
-	gitbook build
-	rm -rf ../tech_talk_pages/*
-	cp -rf _book/* ../tech_talk_pages/
-	cp -rf node_modules/ ../tech_talk_pages/node_modules
+	sh build.sh ${VER}

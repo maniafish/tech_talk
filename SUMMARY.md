@@ -5,6 +5,9 @@
     * [I. 为不同的git项目配置各自独立的用户](./git/user.md)
     * [II. gitbook的使用](./git/gitbook.md)
 
+* linux相关
+    * [I. vim替换特殊符号](./linux/vim_replace.md)
+
 * python相关
     * [I. 字符编码问题](./python/character.md)
 
