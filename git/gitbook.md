@@ -222,4 +222,4 @@ Serving book on http://localhost:4000
 
 > 参考链接：
 > 
-> [gitbook简明教程](http://www.chengweiyang.cn/gitbook/basic-usage/README.html)
+> * [gitbook简明教程](http://www.chengweiyang.cn/gitbook/basic-usage/README.html)

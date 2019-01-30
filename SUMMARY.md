@@ -7,6 +7,7 @@
 
 * linux相关
     * [I. vim替换特殊符号](./linux/vim_replace.md)
+    * [II. vim剪贴板的使用](./linux/vim_paste.md)
 
 * python相关
     * [I. 字符编码问题](./python/character.md)
@@ -23,3 +24,4 @@
     * [IX. Go的defer处理](./golang/defer.md)
 
 * golang工具相关
+* CockRoachDB相关
