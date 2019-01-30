@@ -1,4 +1,4 @@
-#### <font color="blue">为不同的git项目配置各自独立的用户
+#### <font color="blue">为不同的git项目配置各自独立的用户</font>
 
 ---
 

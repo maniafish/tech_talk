@@ -1,4 +1,4 @@
-#### <font color="blue">Go的变量作用域
+#### <font color="blue">Go的变量作用域</font>
 
 ---
 

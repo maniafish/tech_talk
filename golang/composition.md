@@ -1,4 +1,4 @@
-#### <font color="blue">Go的interface
+#### <font color="blue">Go的interface</font>
 
 ---
 

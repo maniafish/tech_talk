@@ -1,4 +1,4 @@
-#### <font color="blue">gitbook的使用
+#### <font color="blue">gitbook的使用</font>
 
 ---
 
@@ -146,7 +146,7 @@ Serving book on http://localhost:4000
         > 由于前三级的标题会被自动锚点并编号，为了文章标题不被锚点，我们采用如下格式:
         
         ```javascript
-        #### <font color="blue">标题
+        #### <font color="blue">标题</font>
 
         ---
 

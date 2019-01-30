@@ -1,4 +1,4 @@
-#### <font color="blue">Go的垃圾回收
+#### <font color="blue">Go的垃圾回收</font>
 
 ---
 

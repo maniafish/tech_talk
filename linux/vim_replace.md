@@ -1,4 +1,4 @@
-#### <font color="blue">vim替换特殊符号
+#### <font color="blue">vim替换特殊符号</font>
 
 ---
 
