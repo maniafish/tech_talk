@@ -1,0 +1,669 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>III. vim的插件及配置 · maniafish's technology blog</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="mania_fish<mania_fish@163.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-base16-ateliersulphurpool.light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="vim_paste.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/maniafish/tech_talk" target="_blank" class="custom-link">github 主页</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    git相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../git/user.html">
+            
+                <a href="../git/user.html">
+            
+                    
+                    I. 为不同的git项目配置各自独立的用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../git/gitbook.html">
+            
+                <a href="../git/gitbook.html">
+            
+                    
+                    II. gitbook的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    linux相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="vim_replace.html">
+            
+                <a href="vim_replace.html">
+            
+                    
+                    I. vim替换特殊符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="vim_paste.html">
+            
+                <a href="vim_paste.html">
+            
+                    
+                    II. vim剪贴板的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="vim_conf.html">
+            
+                <a href="vim_conf.html">
+            
+                    
+                    III. vim的插件及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    python相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../python/character.html">
+            
+                <a href="../python/character.html">
+            
+                    
+                    I. 字符编码问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    golang语言相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../golang/performance.html">
+            
+                <a href="../golang/performance.html">
+            
+                    
+                    I. Go的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../golang/heap_stack.html">
+            
+                <a href="../golang/heap_stack.html">
+            
+                    
+                    II. Go的堆栈分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../golang/gc.html">
+            
+                <a href="../golang/gc.html">
+            
+                    
+                    III. Go的垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../golang/goroutine.html">
+            
+                <a href="../golang/goroutine.html">
+            
+                    
+                    IV. Go的协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../golang/stack_trace.html">
+            
+                <a href="../golang/stack_trace.html">
+            
+                    
+                    V. Go的调试信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../golang/composition.html">
+            
+                <a href="../golang/composition.html">
+            
+                    
+                    VI. Go的interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../golang/operator.html">
+            
+                <a href="../golang/operator.html">
+            
+                    
+                    VII. Go的变量作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../golang/slice.html">
+            
+                <a href="../golang/slice.html">
+            
+                    
+                    VIII. Go的slice
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../golang/defer.html">
+            
+                <a href="../golang/defer.html">
+            
+                    
+                    IX. Go的defer处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    golang工具相关
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    CockRoachDB相关
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    网络编程相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../network/chunk.html">
+            
+                <a href="../network/chunk.html">
+            
+                    
+                    I. HTTP协议之chunk(分块传输编码)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >III. vim的插件及配置</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x6211;&#x7684;vim&#x914D;&#x7F6E;"><b>1. </b>&#x6211;&#x7684;vim&#x914D;&#x7F6E;</a></li><li><span class="title-icon "></span><a href="#todo-&#x6CE8;&#x91CA;&#x8BF4;&#x660E;-vundle&#x53CA;&#x90E8;&#x5206;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;"><b>2. </b>TODO: &#x6CE8;&#x91CA;&#x8BF4;&#x660E;, vundle&#x53CA;&#x90E8;&#x5206;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</a></li></ul></div><a href="#&#x6211;&#x7684;vim&#x914D;&#x7F6E;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="vim&#x7684;&#x63D2;&#x4EF6;&#x53CA;&#x914D;&#x7F6E;"><a name="vim&#x7684;&#x63D2;&#x4EF6;&#x53CA;&#x914D;&#x7F6E;" class="anchor-navigation-ex-anchor" href="#vim&#x7684;&#x63D2;&#x4EF6;&#x53CA;&#x914D;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">vim&#x7684;&#x63D2;&#x4EF6;&#x53CA;&#x914D;&#x7F6E;</font></h4>
+<hr>
+<h1 id="&#x6211;&#x7684;vim&#x914D;&#x7F6E;"><a name="&#x6211;&#x7684;vim&#x914D;&#x7F6E;" class="anchor-navigation-ex-anchor" href="#&#x6211;&#x7684;vim&#x914D;&#x7F6E;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x6211;&#x7684;vim&#x914D;&#x7F6E;</h1>
+<pre class="language-"><code class="lang-javascript">&quot; Uncomment the next line to make Vim more Vi<span class="token operator">-</span>compatible
+&quot; <span class="token constant">NOTE</span><span class="token punctuation">:</span> debian<span class="token punctuation">.</span>vim sets <span class="token string">&apos;nocompatible&apos;</span><span class="token punctuation">.</span>  Setting <span class="token string">&apos;compatible&apos;</span> changes numerous
+&quot; options<span class="token punctuation">,</span> so any other options should be <span class="token keyword">set</span> <span class="token constant">AFTER</span> setting <span class="token string">&apos;compatible&apos;</span><span class="token punctuation">.</span>
+<span class="token keyword">set</span> nocompatible
+filetype off                  &quot; required
+
+&quot; <span class="token keyword">set</span> the runtime path to include Vundle and initialize
+<span class="token keyword">set</span> rtp<span class="token operator">+=</span><span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>vim<span class="token operator">/</span>bundle<span class="token operator">/</span>Vundle<span class="token punctuation">.</span>vim
+call vundle#<span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+&quot; <span class="token number">4</span> vundle
+&quot; <span class="token keyword">let</span> Vundle manage Vundle
+Plugin <span class="token string">&apos;gmarik/Vundle.vim&apos;</span>
+&quot; <span class="token number">4</span> the syntax checking when saving
+Plugin <span class="token string">&apos;scrooloose/syntastic&apos;</span>
+&quot; <span class="token number">4</span> pep8 style checking
+Plugin <span class="token string">&apos;nvie/vim-flake8&apos;</span>
+&quot; <span class="token number">4</span> background color
+Plugin <span class="token string">&apos;altercation/vim-colors-solarized&apos;</span>
+&quot; <span class="token number">4</span> file tree init input <span class="token punctuation">:</span>NERDTree <span class="token keyword">in</span> vim
+Plugin <span class="token string">&apos;scrooloose/nerdtree&apos;</span>
+&quot; <span class="token number">4</span> search file
+Plugin <span class="token string">&apos;kien/ctrlp.vim&apos;</span>
+&quot; <span class="token number">4</span> vim<span class="token operator">-</span>go
+Plugin <span class="token string">&apos;fatih/vim-go&apos;</span>
+&quot; <span class="token number">4</span> YouCompleteMe <span class="token number">2</span> complete the code
+Plugin <span class="token string">&apos;Valloric/YouCompleteMe&apos;</span>
+&quot; <span class="token number">4</span> vim<span class="token operator">-</span>python<span class="token operator">-</span>pep8<span class="token operator">-</span>indent
+Plugin <span class="token string">&apos;hynek/vim-python-pep8-indent&apos;</span>
+&quot; <span class="token number">4</span> minibufexpl
+Plugin <span class="token string">&apos;fholgado/minibufexpl.vim&apos;</span>
+call vundle#<span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+&quot; required
+&quot; To ignore plugin indent changes<span class="token punctuation">,</span> instead use<span class="token punctuation">:</span>
+&quot;filetype plugin on
+filetype on
+filetype plugin on
+filetype indent on
+&quot;
+&quot; Brief help
+&quot; <span class="token punctuation">:</span>PluginList       <span class="token operator">-</span> lists configured plugins
+&quot; <span class="token punctuation">:</span>PluginInstall    <span class="token operator">-</span> installs plugins<span class="token punctuation">;</span> append <span class="token template-string"><span class="token string">`!`</span></span> to update or just <span class="token punctuation">:</span>PluginUpdate
+&quot; <span class="token punctuation">:</span>PluginSearch foo <span class="token operator">-</span> searches <span class="token keyword">for</span> foo<span class="token punctuation">;</span> append <span class="token template-string"><span class="token string">`!`</span></span> to refresh local cache
+&quot; <span class="token punctuation">:</span>PluginClean      <span class="token operator">-</span> confirms removal <span class="token keyword">of</span> unused plugins<span class="token punctuation">;</span> append <span class="token template-string"><span class="token string">`!`</span></span> to auto<span class="token operator">-</span>approve removal
+&quot;
+&quot; see <span class="token punctuation">:</span>h vundle <span class="token keyword">for</span> more details or wiki <span class="token keyword">for</span> <span class="token constant">FAQ</span>
+&quot; Put your non<span class="token operator">-</span>Plugin stuff after <span class="token keyword">this</span> line
+<span class="token keyword">set</span> backspace<span class="token operator">=</span>indent<span class="token punctuation">,</span>eol<span class="token punctuation">,</span>start
+&quot; Vim5 and later versions support syntax highlighting<span class="token punctuation">.</span> Uncommenting the next
+&quot; line enables syntax highlighting by <span class="token keyword">default</span><span class="token punctuation">.</span>
+syntax enable
+syntax on
+&quot; colorscheme darkblue
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>molokai_original <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>rehash256 <span class="token operator">=</span> <span class="token number">1</span>
+colorscheme molokai
+<span class="token keyword">set</span> tabstop<span class="token operator">=</span><span class="token number">4</span>
+<span class="token keyword">set</span> softtabstop<span class="token operator">=</span><span class="token number">4</span>
+<span class="token keyword">set</span> shiftwidth<span class="token operator">=</span><span class="token number">4</span>
+<span class="token keyword">set</span> expandtab
+<span class="token keyword">set</span> autoindent
+<span class="token keyword">set</span> cindent
+<span class="token keyword">set</span> smartindent
+<span class="token keyword">set</span> nu
+<span class="token keyword">set</span> ic
+<span class="token keyword">set</span> statusline<span class="token operator">=</span><span class="token operator">%</span>f<span class="token operator">%</span>r<span class="token operator">%</span>m<span class="token operator">%</span><span class="token operator">*</span><span class="token operator">%=</span><span class="token punctuation">[</span>Line<span class="token punctuation">:</span><span class="token operator">%</span>l<span class="token operator">/</span><span class="token operator">%</span><span class="token constant">L</span><span class="token punctuation">,</span>Col<span class="token punctuation">:</span><span class="token operator">%</span>c<span class="token punctuation">]</span>
+<span class="token keyword">set</span> laststatus<span class="token operator">=</span><span class="token number">2</span>
+<span class="token keyword">set</span> ruler
+<span class="token keyword">set</span> incsearch
+&quot;<span class="token keyword">set</span> hlsearch
+<span class="token keyword">set</span> cursorline
+&quot;<span class="token keyword">set</span> textwidth<span class="token operator">=</span><span class="token number">79</span>
+<span class="token keyword">set</span> fileformat<span class="token operator">=</span>unix
+<span class="token keyword">let</span> <span class="token operator">&amp;</span>termencoding<span class="token operator">=</span><span class="token operator">&amp;</span>encoding
+<span class="token keyword">set</span> fileencodings<span class="token operator">=</span>utf<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">,</span>gb18030<span class="token punctuation">,</span>gbk<span class="token punctuation">,</span>gb2312<span class="token punctuation">,</span>big5
+<span class="token keyword">set</span> nobackup
+<span class="token keyword">set</span> nowritebackup
+&quot; <span class="token number">4</span> code fold
+<span class="token keyword">set</span> foldmethod<span class="token operator">=</span>indent
+<span class="token keyword">set</span> foldlevelstart<span class="token operator">=</span><span class="token number">99</span>
+map<span class="token operator">&lt;</span>space<span class="token operator">&gt;</span> za
+map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>c <span class="token punctuation">:</span><span class="token keyword">set</span> paste<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>v <span class="token punctuation">:</span><span class="token keyword">set</span> nopaste<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>d <span class="token punctuation">:</span>sp<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>f <span class="token punctuation">:</span>vs<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+&quot; <span class="token number">4</span> vim<span class="token operator">-</span>flake8
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>flake8_cmd<span class="token operator">=</span><span class="token string">&quot;/usr/local/bin/flake8&quot;</span>
+&quot; <span class="token number">4</span> syntastic
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>syntastic_python_checkers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&apos;flake8&apos;</span><span class="token punctuation">]</span>
+&quot; <span class="token number">4</span> vim<span class="token operator">-</span>go
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_highlight_functions <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_highlight_methods <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_highlight_fields <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_highlight_types <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_highlight_operators <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_highlight_build_constraints <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>go_fmt_command <span class="token operator">=</span> <span class="token string">&quot;goimports&quot;</span>
+map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>g <span class="token punctuation">:</span>GoMetaLinter<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>w <span class="token punctuation">:</span>GoDef<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+
+&quot; <span class="token number">4</span> NERDTree
+silent<span class="token operator">!</span> map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span><span class="token constant">A</span> <span class="token punctuation">:</span>NERDTree<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+silent<span class="token operator">!</span> map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>a <span class="token punctuation">:</span>NERDTreeFind<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+silent<span class="token operator">!</span> map<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>s <span class="token punctuation">:</span>NERDTreeClose<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+
+&quot; <span class="token number">4</span> ycm
+nnoremap <span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>q <span class="token punctuation">:</span>YcmCompleter GoToDefinitionElseDeclaration<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+<span class="token keyword">set</span> completeopt<span class="token operator">=</span>menu<span class="token punctuation">,</span>menuone
+</code></pre>
+<h1 id="todo-&#x6CE8;&#x91CA;&#x8BF4;&#x660E;-vundle&#x53CA;&#x90E8;&#x5206;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;"><a name="todo-&#x6CE8;&#x91CA;&#x8BF4;&#x660E;-vundle&#x53CA;&#x90E8;&#x5206;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;" class="anchor-navigation-ex-anchor" href="#todo-&#x6CE8;&#x91CA;&#x8BF4;&#x660E;-vundle&#x53CA;&#x90E8;&#x5206;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;"><i class="fa fa-link" aria-hidden="true"></i></a>2. TODO: &#x6CE8;&#x91CA;&#x8BF4;&#x660E;, vundle&#x53CA;&#x90E8;&#x5206;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</h1>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="vim_paste.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: II. vim剪贴板的使用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"III. vim的插件及配置","level":"1.3.3","depth":2,"next":{"title":"python相关","level":"1.4","depth":1,"ref":"","articles":[{"title":"I. 字符编码问题","level":"1.4.1","depth":2,"path":"python/character.md","ref":"./python/character.md","articles":[]}]},"previous":{"title":"II. vim剪贴板的使用","level":"1.3.2","depth":2,"path":"linux/vim_paste.md","ref":"./linux/vim_paste.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish/tech_talk"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"linux/vim_conf.md","mtime":"2019-01-30T08:54:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-31T09:10:55.004Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

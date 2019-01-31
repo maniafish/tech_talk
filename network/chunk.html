@@ -1,0 +1,582 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>I. HTTP协议之chunk(分块传输编码) · maniafish's technology blog</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="mania_fish<mania_fish@163.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-base16-ateliersulphurpool.light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/maniafish/tech_talk" target="_blank" class="custom-link">github 主页</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    git相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../git/user.html">
+            
+                <a href="../git/user.html">
+            
+                    
+                    I. 为不同的git项目配置各自独立的用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../git/gitbook.html">
+            
+                <a href="../git/gitbook.html">
+            
+                    
+                    II. gitbook的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    linux相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../linux/vim_replace.html">
+            
+                <a href="../linux/vim_replace.html">
+            
+                    
+                    I. vim替换特殊符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../linux/vim_paste.html">
+            
+                <a href="../linux/vim_paste.html">
+            
+                    
+                    II. vim剪贴板的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../linux/vim_conf.html">
+            
+                <a href="../linux/vim_conf.html">
+            
+                    
+                    III. vim的插件及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    python相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../python/character.html">
+            
+                <a href="../python/character.html">
+            
+                    
+                    I. 字符编码问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    golang语言相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../golang/performance.html">
+            
+                <a href="../golang/performance.html">
+            
+                    
+                    I. Go的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../golang/heap_stack.html">
+            
+                <a href="../golang/heap_stack.html">
+            
+                    
+                    II. Go的堆栈分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../golang/gc.html">
+            
+                <a href="../golang/gc.html">
+            
+                    
+                    III. Go的垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../golang/goroutine.html">
+            
+                <a href="../golang/goroutine.html">
+            
+                    
+                    IV. Go的协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../golang/stack_trace.html">
+            
+                <a href="../golang/stack_trace.html">
+            
+                    
+                    V. Go的调试信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../golang/composition.html">
+            
+                <a href="../golang/composition.html">
+            
+                    
+                    VI. Go的interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../golang/operator.html">
+            
+                <a href="../golang/operator.html">
+            
+                    
+                    VII. Go的变量作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../golang/slice.html">
+            
+                <a href="../golang/slice.html">
+            
+                    
+                    VIII. Go的slice
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../golang/defer.html">
+            
+                <a href="../golang/defer.html">
+            
+                    
+                    IX. Go的defer处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    golang工具相关
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    CockRoachDB相关
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    网络编程相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.1" data-path="chunk.html">
+            
+                <a href="chunk.html">
+            
+                    
+                    I. HTTP协议之chunk(分块传输编码)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >I. HTTP协议之chunk(分块传输编码)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;"><b>1. </b>&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;</a></li><li><span class="title-icon "></span><a href="#golang-http-server-&#x4E0E;-chunked"><b>2. </b>golang http server &#x4E0E; chunked</a></li></ul></div><a href="#&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="http&#x534F;&#x8BAE;&#x4E4B;chunk&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;"><a name="http&#x534F;&#x8BAE;&#x4E4B;chunk&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;" class="anchor-navigation-ex-anchor" href="#http&#x534F;&#x8BAE;&#x4E4B;chunk&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">HTTP&#x534F;&#x8BAE;&#x4E4B;chunk(&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;)</font></h4>
+<hr>
+<h1 id="&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;"><a name="&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;" class="anchor-navigation-ex-anchor" href="#&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;</h1>
+<p>&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#xFF08;Chunked transfer encoding&#xFF09;&#x662F;&#x8D85;&#x6587;&#x672C;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#xFF08;HTTP&#xFF09;&#x4E2D;&#x7684;&#x4E00;&#x79CD;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x673A;&#x5236;&#xFF0C;&#x5141;&#x8BB8;HTTP&#x7531;&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#xFF08;&#x901A;&#x5E38;&#x662F;&#x7F51;&#x9875;&#x6D4F;&#x89C8;&#x5668;&#xFF09;&#x7684;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x591A;&#x4E2A;&#x90E8;&#x5206;&#x3002;&#x5728;HTTP&#x534F;&#x8BAE;1.1&#x7248;&#x672C;&#xFF08;HTTP/1.1&#xFF09;&#x4E2D;&#x63D0;&#x4F9B;&#x3002;</p>
+<blockquote>
+<p>&#x901A;&#x5E38;&#xFF0C;HTTP&#x5E94;&#x7B54;&#x6D88;&#x606F;&#x4E2D;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x662F;&#x6574;&#x4E2A;&#x53D1;&#x9001;&#x7684;&#xFF0C;Content-Length&#x6D88;&#x606F;&#x5934;&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x6570;&#x636E;&#x7684;&#x957F;&#x5EA6;&#x3002;&#x6570;&#x636E;&#x7684;&#x957F;&#x5EA6;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x9700;&#x8981;&#x77E5;&#x9053;&#x54EA;&#x91CC;&#x662F;&#x5E94;&#x7B54;&#x6D88;&#x606F;&#x7684;&#x7ED3;&#x675F;&#xFF0C;&#x4EE5;&#x53CA;&#x540E;&#x7EED;&#x5E94;&#x7B54;&#x6D88;&#x606F;&#x7684;&#x5F00;&#x59CB;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4F7F;&#x7528;&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#xFF0C;&#x6570;&#x636E;&#x5206;&#x89E3;&#x6210;&#x4E00;&#x7CFB;&#x5217;&#x6570;&#x636E;&#x5757;&#xFF0C;&#x5E76;&#x4EE5;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5757;&#x6D41;&#x5F0F;&#x4F20;&#x8F93;&#xFF0C;&#x8FD9;&#x6837;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x6570;&#x636E;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x9884;&#x5148;&#x77E5;&#x9053;&#x53D1;&#x9001;&#x5185;&#x5BB9;&#x7684;&#x603B;&#x5927;&#x5C0F;&#x3002;</p>
+</blockquote>
+<p>HTTP 1.1&#x5F15;&#x5165;&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x63D0;&#x4F9B;&#x4E86;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#x597D;&#x5904;&#xFF1A;</p>
+<ul>
+<li>HTTP&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x5141;&#x8BB8;&#x670D;&#x52A1;&#x5668;&#x4E3A;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x5185;&#x5BB9;&#x7EF4;&#x6301;HTTP&#x6301;&#x4E45;&#x94FE;&#x63A5;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x6301;&#x4E45;&#x94FE;&#x63A5;&#x9700;&#x8981;&#x670D;&#x52A1;&#x5668;&#x5728;&#x5F00;&#x59CB;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x4F53;&#x524D;&#x53D1;&#x9001;Content-Length&#x6D88;&#x606F;&#x5934;&#x5B57;&#x6BB5;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x5185;&#x5BB9;&#x6765;&#x8BF4;&#xFF0C;&#x5728;&#x5185;&#x5BB9;&#x521B;&#x5EFA;&#x5B8C;&#x4E4B;&#x524D;&#x662F;&#x4E0D;&#x53EF;&#x77E5;&#x7684;&#x3002;</li>
+<li>&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x5141;&#x8BB8;&#x670D;&#x52A1;&#x5668;&#x5728;&#x6700;&#x540E;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x5934;&#x5B57;&#x6BB5;&#x3002;&#x5BF9;&#x4E8E;&#x90A3;&#x4E9B;&#x5934;&#x5B57;&#x6BB5;&#x503C;&#x5728;&#x5185;&#x5BB9;&#x88AB;&#x751F;&#x6210;&#x4E4B;&#x524D;&#x65E0;&#x6CD5;&#x77E5;&#x9053;&#x7684;&#x60C5;&#x5F62;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x4F8B;&#x5982;&#x6D88;&#x606F;&#x7684;&#x5185;&#x5BB9;&#x8981;&#x4F7F;&#x7528;&#x6563;&#x5217;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#xFF0C;&#x6563;&#x5217;&#x7684;&#x7ED3;&#x679C;&#x901A;&#x8FC7;HTTP&#x6D88;&#x606F;&#x5934;&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x4F20;&#x8F93;&#x3002;&#x6CA1;&#x6709;&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5FC5;&#x987B;&#x7F13;&#x51B2;&#x5185;&#x5BB9;&#x76F4;&#x5230;&#x5B8C;&#x6210;&#x540E;&#x8BA1;&#x7B97;&#x5934;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x5E76;&#x5728;&#x53D1;&#x9001;&#x5185;&#x5BB9;&#x524D;&#x53D1;&#x9001;&#x8FD9;&#x4E9B;&#x5934;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x3002;</li>
+<li>HTTP&#x670D;&#x52A1;&#x5668;&#x6709;&#x65F6;&#x4F7F;&#x7528;&#x538B;&#x7F29;&#x4EE5;&#x7F29;&#x77ED;&#x4F20;&#x8F93;&#x82B1;&#x8D39;&#x7684;&#x65F6;&#x95F4;&#x3002;&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5206;&#x9694;&#x538B;&#x7F29;&#x5BF9;&#x8C61;&#x7684;&#x591A;&#x4E2A;&#x90E8;&#x5206;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5757;&#x4E0D;&#x662F;&#x5206;&#x522B;&#x538B;&#x7F29;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x6574;&#x4E2A;&#x8D1F;&#x8F7D;&#x8FDB;&#x884C;&#x538B;&#x7F29;&#xFF0C;&#x538B;&#x7F29;&#x7684;&#x8F93;&#x51FA;&#x4F7F;&#x7528;&#x672C;&#x6587;&#x63CF;&#x8FF0;&#x7684;&#x65B9;&#x6848;&#x8FDB;&#x884C;&#x5206;&#x5757;&#x4F20;&#x8F93;&#x3002;&#x5728;&#x538B;&#x7F29;&#x7684;&#x60C5;&#x5F62;&#x4E2D;&#xFF0C;&#x5206;&#x5757;&#x7F16;&#x7801;&#x6709;&#x5229;&#x4E8E;&#x4E00;&#x8FB9;&#x8FDB;&#x884C;&#x538B;&#x7F29;&#x4E00;&#x8FB9;&#x53D1;&#x9001;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5148;&#x5B8C;&#x6210;&#x538B;&#x7F29;&#x8FC7;&#x7A0B;&#x4EE5;&#x5F97;&#x77E5;&#x538B;&#x7F29;&#x540E;&#x6570;&#x636E;&#x7684;&#x5927;&#x5C0F;&#x3002;</li>
+</ul>
+<p>&#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;&#x7684;&#x683C;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x4E00;&#x4E2A;HTTP&#x6D88;&#x606F;&#xFF08;&#x8BF7;&#x6C42;&#x6D88;&#x606F;&#x6216;&#x5E94;&#x7B54;&#x6D88;&#x606F;&#xFF09;&#x7684;Transfer-Encoding&#x6D88;&#x606F;&#x5934;&#x7684;&#x503C;&#x4E3A;chunked&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x6D88;&#x606F;&#x4F53;&#x7531;&#x6570;&#x91CF;&#x672A;&#x5B9A;&#x7684;&#x5757;&#x7EC4;&#x6210;&#xFF0C;&#x5E76;&#x4EE5;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x4E3A;0&#x7684;&#x5757;&#x4E3A;&#x7ED3;&#x675F;&#x3002;</li>
+<li>&#x6BCF;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x7684;&#x5757;&#x90FD;&#x4EE5;&#x8BE5;&#x5757;&#x5305;&#x542B;&#x6570;&#x636E;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF08;&#x5B57;&#x8282;&#x6570;&#x4EE5;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8868;&#x793A;&#xFF09;&#x5F00;&#x59CB;&#xFF0C;&#x8DDF;&#x968F;&#x4E00;&#x4E2A;CRLF&#xFF08;&#x56DE;&#x8F66;&#x53CA;&#x6362;&#x884C;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x6570;&#x636E;&#x672C;&#x8EAB;&#xFF0C;&#x6700;&#x540E;&#x5757;CRLF&#x7ED3;&#x675F;&#x3002;&#x5728;&#x4E00;&#x4E9B;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x5757;&#x5927;&#x5C0F;&#x548C;CRLF&#x4E4B;&#x95F4;&#x586B;&#x5145;&#x6709;&#x767D;&#x7A7A;&#x683C;&#xFF08;0x20&#xFF09;&#x3002;</li>
+<li>&#x6700;&#x540E;&#x4E00;&#x5757;&#x662F;&#x5355;&#x884C;&#xFF0C;&#x7531;&#x5757;&#x5927;&#x5C0F;&#xFF08;0&#xFF09;&#xFF0C;&#x4E00;&#x4E9B;&#x53EF;&#x9009;&#x7684;&#x586B;&#x5145;&#x767D;&#x7A7A;&#x683C;&#xFF0C;&#x4EE5;&#x53CA;CRLF&#x3002;&#x6700;&#x540E;&#x4E00;&#x5757;&#x4E0D;&#x518D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x53EF;&#x9009;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;&#x5305;&#x62EC;&#x6D88;&#x606F;&#x5934;&#x5B57;&#x6BB5;&#x3002;&#x6D88;&#x606F;&#x6700;&#x540E;&#x4EE5;CRLF&#x7ED3;&#x5C3E;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;:</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%9D%97%E4%BC%A0%E8%BE%93%E7%BC%96%E7%A0%81" target="_blank">wiki: &#x5206;&#x5757;&#x4F20;&#x8F93;&#x7F16;&#x7801;</a></li>
+</ul>
+</blockquote>
+<h1 id="golang-http-server-&#x4E0E;-chunked"><a name="golang-http-server-&#x4E0E;-chunked" class="anchor-navigation-ex-anchor" href="#golang-http-server-&#x4E0E;-chunked"><i class="fa fa-link" aria-hidden="true"></i></a>2. golang http server &#x4E0E; chunked</h1>
+<p>golang http &#x5305;&#x4E2D;&#xFF0C;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x7684;response&#x7ED3;&#x6784;&#x4F53;&#x91CC;&#xFF0C;&#x7528;&#x4E8E;&#x5199;&#x5165;body&#x7684;Writer&#x662F;&#x4E00;&#x4E2A;chunkWriter&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B98;&#x65B9;&#x5305;<code>net/http/server.go: func (c *conn) readRequest(ctx context.Context) (w *response, err error)</code>&#x65B9;&#x6CD5;&#x770B;&#x5230;&#xFF1A;</p>
+<p><img src="image/chunk_1.jpg" alt=""></p>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;w.cw(chunkWriter)&#x751F;&#x6210;&#x4E00;&#x4E2A;<code>*bufio.Writer</code>&#xFF0C;&#x5E76;&#x8D4B;&#x503C;&#x7ED9;w.w(response.Writer)&#xFF0C;&#x8BBE;&#x5B9A;&#x7684;bufferSize&#x4E3A;<code>bufferBeforeChunkingSize</code>&#x3002;http&#x5305;&#x4E2D;&#xFF0C;<code>bufferBeforeChunkingSize</code>&#x7684;&#x503C;&#x4E3A;2048</p>
+<p><img src="image/chunk_2.jpg" alt=""></p>
+<p><code>net/http/server.go: func (cw *chunkWriter) writeHeader(p []byte)</code></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"I. HTTP协议之chunk(分块传输编码)","level":"1.8.1","depth":2,"previous":{"title":"网络编程相关","level":"1.8","depth":1,"ref":"","articles":[{"title":"I. HTTP协议之chunk(分块传输编码)","level":"1.8.1","depth":2,"path":"network/chunk.md","ref":"./network/chunk.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish/tech_talk"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"network/chunk.md","mtime":"2019-01-30T09:40:14.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-31T09:10:55.004Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
