@@ -8,6 +8,7 @@
 * linux相关
     * [I. vim替换特殊符号](./linux/vim_replace.md)
     * [II. vim剪贴板的使用](./linux/vim_paste.md)
+    * [III. vim的插件及配置](./linux/vim_conf.md)
 
 * python相关
     * [I. 字符编码问题](./python/character.md)
