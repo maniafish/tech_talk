@@ -27,7 +27,6 @@ gitbook项目的目录结构如下:
 ```javascript
 # Summary
 
-* [Introduction](README.md)
 * [git相关](git.md)
     * [I. 为不同的git项目配置各自独立的用户](./git/user.md)
     * [II. gitbook的使用](./git/gitbook.md)
@@ -64,6 +63,8 @@ Serving book on http://localhost:4000
 ![](./image/gitbook_1.png)
 
 执行完成后，会在项目下自动生成书籍的文件目录\_book/
+
+> 默认的"Introduction"页面就是README.md
 
 # 配置书籍
 
