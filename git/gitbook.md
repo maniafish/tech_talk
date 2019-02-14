@@ -10,7 +10,7 @@
 
 gitbook项目的目录结构如下:
 
-```javascript
+```js
 - SUMMARY.md
 - README.md
 - book.json
@@ -72,7 +72,7 @@ Serving book on http://localhost:4000
 
 在项目目录下新建book.json文件，可以进行书籍配置；book.json示例如下:
 
-```javascript
+```js
 {
     "author": "mania_fish<mania_fish@163.com>",
     "description": "How to build effective golang project",
