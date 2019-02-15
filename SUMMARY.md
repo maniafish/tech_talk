@@ -24,6 +24,9 @@
     * [IX. Go的defer处理](./golang/defer.md)
 
 * golang工具相关
+    * [I. Go调试工具delve](./go_tool/delve.md)
+    * [II. Go程序运行跟踪器trace](./go_tool/trace.md)
+
 * CockRoachDB相关
 * 网络编程相关
     * [I. HTTP协议之chunk(分块传输编码)](./network/chunk.md)

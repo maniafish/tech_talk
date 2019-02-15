@@ -2,6 +2,7 @@ VER=$1
 
 /bin/rm -rf _book/
 sed -i '' 's#https://maniafish.github.io#https://github.com/maniafish#g' README.md
+sed -i '' '/目录/d' README.md
 gitbook build
 /bin/rm -rf ../tech_talk_pages/*
 cp -rf _book/* ../tech_talk_pages/
