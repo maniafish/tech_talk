@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>IX. Go的defer处理 · maniafish's technology blog</title>
+        <title>II. Go程序运行跟踪器trace · maniafish's technology blog</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,7 +62,7 @@
 
     
     
-    <link rel="prev" href="slice.html" />
+    <link rel="prev" href="delve.html" />
     
 
     </head>
@@ -262,9 +262,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="performance.html">
+        <li class="chapter " data-level="1.5.1" data-path="../golang/performance.html">
             
-                <a href="performance.html">
+                <a href="../golang/performance.html">
             
                     
                     I. Go的性能指标
@@ -275,9 +275,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="heap_stack.html">
+        <li class="chapter " data-level="1.5.2" data-path="../golang/heap_stack.html">
             
-                <a href="heap_stack.html">
+                <a href="../golang/heap_stack.html">
             
                     
                     II. Go的堆栈分配
@@ -288,9 +288,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="gc.html">
+        <li class="chapter " data-level="1.5.3" data-path="../golang/gc.html">
             
-                <a href="gc.html">
+                <a href="../golang/gc.html">
             
                     
                     III. Go的垃圾回收
@@ -301,9 +301,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="goroutine.html">
+        <li class="chapter " data-level="1.5.4" data-path="../golang/goroutine.html">
             
-                <a href="goroutine.html">
+                <a href="../golang/goroutine.html">
             
                     
                     IV. Go的协程
@@ -314,9 +314,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="stack_trace.html">
+        <li class="chapter " data-level="1.5.5" data-path="../golang/stack_trace.html">
             
-                <a href="stack_trace.html">
+                <a href="../golang/stack_trace.html">
             
                     
                     V. Go的调试信息
@@ -327,9 +327,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.6" data-path="composition.html">
+        <li class="chapter " data-level="1.5.6" data-path="../golang/composition.html">
             
-                <a href="composition.html">
+                <a href="../golang/composition.html">
             
                     
                     VI. Go的interface
@@ -340,9 +340,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.7" data-path="operator.html">
+        <li class="chapter " data-level="1.5.7" data-path="../golang/operator.html">
             
-                <a href="operator.html">
+                <a href="../golang/operator.html">
             
                     
                     VII. Go的变量作用域
@@ -353,9 +353,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.8" data-path="slice.html">
+        <li class="chapter " data-level="1.5.8" data-path="../golang/slice.html">
             
-                <a href="slice.html">
+                <a href="../golang/slice.html">
             
                     
                     VIII. Go的slice
@@ -366,9 +366,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.9" data-path="defer.html">
+        <li class="chapter " data-level="1.5.9" data-path="../golang/defer.html">
             
-                <a href="defer.html">
+                <a href="../golang/defer.html">
             
                     
                     IX. Go的defer处理
@@ -398,9 +398,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../go_tool/delve.html">
+        <li class="chapter " data-level="1.6.1" data-path="delve.html">
             
-                <a href="../go_tool/delve.html">
+                <a href="delve.html">
             
                     
                     I. Go调试工具delve
@@ -411,9 +411,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../go_tool/trace.html">
+        <li class="chapter active" data-level="1.6.2" data-path="trace.html">
             
-                <a href="../go_tool/trace.html">
+                <a href="trace.html">
             
                     
                     II. Go程序运行跟踪器trace
@@ -504,7 +504,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >IX. Go的defer处理</a>
+        <a href=".." >II. Go程序运行跟踪器trace</a>
     </h1>
 </div>
 
@@ -519,29 +519,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#todo-go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;"><b>1. </b>TODO: go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;</a></li></ul></div><a href="#todo-go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="go&#x7684;defer&#x5904;&#x7406;"><a name="go&#x7684;defer&#x5904;&#x7406;" class="anchor-navigation-ex-anchor" href="#go&#x7684;defer&#x5904;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Go&#x7684;defer&#x5904;&#x7406;</font></h4>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#todo"><b>1. </b>TODO</a></li></ul></div><a href="#todo" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace"><a name="go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace" class="anchor-navigation-ex-anchor" href="#go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace</font></h4>
 <hr>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token string">&quot;fmt&quot;</span>
-
-func <span class="token function">deferFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>b int<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    b <span class="token operator">=</span> <span class="token number">1</span>
-    a <span class="token punctuation">:</span><span class="token operator">=</span> <span class="token boolean">true</span>
-    defer <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        b <span class="token operator">=</span> <span class="token number">2</span>
-    <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span>
-<span class="token punctuation">}</span>
-
-func <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token function">deferFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token comment">// &#x8FD9;&#x91CC;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#x662F;1&#xFF0C;&#x800C;&#x4E0D;&#x662F;2</span>
-    <span class="token comment">// https://stackoverflow.com/questions/37248898/how-does-defer-and-named-return-value-work-in-golang</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h1 id="todo-go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;"><a name="todo-go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;" class="anchor-navigation-ex-anchor" href="#todo-go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>1. TODO: go&#x7684;defer&#x5E95;&#x5C42;&#x673A;&#x5236;</h1>
+<h1 id="todo"><a name="todo" class="anchor-navigation-ex-anchor" href="#todo"><i class="fa fa-link" aria-hidden="true"></i></a>1. TODO</h1>
+<blockquote>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;:</p>
+<ul>
+<li><a href="https://blog.lab99.org/post/golang-2017-10-20-video-seven-ways-to-profile-go-apps.html#fang-fa-qi-go-tool-trace" target="_blank">7&#x79CD;go&#x7A0B;&#x5E8F;&#x6027;&#x80FD;&#x5206;&#x6790;&#x7684;&#x65B9;&#x6CD5;</a></li>
+<li><a href="https://www.itcodemonkey.com/article/5419.html" target="_blank">&#x6DF1;&#x5165;&#x6D45;&#x51FA; Go trace</a></li>
+</ul>
+</blockquote>
 
                                 
                                 </section>
@@ -569,7 +556,7 @@ func <span class="token function">main</span><span class="token punctuation">(</
 
             
                 
-                <a href="slice.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: VIII. Go的slice">
+                <a href="delve.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: I. Go调试工具delve">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -581,7 +568,7 @@ func <span class="token function">main</span><span class="token punctuation">(</
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"IX. Go的defer处理","level":"1.5.9","depth":2,"next":{"title":"golang工具相关","level":"1.6","depth":1,"ref":"","articles":[{"title":"I. Go调试工具delve","level":"1.6.1","depth":2,"path":"go_tool/delve.md","ref":"./go_tool/delve.md","articles":[]},{"title":"II. Go程序运行跟踪器trace","level":"1.6.2","depth":2,"path":"go_tool/trace.md","ref":"./go_tool/trace.md","articles":[]}]},"previous":{"title":"VIII. Go的slice","level":"1.5.8","depth":2,"path":"golang/slice.md","ref":"./golang/slice.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"golang/defer.md","mtime":"2019-01-30T07:28:25.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-15T01:57:06.012Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"II. Go程序运行跟踪器trace","level":"1.6.2","depth":2,"next":{"title":"CockRoachDB相关","level":"1.7","depth":1,"ref":"","articles":[]},"previous":{"title":"I. Go调试工具delve","level":"1.6.1","depth":2,"path":"go_tool/delve.md","ref":"./go_tool/delve.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"go_tool/trace.md","mtime":"2019-02-15T01:54:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-15T01:57:06.012Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
