@@ -83,7 +83,7 @@ func main() {
 这段代码的功能是返回长度为1k的随机base64字符串，接下来，我们通过ab压测工具来并发访问一下这个接口
 
 ```js
-$ ab -n 10000 -c 100 '127.0.0.1:8080/random_bytes'                                                                                                   [10:44:16]
+$ ab -n 10000 -c 100 '127.0.0.1:8080/random_bytes'                                                                                                   
 This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -213,14 +213,14 @@ body[i] = letterBytes[rand.Intn(len(letterBytes))]
 使用官方包的全局rand对象来生成随机数，然后通过ab压测看一下效果
 
 ```js
-$ ab -n 10000 -c 100 '127.0.0.1:8080/random_bytes'                                                                                                   [11:38:05]
+$ ab -n 10000 -c 100 '127.0.0.1:8080/random_bytes'                                                                                                   
 This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
 Benchmarking 127.0.0.1 (be patient)
 apr_socket_recv: Connection refused (61)
-maniafish:tech_talk/ (master✗) $ ab -n 10000 -c 100 '127.0.0.1:8080/random_bytes'                                                                                                   [11:38:26]
+maniafish:tech_talk/ (master✗) $ ab -n 10000 -c 100 '127.0.0.1:8080/random_bytes'                                                                                                   
 This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -288,7 +288,7 @@ Failed requests:        0
 以上面那段服务端代码为例，每次重启程序后，访问返回的随机字符串都是：
 
 ```js
-$ curl '127.0.0.1:8080/random_bytes'                                                                                                                 [11:46:44]
+$ curl '127.0.0.1:8080/random_bytes'                                                                                                                 
 KVLoZ6Oavp=40jWjUThPTPHn/h/x3fqn5PyFwFOPxOessrsjXCLqNjOOCsn8lTT4ZnPrMq+4Q+hymRlJWWcWZ2sRFr6ZbGasr6usOZEw/aJaJrxRbr=5Qmq24/KoAkWq=lcTTzGtC1NnNGLLvNkA44k9yIkW4fcCGAsjLn56RHFf8zNBmfZof1Oj8s3tmfawtksZ8b8gyBPBUO2rQ/HPd1M4eVw0EZ+aGxY4UcJk5XbTYeNozbgVKfj5WZNYoT=SYmTE7dTRZ3=D3v+couthoigsrYc9c9uLNhSA9JUHWUIrHsdstD8=KclVXHeUCI5VI=4g1MlAr/Pgz/jxm8Ino9mxkv1JTvOq=g4kYNLBs3Wf6Pa62ws/dVsiBUHsF=bJqVG5XMOqwmD46iPTBJIlXyESXmy5RoEOD=ONq4Za2nEwcJcmHQtwzuAyoRShs7zapSiT=hOlM+yte9VgJF5bo6T2A31A4EEhn7=JqK=MbGnRYUtzyTZfvyoAd3vBXIFSFTp+2kZXVU14LgaQ6wnLeEdEQ=V+LcehPjIbtjHLeIJo6p=YFRq6/DwCZJ8TQmZClVckA5WYDfyRO5/XELRqKKudG1PA121ThZlui39HMmpOUCFw=jWKZu0IIsnOnk35Jq2ODTAPZGa2M0i0+3+ibAngLLhQNOcB8f1kDVrkS5MKM4YpzGXCDJJsuY=H4c1vg288l6SxAYTqARMAroM15r+HkkmZF0nVtNlLDWmkQdfB7Cd0Wyw4ACGxklqgX0l12S5xsou58I/s0z9RXr9u0DuXdNaa=LEu1nkiPaLB5sDCNCtUgm0M26bMvCyaa4pHiqKa/HNqm1qTZtCoFsFPqKXFLe5MAPNW=ldNurqh8GtHV14dcD9AEpkptPitNcdgERJVhG2MqfLV6tDjyHrCTOCmk6oEzGKQ24/1Un1HdqRIPW+qyDsfgShBIIDu6nk0wrQKcd/3if66k49TUA2bSDdhf/goqCo4i0hxAJJwTNdh9hIQr21/=8D=yc9YQBfH
 ```
 
