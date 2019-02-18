@@ -22,10 +22,12 @@
     * [VII. Go的变量作用域](./golang/operator.md)
     * [VIII. Go的slice](./golang/slice.md)
     * [IX. Go的defer处理](./golang/defer.md)
+    * [X. Go随机数生成的并发安全问题](./golang/rand.md)
 
 * golang工具相关
-    * [I. Go调试工具delve](./go_tool/delve.md)
-    * [II. Go程序运行跟踪器trace](./go_tool/trace.md)
+    * [I. Go程序基准测试](./go_tool/go_test.md)
+    * [II. Go调试工具delve](./go_tool/delve.md)
+    * [III. Go程序运行跟踪器trace](./go_tool/trace.md)
 
 * CockRoachDB相关
 * 网络编程相关
