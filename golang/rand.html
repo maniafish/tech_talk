@@ -1,0 +1,888 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>X. Go随机数生成的并发安全问题 · maniafish's technology blog</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="mania_fish<mania_fish@163.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-base16-ateliersulphurpool.light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="defer.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/maniafish" target="_blank" class="custom-link">github 主页</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    git相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../git/user.html">
+            
+                <a href="../git/user.html">
+            
+                    
+                    I. 为不同的git项目配置各自独立的用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../git/gitbook.html">
+            
+                <a href="../git/gitbook.html">
+            
+                    
+                    II. gitbook的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    linux相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../linux/vim_replace.html">
+            
+                <a href="../linux/vim_replace.html">
+            
+                    
+                    I. vim替换特殊符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../linux/vim_paste.html">
+            
+                <a href="../linux/vim_paste.html">
+            
+                    
+                    II. vim剪贴板的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../linux/vim_conf.html">
+            
+                <a href="../linux/vim_conf.html">
+            
+                    
+                    III. vim的插件及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    python相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../python/character.html">
+            
+                <a href="../python/character.html">
+            
+                    
+                    I. 字符编码问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    golang语言相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="performance.html">
+            
+                <a href="performance.html">
+            
+                    
+                    I. Go的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="heap_stack.html">
+            
+                <a href="heap_stack.html">
+            
+                    
+                    II. Go的堆栈分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="gc.html">
+            
+                <a href="gc.html">
+            
+                    
+                    III. Go的垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="goroutine.html">
+            
+                <a href="goroutine.html">
+            
+                    
+                    IV. Go的协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="stack_trace.html">
+            
+                <a href="stack_trace.html">
+            
+                    
+                    V. Go的调试信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="composition.html">
+            
+                <a href="composition.html">
+            
+                    
+                    VI. Go的interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="operator.html">
+            
+                <a href="operator.html">
+            
+                    
+                    VII. Go的变量作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="slice.html">
+            
+                <a href="slice.html">
+            
+                    
+                    VIII. Go的slice
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="defer.html">
+            
+                <a href="defer.html">
+            
+                    
+                    IX. Go的defer处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.10" data-path="rand.html">
+            
+                <a href="rand.html">
+            
+                    
+                    X. Go随机数生成的并发安全问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    golang工具相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../go_tool/go_test.html">
+            
+                <a href="../go_tool/go_test.html">
+            
+                    
+                    I. Go程序基准测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../go_tool/delve.html">
+            
+                <a href="../go_tool/delve.html">
+            
+                    
+                    II. Go调试工具delve
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../go_tool/trace.html">
+            
+                <a href="../go_tool/trace.html">
+            
+                    
+                    III. Go程序运行跟踪器trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    CockRoachDB相关
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    网络编程相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../network/chunk.html">
+            
+                <a href="../network/chunk.html">
+            
+                    
+                    I. HTTP协议之chunk(分块传输编码)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >X. Go随机数生成的并发安全问题</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x95EE;&#x9898;&#x5206;&#x6790;"><b>1. </b>&#x95EE;&#x9898;&#x5206;&#x6790;</a></li><li><span class="title-icon "></span><a href="#&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;"><b>2. </b>&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;</a></li><li><span class="title-icon "></span><a href="#&#x5F00;&#x53D1;&#x5EFA;&#x8BAE;"><b>3. </b>&#x5F00;&#x53D1;&#x5EFA;&#x8BAE;</a></li></ul></div><a href="#&#x95EE;&#x9898;&#x5206;&#x6790;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="go&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x7684;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x95EE;&#x9898;"><a name="go&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x7684;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x95EE;&#x9898;" class="anchor-navigation-ex-anchor" href="#go&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x7684;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x95EE;&#x9898;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Go&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x7684;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x95EE;&#x9898;</font></h4>
+<hr>
+<h1 id="&#x95EE;&#x9898;&#x5206;&#x6790;"><a name="&#x95EE;&#x9898;&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#&#x95EE;&#x9898;&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x95EE;&#x9898;&#x5206;&#x6790;</h1>
+<p>golang&#x4E2D;&#x7684;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x662F;&#x7531;&#x5B98;&#x65B9;&#x5305;<code>math/rand</code>&#x6765;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5F88;&#x7B80;&#x5355;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;math/rand&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+func <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x4F7F;&#x7528;&#x5F53;&#x524D;&#x7684;&#x7EB3;&#x79D2;&#x65F6;&#x95F4;&#x4F5C;&#x4E3A;&#x968F;&#x673A;&#x56E0;&#x5B50;&#xFF0C;&#x751F;&#x6210;&#x4E00;&#x4E2A;rand&#x5BF9;&#x8C61;</span>
+    r <span class="token punctuation">:</span><span class="token operator">=</span> rand<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>rand<span class="token punctuation">.</span><span class="token function">NewSource</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment">// &#x751F;&#x6210;100&#x4EE5;&#x5185;&#x7684;&#x968F;&#x673A;&#x6570;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x5728;&#x5B9E;&#x9645;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x78B0;&#x5230;&#x9700;&#x8981;&#x91CD;&#x590D;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5C31;&#x662F;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;A&#x65F6;&#xFF0C;&#x5728;A&#x7684;&#x903B;&#x8F91;&#x4E2D;&#x9700;&#x8981;&#x7528;&#x5230;&#x4E00;&#x4E2A;&#x8303;&#x56F4;&#x5185;&#x7684;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5728;A&#x65B9;&#x6CD5;&#x4E2D;&#x91C7;&#x7528;<code>r.Intn(n)</code>&#x751F;&#x6210;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x6570;&#xFF1B;&#x7531;&#x4E8E;&#x6BCF;&#x6B21;&#x8C03;&#x7528;A&#x65F6;&#xFF0C;&#x90FD;&#x8981;&#x4F7F;&#x7528;rand&#x5BF9;&#x8C61;<code>r</code>&#x6765;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4F1A;&#x5BF9;&#x8FD9;&#x4E2A;rand&#x5BF9;&#x8C61;&#x505A;&#x63D0;&#x524D;&#x5B9A;&#x4E49;&#xFF0C;&#x4EE5;&#x514D;&#x6BCF;&#x6B21;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#x90FD;&#x8981;&#x91CD;&#x590D;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x9020;&#x6210;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5F00;&#x9500;&#x3002;</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;math/rand&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> Rand <span class="token operator">=</span> rand<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>rand<span class="token punctuation">.</span><span class="token function">NewSource</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+func <span class="token constant">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    p <span class="token punctuation">:</span><span class="token operator">=</span> Rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+
+func <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    <span class="token constant">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x5728;&#x5E73;&#x65F6;&#x5355;&#x534F;&#x7A0B;&#x5185;&#x505A;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x65F6;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x65E6;&#x78B0;&#x5230;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x95EE;&#x9898;&#x5C31;&#x6765;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x670D;&#x52A1;&#x5668;&#x4EE3;&#x7801;&#x3002;</p>
+<pre class="language-"><code class="lang-js"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;log&quot;</span>
+    <span class="token string">&quot;math/rand&quot;</span>
+    <span class="token string">&quot;net/http&quot;</span>
+    <span class="token string">&quot;time&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// base64&#x4F7F;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x96C6;</span>
+<span class="token keyword">const</span> letterBytes <span class="token operator">=</span> <span class="token string">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/+=&quot;</span>
+
+<span class="token keyword">var</span> letterRand <span class="token operator">=</span> rand<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>rand<span class="token punctuation">.</span><span class="token function">NewSource</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+func <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    handler <span class="token punctuation">:</span><span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> req <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        body <span class="token punctuation">:</span><span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span>byte<span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token punctuation">:</span><span class="token operator">=</span> range body <span class="token punctuation">{</span>
+            body<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> letterBytes<span class="token punctuation">[</span>letterRand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>letterBytes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+
+        w<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    http<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/random_bytes&quot;</span><span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+    log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span><span class="token function">ListenAndServe</span><span class="token punctuation">(</span><span class="token string">&quot;:8080&quot;</span><span class="token punctuation">,</span> nil<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x529F;&#x80FD;&#x662F;&#x8FD4;&#x56DE;&#x957F;&#x5EA6;&#x4E3A;1k&#x7684;&#x968F;&#x673A;base64&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;ab&#x538B;&#x6D4B;&#x5DE5;&#x5177;&#x6765;&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;</p>
+<pre class="language-"><code class="lang-js">$ ab <span class="token operator">-</span>n <span class="token number">10000</span> <span class="token operator">-</span>c <span class="token number">100</span> <span class="token string">&apos;127.0.0.1:8080/random_bytes&apos;</span>                                                                                                   <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">:</span><span class="token number">44</span><span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span>
+This is ApacheBench<span class="token punctuation">,</span> Version <span class="token number">2.3</span> <span class="token operator">&lt;</span>$Revision<span class="token punctuation">:</span> <span class="token number">1807734</span> $<span class="token operator">&gt;</span>
+Copyright <span class="token number">1996</span> Adam Twiss<span class="token punctuation">,</span> Zeus Technology Ltd<span class="token punctuation">,</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/www.zeustech.net/</span>
+Licensed to The Apache Software Foundation<span class="token punctuation">,</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/www.apache.org/</span>
+
+Benchmarking <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span> <span class="token punctuation">(</span>be patient<span class="token punctuation">)</span>
+Completed <span class="token number">1000</span> requests
+Completed <span class="token number">2000</span> requests
+Completed <span class="token number">3000</span> requests
+Completed <span class="token number">4000</span> requests
+Completed <span class="token number">5000</span> requests
+Completed <span class="token number">6000</span> requests
+Completed <span class="token number">7000</span> requests
+Completed <span class="token number">8000</span> requests
+Completed <span class="token number">9000</span> requests
+Completed <span class="token number">10000</span> requests
+Finished <span class="token number">10000</span> requests
+
+
+Server Software<span class="token punctuation">:</span>
+Server Hostname<span class="token punctuation">:</span>        <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span>
+Server Port<span class="token punctuation">:</span>            <span class="token number">8080</span>
+
+Document Path<span class="token punctuation">:</span>          <span class="token operator">/</span>random_bytes
+Document Length<span class="token punctuation">:</span>        <span class="token number">1024</span> bytes
+
+Concurrency Level<span class="token punctuation">:</span>      <span class="token number">100</span>
+Time taken <span class="token keyword">for</span> tests<span class="token punctuation">:</span>   <span class="token number">1.240</span> seconds
+Complete requests<span class="token punctuation">:</span>      <span class="token number">10000</span>
+Failed requests<span class="token punctuation">:</span>        <span class="token number">94</span>
+   <span class="token punctuation">(</span>Connect<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> Receive<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> Length<span class="token punctuation">:</span> <span class="token number">94</span><span class="token punctuation">,</span> Exceptions<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">)</span>
+Total transferred<span class="token punctuation">:</span>      <span class="token number">11322542</span> bytes
+<span class="token constant">HTML</span> transferred<span class="token punctuation">:</span>       <span class="token number">10143744</span> bytes
+Requests per second<span class="token punctuation">:</span>    <span class="token number">8063.88</span> <span class="token punctuation">[</span>#<span class="token operator">/</span>sec<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+Time per request<span class="token punctuation">:</span>       <span class="token number">12.401</span> <span class="token punctuation">[</span>ms<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+Time per request<span class="token punctuation">:</span>       <span class="token number">0.124</span> <span class="token punctuation">[</span>ms<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">,</span> across all concurrent requests<span class="token punctuation">)</span>
+Transfer rate<span class="token punctuation">:</span>          <span class="token number">8916.37</span> <span class="token punctuation">[</span>Kbytes<span class="token operator">/</span>sec<span class="token punctuation">]</span> received
+
+Connection <span class="token function">Times</span> <span class="token punctuation">(</span>ms<span class="token punctuation">)</span>
+              min  mean<span class="token punctuation">[</span><span class="token operator">+</span><span class="token operator">/</span><span class="token operator">-</span>sd<span class="token punctuation">]</span> median   max
+Connect<span class="token punctuation">:</span>        <span class="token number">0</span>    <span class="token number">5</span>   <span class="token number">2.3</span>      <span class="token number">5</span>      <span class="token number">15</span>
+Processing<span class="token punctuation">:</span>     <span class="token number">0</span>    <span class="token number">7</span>   <span class="token number">3.7</span>      <span class="token number">6</span>      <span class="token number">36</span>
+Waiting<span class="token punctuation">:</span>        <span class="token number">0</span>    <span class="token number">5</span>   <span class="token number">3.7</span>      <span class="token number">5</span>      <span class="token number">36</span>
+Total<span class="token punctuation">:</span>          <span class="token number">1</span>   <span class="token number">12</span>   <span class="token number">3.6</span>     <span class="token number">12</span>      <span class="token number">38</span>
+
+Percentage <span class="token keyword">of</span> the requests served within a certain <span class="token function">time</span> <span class="token punctuation">(</span>ms<span class="token punctuation">)</span>
+  <span class="token number">50</span><span class="token operator">%</span>     <span class="token number">12</span>
+  <span class="token number">66</span><span class="token operator">%</span>     <span class="token number">13</span>
+  <span class="token number">75</span><span class="token operator">%</span>     <span class="token number">13</span>
+  <span class="token number">80</span><span class="token operator">%</span>     <span class="token number">14</span>
+  <span class="token number">90</span><span class="token operator">%</span>     <span class="token number">16</span>
+  <span class="token number">95</span><span class="token operator">%</span>     <span class="token number">18</span>
+  <span class="token number">98</span><span class="token operator">%</span>     <span class="token number">22</span>
+  <span class="token number">99</span><span class="token operator">%</span>     <span class="token number">27</span>
+ <span class="token number">100</span><span class="token operator">%</span>     <span class="token number">38</span> <span class="token punctuation">(</span>longest request<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8BBE;&#x5B9A;&#x7684;&#x662F;100&#x5E76;&#x53D1;&#xFF0C;&#x5171;10000&#x4E2A;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5176;&#x4E2D;&#x6709;94&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x5931;&#x8D25;&#x4E86;&#x3002;</p>
+<pre class="language-"><code class="lang-js">Failed requests<span class="token punctuation">:</span>        <span class="token number">94</span>
+</code></pre>
+<p>&#x68C0;&#x67E5;&#x670D;&#x52A1;&#x7AEF;&#x8F93;&#x51FA;&#xFF0C;&#x53D1;&#x73B0;&#x629B;&#x51FA;&#x4E86;panic</p>
+<pre class="language-"><code class="lang-js">http<span class="token punctuation">:</span> panic serving <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token punctuation">:</span><span class="token number">57330</span><span class="token punctuation">:</span> runtime error<span class="token punctuation">:</span> index out <span class="token keyword">of</span> range
+goroutine <span class="token number">19898</span> <span class="token punctuation">[</span>running<span class="token punctuation">]</span><span class="token punctuation">:</span>
+net<span class="token operator">/</span>http<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>conn<span class="token punctuation">)</span><span class="token punctuation">.</span>serve<span class="token punctuation">.</span><span class="token function">func1</span><span class="token punctuation">(</span><span class="token number">0xc42054c320</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>net<span class="token operator">/</span>http<span class="token operator">/</span>server<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">1697</span> <span class="token operator">+</span><span class="token number">0xd0</span>
+<span class="token function">panic</span><span class="token punctuation">(</span><span class="token number">0x1250aa0</span><span class="token punctuation">,</span> <span class="token number">0x13f9e20</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>runtime<span class="token operator">/</span>panic<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">491</span> <span class="token operator">+</span><span class="token number">0x283</span>
+math<span class="token operator">/</span>rand<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>rngSource<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Uint64</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>math<span class="token operator">/</span>rand<span class="token operator">/</span>rng<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">246</span>
+math<span class="token operator">/</span>rand<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>rngSource<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Int63</span><span class="token punctuation">(</span><span class="token number">0xc420097500</span><span class="token punctuation">,</span> <span class="token number">0xf67aee49c000000</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>math<span class="token operator">/</span>rand<span class="token operator">/</span>rng<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">231</span> <span class="token operator">+</span><span class="token number">0x8a</span>
+math<span class="token operator">/</span>rand<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Rand<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Int63</span><span class="token punctuation">(</span><span class="token number">0xc42007cbd0</span><span class="token punctuation">,</span> <span class="token number">0xf67aee49c000000</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>math<span class="token operator">/</span>rand<span class="token operator">/</span>rand<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">82</span> <span class="token operator">+</span><span class="token number">0x33</span>
+math<span class="token operator">/</span>rand<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Rand<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Int31</span><span class="token punctuation">(</span><span class="token number">0xc42007cbd0</span><span class="token punctuation">,</span> <span class="token number">0xf67aee4</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>math<span class="token operator">/</span>rand<span class="token operator">/</span>rand<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">96</span> <span class="token operator">+</span><span class="token number">0x2b</span>
+math<span class="token operator">/</span>rand<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Rand<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Int31n</span><span class="token punctuation">(</span><span class="token number">0xc42007cbd0</span><span class="token punctuation">,</span> <span class="token number">0xc400000041</span><span class="token punctuation">,</span> <span class="token number">0xc400000019</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>math<span class="token operator">/</span>rand<span class="token operator">/</span>rand<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">131</span> <span class="token operator">+</span><span class="token number">0x4f</span>
+math<span class="token operator">/</span>rand<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Rand<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token number">0xc42007cbd0</span><span class="token punctuation">,</span> <span class="token number">0x41</span><span class="token punctuation">,</span> <span class="token number">0x19</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>math<span class="token operator">/</span>rand<span class="token operator">/</span>rand<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">145</span> <span class="token operator">+</span><span class="token number">0x45</span>
+main<span class="token punctuation">.</span>main<span class="token punctuation">.</span><span class="token function">func1</span><span class="token punctuation">(</span><span class="token number">0x13d0da0</span><span class="token punctuation">,</span> <span class="token number">0xc420561260</span><span class="token punctuation">,</span> <span class="token number">0xc4203d8d00</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go_project<span class="token operator">/</span>src<span class="token operator">/</span>test<span class="token operator">/</span>test_server<span class="token operator">/</span>main<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">19</span> <span class="token operator">+</span><span class="token number">0xaf</span>
+net<span class="token operator">/</span>http<span class="token punctuation">.</span>HandlerFunc<span class="token punctuation">.</span><span class="token function">ServeHTTP</span><span class="token punctuation">(</span><span class="token number">0x12af8a0</span><span class="token punctuation">,</span> <span class="token number">0x13d0da0</span><span class="token punctuation">,</span> <span class="token number">0xc420561260</span><span class="token punctuation">,</span> <span class="token number">0xc4203d8d00</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>net<span class="token operator">/</span>http<span class="token operator">/</span>server<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">1918</span> <span class="token operator">+</span><span class="token number">0x44</span>
+net<span class="token operator">/</span>http<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>ServeMux<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ServeHTTP</span><span class="token punctuation">(</span><span class="token number">0x1403920</span><span class="token punctuation">,</span> <span class="token number">0x13d0da0</span><span class="token punctuation">,</span> <span class="token number">0xc420561260</span><span class="token punctuation">,</span> <span class="token number">0xc4203d8d00</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>net<span class="token operator">/</span>http<span class="token operator">/</span>server<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">2254</span> <span class="token operator">+</span><span class="token number">0x130</span>
+net<span class="token operator">/</span>http<span class="token punctuation">.</span>serverHandler<span class="token punctuation">.</span><span class="token function">ServeHTTP</span><span class="token punctuation">(</span><span class="token number">0xc420082dd0</span><span class="token punctuation">,</span> <span class="token number">0x13d0da0</span><span class="token punctuation">,</span> <span class="token number">0xc420561260</span><span class="token punctuation">,</span> <span class="token number">0xc4203d8d00</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>net<span class="token operator">/</span>http<span class="token operator">/</span>server<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">2619</span> <span class="token operator">+</span><span class="token number">0xb4</span>
+net<span class="token operator">/</span>http<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>conn<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">serve</span><span class="token punctuation">(</span><span class="token number">0xc42054c320</span><span class="token punctuation">,</span> <span class="token number">0x13d1220</span><span class="token punctuation">,</span> <span class="token number">0xc42027c800</span><span class="token punctuation">)</span>
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>net<span class="token operator">/</span>http<span class="token operator">/</span>server<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">1801</span> <span class="token operator">+</span><span class="token number">0x71d</span>
+created by net<span class="token operator">/</span>http<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>Server<span class="token punctuation">)</span><span class="token punctuation">.</span>Serve
+    <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>net<span class="token operator">/</span>http<span class="token operator">/</span>server<span class="token punctuation">.</span>go<span class="token punctuation">:</span><span class="token number">2720</span> <span class="token operator">+</span><span class="token number">0x288</span>
+</code></pre>
+<p>&#x6839;&#x636E;&#x62A5;&#x9519;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x5230;panic&#x4F4D;&#x7F6E;&#x5728;&#x5B98;&#x65B9;&#x5305;<code>math/rand/rng.go: func (rng *rngSource) Uint64() uint64</code>&#x65B9;&#x6CD5;&#x7684;&#x4EE5;&#x4E0B;&#x884C;&#xFF1A;</p>
+<p><img src="image/rand_1.jpg" alt=""></p>
+<p>&#x5B9E;&#x9645;&#x4E0A;rand&#x5305;&#x5728;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#x65F6;&#xFF0C;&#x5E95;&#x5C42;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4ECE;<code>vec</code>&#x6570;&#x7EC4;&#x4E2D;&#x53D6;&#x51FA;int64&#x5143;&#x7D20;&#x6765;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4F2A;&#x968F;&#x673A;&#x6570;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x5BF9;&#x6570;&#x7EC4;&#x7684;&#x4E24;&#x4E2A;&#x7D22;&#x5F15;&#x503C;<code>tap</code>&#x548C;<code>feed</code>&#xFF0C;&#x90FD;&#x5B58;&#x5728;&#x7740;&#x4E00;&#x4E2A;&#x9012;&#x51CF;&#x5230;0&#x4EE5;&#x4E0B;&#x65F6;&#x589E;&#x52A0;<code>_LEN</code>&#x503C;&#x7684;&#x975E;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;&#x5E76;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x534F;&#x7A0B;A&#x5BF9;<code>tap</code>(&#x6216;<code>feed</code>)&#x9012;&#x51CF;&#x5230;0&#x4EE5;&#x4E0B;&#xFF0C;&#x5728;&#x91CD;&#x8BBE;<code>tap</code>(&#x6216;<code>feed</code>)&#x524D;&#xFF0C;&#x534F;&#x7A0B;B&#x540C;&#x65F6;&#x5728;&#x8FDB;&#x884C;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;</p>
+<pre class="language-"><code>x := rng.vec[rng.feed] + rng.vec[rng.tap]
+rng.vec[rng.feed] = x
+</code></pre><p>&#x5C31;&#x4F1A;&#x56E0;&#x4E3A;&#x53D6;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&#x4E3A;&#x8D1F;&#x6570;(&#x5982;<code>vec[-1]</code>)&#xFF0C;&#x5BFC;&#x81F4;panic&#x3002;</p>
+<h1 id="&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;"><a name="&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;" class="anchor-navigation-ex-anchor" href="#&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x5168;&#x5C40;rand&#x5BF9;&#x8C61;</h1>
+<p>&#x6211;&#x4EEC;&#x5728;&#x751F;&#x6210;rand&#x5BF9;&#x8C61;&#x65F6;&#x4F7F;&#x7528;&#x7684;NewSource()&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x5B98;&#x65B9;&#x5305;&#x91CC;&#x6709;&#x660E;&#x786E;&#x6CE8;&#x91CA;&#x8BF4;&#x660E;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x662F;&#x975E;&#x534F;&#x7A0B;&#x5B89;&#x5168;&#x7684;</p>
+<p><img src="image/rand_2.jpg" alt=""></p>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5B98;&#x65B9;&#x7684;rand&#x5305;&#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7684;rand&#x5BF9;&#x8C61;<code>var globalRand = New(&amp;lockedSource{src: NewSource(1).(Source64)})</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x7684;&#x662F;<code>lockedSource</code>&#xFF0C;&#x901A;&#x8FC7;&#x52A0;&#x9501;&#x6765;&#x4FDD;&#x8BC1;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x65F6;&#x7684;&#x534F;&#x7A0B;&#x5B89;&#x5168;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x901A;&#x8FC7;<code>rand.Intn(n)</code>&#x8C03;&#x7528;&#x5B98;&#x65B9;&#x5305;&#x65B9;&#x6CD5;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;<code>globalRand</code>&#x5BF9;&#x8C61;&#x6765;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x4E4B;&#x524D;&#x670D;&#x52A1;&#x7AEF;&#x751F;&#x6210;&#x968F;&#x673A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x90A3;&#x884C;&#x4EE3;&#x7801;&#x6539;&#x4E3A;</p>
+<pre class="language-"><code class="lang-js">body<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> letterBytes<span class="token punctuation">[</span>rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>letterBytes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x5B98;&#x65B9;&#x5305;&#x7684;&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;&#x6765;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;ab&#x538B;&#x6D4B;&#x770B;&#x4E00;&#x4E0B;&#x6548;&#x679C;</p>
+<pre class="language-"><code class="lang-js">$ ab <span class="token operator">-</span>n <span class="token number">10000</span> <span class="token operator">-</span>c <span class="token number">100</span> <span class="token string">&apos;127.0.0.1:8080/random_bytes&apos;</span>                                                                                                   <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">:</span><span class="token number">38</span><span class="token punctuation">:</span><span class="token number">05</span><span class="token punctuation">]</span>
+This is ApacheBench<span class="token punctuation">,</span> Version <span class="token number">2.3</span> <span class="token operator">&lt;</span>$Revision<span class="token punctuation">:</span> <span class="token number">1807734</span> $<span class="token operator">&gt;</span>
+Copyright <span class="token number">1996</span> Adam Twiss<span class="token punctuation">,</span> Zeus Technology Ltd<span class="token punctuation">,</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/www.zeustech.net/</span>
+Licensed to The Apache Software Foundation<span class="token punctuation">,</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/www.apache.org/</span>
+
+Benchmarking <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span> <span class="token punctuation">(</span>be patient<span class="token punctuation">)</span>
+apr_socket_recv<span class="token punctuation">:</span> Connection <span class="token function">refused</span> <span class="token punctuation">(</span><span class="token number">61</span><span class="token punctuation">)</span>
+maniafish<span class="token punctuation">:</span>tech_talk<span class="token operator">/</span> <span class="token punctuation">(</span>master&#x2717;<span class="token punctuation">)</span> $ ab <span class="token operator">-</span>n <span class="token number">10000</span> <span class="token operator">-</span>c <span class="token number">100</span> <span class="token string">&apos;127.0.0.1:8080/random_bytes&apos;</span>                                                                                                   <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">:</span><span class="token number">38</span><span class="token punctuation">:</span><span class="token number">26</span><span class="token punctuation">]</span>
+This is ApacheBench<span class="token punctuation">,</span> Version <span class="token number">2.3</span> <span class="token operator">&lt;</span>$Revision<span class="token punctuation">:</span> <span class="token number">1807734</span> $<span class="token operator">&gt;</span>
+Copyright <span class="token number">1996</span> Adam Twiss<span class="token punctuation">,</span> Zeus Technology Ltd<span class="token punctuation">,</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/www.zeustech.net/</span>
+Licensed to The Apache Software Foundation<span class="token punctuation">,</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token regex">/www.apache.org/</span>
+
+Benchmarking <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span> <span class="token punctuation">(</span>be patient<span class="token punctuation">)</span>
+Completed <span class="token number">1000</span> requests
+Completed <span class="token number">2000</span> requests
+Completed <span class="token number">3000</span> requests
+Completed <span class="token number">4000</span> requests
+Completed <span class="token number">5000</span> requests
+Completed <span class="token number">6000</span> requests
+Completed <span class="token number">7000</span> requests
+Completed <span class="token number">8000</span> requests
+Completed <span class="token number">9000</span> requests
+Completed <span class="token number">10000</span> requests
+Finished <span class="token number">10000</span> requests
+
+
+Server Software<span class="token punctuation">:</span>
+Server Hostname<span class="token punctuation">:</span>        <span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span>
+Server Port<span class="token punctuation">:</span>            <span class="token number">8080</span>
+
+Document Path<span class="token punctuation">:</span>          <span class="token operator">/</span>random_bytes
+Document Length<span class="token punctuation">:</span>        <span class="token number">1024</span> bytes
+
+Concurrency Level<span class="token punctuation">:</span>      <span class="token number">100</span>
+Time taken <span class="token keyword">for</span> tests<span class="token punctuation">:</span>   <span class="token number">7.892</span> seconds
+Complete requests<span class="token punctuation">:</span>      <span class="token number">10000</span>
+Failed requests<span class="token punctuation">:</span>        <span class="token number">0</span>
+Total transferred<span class="token punctuation">:</span>      <span class="token number">11429968</span> bytes
+<span class="token constant">HTML</span> transferred<span class="token punctuation">:</span>       <span class="token number">10240000</span> bytes
+Requests per second<span class="token punctuation">:</span>    <span class="token number">1267.06</span> <span class="token punctuation">[</span>#<span class="token operator">/</span>sec<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+Time per request<span class="token punctuation">:</span>       <span class="token number">78.923</span> <span class="token punctuation">[</span>ms<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+Time per request<span class="token punctuation">:</span>       <span class="token number">0.789</span> <span class="token punctuation">[</span>ms<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">,</span> across all concurrent requests<span class="token punctuation">)</span>
+Transfer rate<span class="token punctuation">:</span>          <span class="token number">1414.30</span> <span class="token punctuation">[</span>Kbytes<span class="token operator">/</span>sec<span class="token punctuation">]</span> received
+
+Connection <span class="token function">Times</span> <span class="token punctuation">(</span>ms<span class="token punctuation">)</span>
+              min  mean<span class="token punctuation">[</span><span class="token operator">+</span><span class="token operator">/</span><span class="token operator">-</span>sd<span class="token punctuation">]</span> median   max
+Connect<span class="token punctuation">:</span>        <span class="token number">0</span>   <span class="token number">50</span> <span class="token number">297.4</span>     <span class="token number">16</span>    <span class="token number">2958</span>
+Processing<span class="token punctuation">:</span>     <span class="token number">0</span>   <span class="token number">28</span>  <span class="token number">55.7</span>     <span class="token number">22</span>     <span class="token number">923</span>
+Waiting<span class="token punctuation">:</span>        <span class="token number">0</span>   <span class="token number">22</span>  <span class="token number">54.0</span>     <span class="token number">18</span>     <span class="token number">914</span>
+Total<span class="token punctuation">:</span>          <span class="token number">1</span>   <span class="token number">78</span> <span class="token number">302.0</span>     <span class="token number">38</span>    <span class="token number">2991</span>
+
+Percentage <span class="token keyword">of</span> the requests served within a certain <span class="token function">time</span> <span class="token punctuation">(</span>ms<span class="token punctuation">)</span>
+  <span class="token number">50</span><span class="token operator">%</span>     <span class="token number">38</span>
+  <span class="token number">66</span><span class="token operator">%</span>     <span class="token number">43</span>
+  <span class="token number">75</span><span class="token operator">%</span>     <span class="token number">46</span>
+  <span class="token number">80</span><span class="token operator">%</span>     <span class="token number">48</span>
+  <span class="token number">90</span><span class="token operator">%</span>     <span class="token number">57</span>
+  <span class="token number">95</span><span class="token operator">%</span>     <span class="token number">78</span>
+  <span class="token number">98</span><span class="token operator">%</span>    <span class="token number">888</span>
+  <span class="token number">99</span><span class="token operator">%</span>   <span class="token number">2927</span>
+ <span class="token number">100</span><span class="token operator">%</span>   <span class="token number">2991</span> <span class="token punctuation">(</span>longest request<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x73B0;&#x5728;&#x6CA1;&#x6709;&#x5931;&#x8D25;&#x7684;&#x8BF7;&#x6C42;&#x4E86;</p>
+<pre class="language-"><code class="lang-js">Complete requests<span class="token punctuation">:</span>      <span class="token number">10000</span>
+Failed requests<span class="token punctuation">:</span>        <span class="token number">0</span>
+</code></pre>
+<p>&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x7531;&#x4E8E;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x7684;&#x968F;&#x673A;&#x56E0;&#x5B50;&#x56FA;&#x5B9A;&#x662F;1&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x6B21;&#x91CD;&#x542F;&#x670D;&#x52A1;&#x5668;&#x540E;&#xFF0C;&#x987A;&#x5E8F;&#x751F;&#x6210;&#x7684;&#x968F;&#x673A;&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x9762;&#x90A3;&#x6BB5;&#x670D;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;&#x4E3A;&#x4F8B;&#xFF0C;&#x6BCF;&#x6B21;&#x91CD;&#x542F;&#x7A0B;&#x5E8F;&#x540E;&#xFF0C;&#x8BBF;&#x95EE;&#x8FD4;&#x56DE;&#x7684;&#x968F;&#x673A;&#x5B57;&#x7B26;&#x4E32;&#x90FD;&#x662F;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js">$ curl <span class="token string">&apos;127.0.0.1:8080/random_bytes&apos;</span>                                                                                                                 <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">:</span><span class="token number">46</span><span class="token punctuation">:</span><span class="token number">44</span><span class="token punctuation">]</span>
+KVLoZ6Oavp<span class="token operator">=</span><span class="token number">40</span>jWjUThPTPHn<span class="token operator">/</span>h<span class="token operator">/</span>x3fqn5PyFwFOPxOessrsjXCLqNjOOCsn8lTT4ZnPrMq<span class="token operator">+</span><span class="token number">4</span>Q<span class="token operator">+</span>hymRlJWWcWZ2sRFr6ZbGasr6usOZEw<span class="token operator">/</span>aJaJrxRbr<span class="token operator">=</span><span class="token number">5</span>Qmq24<span class="token operator">/</span>KoAkWq<span class="token operator">=</span>lcTTzGtC1NnNGLLvNkA44k9yIkW4fcCGAsjLn56RHFf8zNBmfZof1Oj8s3tmfawtksZ8b8gyBPBUO2rQ<span class="token operator">/</span>HPd1M4eVw0EZ<span class="token operator">+</span>aGxY4UcJk5XbTYeNozbgVKfj5WZNYoT<span class="token operator">=</span>SYmTE7dTRZ3<span class="token operator">=</span>D3v<span class="token operator">+</span>couthoigsrYc9c9uLNhSA9JUHWUIrHsdstD8<span class="token operator">=</span>KclVXHeUCI5VI<span class="token operator">=</span><span class="token number">4</span>g1MlAr<span class="token operator">/</span>Pgz<span class="token operator">/</span>jxm8Ino9mxkv1JTvOq<span class="token operator">=</span>g4kYNLBs3Wf6Pa62ws<span class="token operator">/</span>dVsiBUHsF<span class="token operator">=</span>bJqVG5XMOqwmD46iPTBJIlXyESXmy5RoEOD<span class="token operator">=</span>ONq4Za2nEwcJcmHQtwzuAyoRShs7zapSiT<span class="token operator">=</span>hOlM<span class="token operator">+</span>yte9VgJF5bo6T2A31A4EEhn7<span class="token operator">=</span>JqK<span class="token operator">=</span>MbGnRYUtzyTZfvyoAd3vBXIFSFTp<span class="token operator">+</span><span class="token number">2</span>kZXVU14LgaQ6wnLeEdEQ<span class="token operator">=</span><span class="token constant">V</span><span class="token operator">+</span>LcehPjIbtjHLeIJo6p<span class="token operator">=</span>YFRq6<span class="token operator">/</span>DwCZJ8TQmZClVckA5WYDfyRO5<span class="token operator">/</span>XELRqKKudG1PA121ThZlui39HMmpOUCFw<span class="token operator">=</span>jWKZu0IIsnOnk35Jq2ODTAPZGa2M0i0<span class="token operator">+</span><span class="token number">3</span><span class="token operator">+</span>ibAngLLhQNOcB8f1kDVrkS5MKM4YpzGXCDJJsuY<span class="token operator">=</span>H4c1vg288l6SxAYTqARMAroM15r<span class="token operator">+</span>HkkmZF0nVtNlLDWmkQdfB7Cd0Wyw4ACGxklqgX0l12S5xsou58I<span class="token operator">/</span>s0z9RXr9u0DuXdNaa<span class="token operator">=</span>LEu1nkiPaLB5sDCNCtUgm0M26bMvCyaa4pHiqKa<span class="token operator">/</span>HNqm1qTZtCoFsFPqKXFLe5MAPNW<span class="token operator">=</span>ldNurqh8GtHV14dcD9AEpkptPitNcdgERJVhG2MqfLV6tDjyHrCTOCmk6oEzGKQ24<span class="token operator">/</span><span class="token number">1</span>Un1HdqRIPW<span class="token operator">+</span>qyDsfgShBIIDu6nk0wrQKcd<span class="token operator">/</span><span class="token number">3</span>if66k49TUA2bSDdhf<span class="token operator">/</span>goqCo4i0hxAJJwTNdh9hIQr21<span class="token operator">/=</span><span class="token number">8</span>D<span class="token operator">=</span>yc9YQBfH
+</code></pre>
+<p>&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x52A0;&#x9501;&#x4F1A;&#x5E26;&#x6765;&#x4E25;&#x91CD;&#x7684;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;&#x4E4B;&#x524D;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x751F;&#x6210;&#x7684;rand&#x5BF9;&#x8C61;&#xFF0C;&#x538B;&#x6D4B;&#x7684;rps&#x4E3A;</p>
+<pre class="language-"><code class="lang-js">Requests per second<span class="token punctuation">:</span>    <span class="token number">8063.88</span> <span class="token punctuation">[</span>#<span class="token operator">/</span>sec<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x5BF9;&#x8C61;&#x540E;&#xFF0C;rps&#x4EC5;&#x4E3A;</p>
+<pre class="language-"><code class="lang-js">Requests per second<span class="token punctuation">:</span>    <span class="token number">1267.06</span> <span class="token punctuation">[</span>#<span class="token operator">/</span>sec<span class="token punctuation">]</span> <span class="token punctuation">(</span>mean<span class="token punctuation">)</span>
+</code></pre>
+<h1 id="&#x5F00;&#x53D1;&#x5EFA;&#x8BAE;"><a name="&#x5F00;&#x53D1;&#x5EFA;&#x8BAE;" class="anchor-navigation-ex-anchor" href="#&#x5F00;&#x53D1;&#x5EFA;&#x8BAE;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x5F00;&#x53D1;&#x5EFA;&#x8BAE;</h1>
+<ul>
+<li><p>&#x9274;&#x4E8E;&#x5B98;&#x65B9;&#x5305;&#x7684;&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;&#x5B58;&#x5728;</p>
+<ul>
+<li>&#x968F;&#x673A;&#x56E0;&#x5B50;&#x56FA;&#x5B9A;</li>
+<li><p>&#x52A0;&#x9501;&#x6548;&#x7387;&#x4F4E;&#x4E0B;</p>
+<p>&#x4E24;&#x5927;&#x7F3A;&#x9677;&#xFF1B;&#x4E0D;&#x5EFA;&#x8BAE;&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>rand.Intn(n)</code>&#xFF0C;&#x4F7F;&#x7528;&#x5168;&#x5C40;rand&#x5BF9;&#x8C61;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x4E0D;&#x540C;&#x534F;&#x7A0B;&#x4F7F;&#x7528;&#x5404;&#x81EA;&#x72EC;&#x7ACB;&#x7684;rand&#x5BF9;&#x8C61;&#x6765;&#x751F;&#x6210;&#x968F;&#x673A;&#x6570;</p>
+</li>
+</ul>
+<blockquote>
+<p>&#x5BF9;golang http server&#x800C;&#x8A00;&#xFF0C;&#x6BCF;&#x6B21;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x5E95;&#x5C42;&#x90FD;&#x4F1A;&#x542F;&#x52A8;&#x65B0;&#x7684;goroutine&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x6B21;handler&#x5904;&#x7406;&#x90FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x65B0;&#x7684;rand&#x5BF9;&#x8C61;&#xFF1B;&#x867D;&#x7136;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x70B9;&#x56DE;&#x6536;&#x5F00;&#x9500;&#xFF0C;&#x4F46;&#x662F;&#x6BD4;&#x8D77;&#x7528;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x540C;&#x6B65;&#x52A0;&#x9501;&#x7684;&#x5F00;&#x9500;&#x5DF2;&#x7ECF;&#x662F;&#x4E5D;&#x725B;&#x4E00;&#x6BDB;&#x4E86;</p>
+</blockquote>
+<ul>
+<li>&#x968F;&#x673A;&#x6570;&#x7684;&#x751F;&#x6210;&#x53D7;&#x9650;&#x4E8E;&#x751F;&#x6210;rand&#x5BF9;&#x8C61;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x968F;&#x673A;&#x56E0;&#x5B50;&#xFF0C;&#x82E5;&#x968F;&#x673A;&#x56E0;&#x5B50;&#x76F8;&#x540C;&#xFF0C;&#x5219;&#x751F;&#x6210;&#x7684;&#x968F;&#x673A;&#x6570;&#x5E8F;&#x5217;&#x5C31;&#x662F;&#x91CD;&#x590D;&#x7684;&#x3002;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x7EB3;&#x79D2;&#x7EA7;&#x65F6;&#x95F4;&#x6233;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="defer.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: IX. Go的defer处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"X. Go随机数生成的并发安全问题","level":"1.5.10","depth":2,"next":{"title":"golang工具相关","level":"1.6","depth":1,"ref":"","articles":[{"title":"I. Go程序基准测试","level":"1.6.1","depth":2,"path":"go_tool/go_test.md","ref":"./go_tool/go_test.md","articles":[]},{"title":"II. Go调试工具delve","level":"1.6.2","depth":2,"path":"go_tool/delve.md","ref":"./go_tool/delve.md","articles":[]},{"title":"III. Go程序运行跟踪器trace","level":"1.6.3","depth":2,"path":"go_tool/trace.md","ref":"./go_tool/trace.md","articles":[]}]},"previous":{"title":"IX. Go的defer处理","level":"1.5.9","depth":2,"path":"golang/defer.md","ref":"./golang/defer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"golang/rand.md","mtime":"2019-02-18T08:50:43.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-18T08:54:46.053Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
