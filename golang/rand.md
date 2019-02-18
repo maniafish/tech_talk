@@ -298,7 +298,7 @@ KVLoZ6Oavp=40jWjUThPTPHn/h/x3fqn5PyFwFOPxOessrsjXCLqNjOOCsn8lTT4ZnPrMq+4Q+hymRlJ
 Requests per second:    8063.88 [#/sec] (mean)
 ```
 
-使用全局对象后，rps仅为
+使用全局对象后，rps连原来的1/6都达不到
 
 ```js
 Requests per second:    1267.06 [#/sec] (mean)
