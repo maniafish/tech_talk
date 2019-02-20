@@ -140,9 +140,7 @@ func main() {
 
 ## 设置chunk
 
-![](./image/chunk_6.jpg)
-
-还是上面这个方法，可以看到，除了"Content-Length"外，"Transfer-Encoding"也是服务器设置chunked的条件之一。golang http包默认对2048字节以上的body做分块传输，那么如果我们想要对2048字节以下的body也进行分块传输，只要显式地设置http返回头部的"Transfer-Encoding"为chunked即可。
+http头部的chunked设置，是golang http包底层是否采用分块传输的依据。golang http包默认对2048字节以上的body做分块传输，那么如果我们想要对2048字节以下的body也进行分块传输，只要显式地设置http返回头部的"Transfer-Encoding"为chunked即可。
 
 ```js
 package main
