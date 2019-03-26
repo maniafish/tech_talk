@@ -475,6 +475,38 @@
                 <span>
             
                     
+                    Kubernetes相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../kubernetes/traefik.html">
+            
+                <a href="../kubernetes/traefik.html">
+            
+                    
+                    I. Kubernetes使用Traefik反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
                     网络编程相关
             
                 </span>
@@ -484,7 +516,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../network/chunk.html">
+        <li class="chapter " data-level="1.9.1" data-path="../network/chunk.html">
             
                 <a href="../network/chunk.html">
             
@@ -580,6 +612,11 @@
 <li>go1.8&#x4F7F;&#x7528;<code>hybrid write barrier</code>&#xFF0C;&#x53BB;&#x9664;&#x4E86;<code>rescan grey stacks</code>&#x7684;STW&#xFF0C;STW&#x65F6;&#x95F4;&#x5728;10-100&#x5FAE;&#x79D2;</li>
 <li>go1.9&#x540E;&#x63D0;&#x5347;&#x4E86;&#x5BF9;&#x5927;&#x5BF9;&#x8C61;&#x7684;&#x6536;&#x96C6;&#x6548;&#x7387;&#xFF0C;STW&#x65F6;&#x95F4;&#x57FA;&#x672C;&#x7A33;&#x5B9A;&#x5728;100&#x5FAE;&#x79D2;&#x5185;</li>
 </ul>
+<h1 id="&#x51CF;&#x8F7B;gc&#x538B;&#x529B;"><a name="&#x51CF;&#x8F7B;gc&#x538B;&#x529B;" class="anchor-navigation-ex-anchor" href="#&#x51CF;&#x8F7B;gc&#x538B;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x51CF;&#x8F7B;GC&#x538B;&#x529B;</h1>
+<p>golang gc&#x7684;&#x65F6;&#x95F4;&#x957F;&#x77ED;&#xFF0C;&#x4E3B;&#x8981;&#x548C;&#x5F85;GC&#x7684;&#x5BF9;&#x8C61;&#x6570;&#x91CF;&#x6709;&#x5173;&#xFF0C;&#x5F85;GC&#x7684;&#x5BF9;&#x8C61;&#x8D8A;&#x5C11;&#xFF0C;GC&#x7684;&#x65F6;&#x95F4;&#x8D8A;&#x77ED;&#x3002;</p>
+<h2 id="syncpool"><a name="syncpool" class="anchor-navigation-ex-anchor" href="#syncpool"><i class="fa fa-link" aria-hidden="true"></i></a>3.1. sync.Pool</h2>
+<p>&#x4E34;&#x65F6;&#x5BF9;&#x8C61;&#x6C60;&#xFF0C;&#x7528;&#x4E8E;&#x590D;&#x7528;&#x5DF2;&#x4EA7;&#x751F;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x51CF;&#x5C11;&#x7A0B;&#x5E8F;&#x5185;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x51CF;&#x8F7B;GC&#x538B;&#x529B;&#x3002;sync.Pool&#x662F;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+<hr>
 <blockquote>
 <p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
 <ul>
@@ -589,15 +626,6 @@
 <li><a href="https://www.zhihu.com/question/62000722" target="_blank">&#x77E5;&#x4E4E;: write barrier</a></li>
 <li><a href="http://studygolang.com/articles/7516" target="_blank">&#x4E3A;Go&#x8BED;&#x8A00;GC&#x6B63;&#x540D;&#xFF0D;2&#x79D2;&#x5230;1&#x6BEB;&#x79D2;&#x7684;&#x6F14;&#x53D8;&#x53F2;</a></li>
 <li><a href="https://github.com/golang/proposal/blob/master/design/17503-eliminate-rescan.md" target="_blank">go 1.8 eliminate stw stack re-scanning</a></li>
-</ul>
-</blockquote>
-<h1 id="&#x51CF;&#x8F7B;gc&#x538B;&#x529B;"><a name="&#x51CF;&#x8F7B;gc&#x538B;&#x529B;" class="anchor-navigation-ex-anchor" href="#&#x51CF;&#x8F7B;gc&#x538B;&#x529B;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x51CF;&#x8F7B;GC&#x538B;&#x529B;</h1>
-<p>golang gc&#x7684;&#x65F6;&#x95F4;&#x957F;&#x77ED;&#xFF0C;&#x4E3B;&#x8981;&#x548C;&#x5F85;GC&#x7684;&#x5BF9;&#x8C61;&#x6570;&#x91CF;&#x6709;&#x5173;&#xFF0C;&#x5F85;GC&#x7684;&#x5BF9;&#x8C61;&#x8D8A;&#x5C11;&#xFF0C;GC&#x7684;&#x65F6;&#x95F4;&#x8D8A;&#x77ED;&#x3002;</p>
-<h2 id="syncpool"><a name="syncpool" class="anchor-navigation-ex-anchor" href="#syncpool"><i class="fa fa-link" aria-hidden="true"></i></a>3.1. sync.Pool</h2>
-<p>&#x4E34;&#x65F6;&#x5BF9;&#x8C61;&#x6C60;&#xFF0C;&#x7528;&#x4E8E;&#x590D;&#x7528;&#x5DF2;&#x4EA7;&#x751F;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x51CF;&#x5C11;&#x7A0B;&#x5E8F;&#x5185;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x51CF;&#x8F7B;GC&#x538B;&#x529B;&#x3002;sync.Pool&#x662F;&#x5E76;&#x53D1;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
-<blockquote>
-<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
-<ul>
 <li><a href="https://golang.org/pkg/sync/#Pool" target="_blank">sync.Pool</a></li>
 </ul>
 </blockquote>
@@ -644,7 +672,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"III. Go的垃圾回收","level":"1.5.3","depth":2,"next":{"title":"IV. Go的协程","level":"1.5.4","depth":2,"path":"golang/goroutine.md","ref":"./golang/goroutine.md","articles":[]},"previous":{"title":"II. Go的堆栈分配","level":"1.5.2","depth":2,"path":"golang/heap_stack.md","ref":"./golang/heap_stack.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"golang/gc.md","mtime":"2019-01-30T07:28:28.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-01T02:33:46.268Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"III. Go的垃圾回收","level":"1.5.3","depth":2,"next":{"title":"IV. Go的协程","level":"1.5.4","depth":2,"path":"golang/goroutine.md","ref":"./golang/goroutine.md","articles":[]},"previous":{"title":"II. Go的堆栈分配","level":"1.5.2","depth":2,"path":"golang/heap_stack.md","ref":"./golang/heap_stack.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"golang/gc.md","mtime":"2019-03-26T02:22:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T02:27:23.495Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

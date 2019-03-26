@@ -1,0 +1,968 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>I. Kubernetes使用Traefik反向代理 · maniafish's technology blog</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="mania_fish<mania_fish@163.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism-base16-ateliersulphurpool.light.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/maniafish" target="_blank" class="custom-link">github 主页</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    git相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../git/user.html">
+            
+                <a href="../git/user.html">
+            
+                    
+                    I. 为不同的git项目配置各自独立的用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../git/gitbook.html">
+            
+                <a href="../git/gitbook.html">
+            
+                    
+                    II. gitbook的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    linux相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../linux/vim_replace.html">
+            
+                <a href="../linux/vim_replace.html">
+            
+                    
+                    I. vim替换特殊符号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../linux/vim_paste.html">
+            
+                <a href="../linux/vim_paste.html">
+            
+                    
+                    II. vim剪贴板的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../linux/vim_conf.html">
+            
+                <a href="../linux/vim_conf.html">
+            
+                    
+                    III. vim的插件及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    python相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../python/character.html">
+            
+                <a href="../python/character.html">
+            
+                    
+                    I. 字符编码问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    golang语言相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../golang/performance.html">
+            
+                <a href="../golang/performance.html">
+            
+                    
+                    I. Go的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../golang/heap_stack.html">
+            
+                <a href="../golang/heap_stack.html">
+            
+                    
+                    II. Go的堆栈分配
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../golang/gc.html">
+            
+                <a href="../golang/gc.html">
+            
+                    
+                    III. Go的垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../golang/goroutine.html">
+            
+                <a href="../golang/goroutine.html">
+            
+                    
+                    IV. Go的协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../golang/stack_trace.html">
+            
+                <a href="../golang/stack_trace.html">
+            
+                    
+                    V. Go的调试信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../golang/composition.html">
+            
+                <a href="../golang/composition.html">
+            
+                    
+                    VI. Go的interface
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../golang/operator.html">
+            
+                <a href="../golang/operator.html">
+            
+                    
+                    VII. Go的变量作用域
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../golang/slice.html">
+            
+                <a href="../golang/slice.html">
+            
+                    
+                    VIII. Go的slice
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../golang/defer.html">
+            
+                <a href="../golang/defer.html">
+            
+                    
+                    IX. Go的defer处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../golang/rand.html">
+            
+                <a href="../golang/rand.html">
+            
+                    
+                    X. Go随机数生成的并发安全问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    golang工具相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../go_tool/go_test.html">
+            
+                <a href="../go_tool/go_test.html">
+            
+                    
+                    I. Go程序基准测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../go_tool/delve.html">
+            
+                <a href="../go_tool/delve.html">
+            
+                    
+                    II. Go调试工具delve
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../go_tool/trace.html">
+            
+                <a href="../go_tool/trace.html">
+            
+                    
+                    III. Go程序运行跟踪器trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    CockRoachDB相关
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    Kubernetes相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.1" data-path="traefik.html">
+            
+                <a href="traefik.html">
+            
+                    
+                    I. Kubernetes使用Traefik反向代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    网络编程相关
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../network/chunk.html">
+            
+                <a href="../network/chunk.html">
+            
+                    
+                    I. HTTP协议之chunk(分块传输编码)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >I. Kubernetes使用Traefik反向代理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#traefik"><b>1. </b>Traefik</a></li><li><span class="title-icon "></span><a href="#&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;deployment&#x6A21;&#x5F0F;"><b>2. </b>&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;(Deployment&#x6A21;&#x5F0F;)</a></li><ul><li><span class="title-icon "></span><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><b>2.1. </b>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#&#x8FD0;&#x884C;traefik"><b>2.2. </b>&#x8FD0;&#x884C;Traefik</a></li><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;"><b>2.3. </b>&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;</a></li></ul><li><span class="title-icon "></span><a href="#ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;"><b>3. </b>Ingress &#x670D;&#x52A1;&#x6CE8;&#x518C;</a></li><li><span class="title-icon "></span><a href="#&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><b>4. </b>&#x8D1F;&#x8F7D;&#x5747;&#x8861;</a></li><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><b>5. </b>&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;</a></li><ul><li><span class="title-icon "></span><a href="#todo"><b>5.1. </b>TODO</a></li></ul></ul></div><a href="#traefik" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;"><a name="kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;" class="anchor-navigation-ex-anchor" href="#kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Kubernetes&#x4F7F;&#x7528;Traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;</font></h4>
+<hr>
+<h1 id="traefik"><a name="traefik" class="anchor-navigation-ex-anchor" href="#traefik"><i class="fa fa-link" aria-hidden="true"></i></a>1. Traefik</h1>
+<ul>
+<li><a href="https://docs.traefik.io/" target="_blank">&#x5B98;&#x65B9;&#x5730;&#x5740;</a></li>
+<li><a href="https://github.com/containous/traefik" target="_blank">github&#x5730;&#x5740;</a></li>
+</ul>
+<h1 id="&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;deployment&#x6A21;&#x5F0F;"><a name="&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;deployment&#x6A21;&#x5F0F;" class="anchor-navigation-ex-anchor" href="#&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;deployment&#x6A21;&#x5F0F;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;(Deployment&#x6A21;&#x5F0F;)</h1>
+<h2 id="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><a name="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="anchor-navigation-ex-anchor" href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><i class="fa fa-link" aria-hidden="true"></i></a>2.1. &#x51C6;&#x5907;&#x5DE5;&#x4F5C;</h2>
+<ol>
+<li><p>&#x542F;&#x52A8;k8s: mac&#x4E0B;&#x8F7D;&#x684C;&#x9762;&#x7248;docker&#xFF0C;&#x6253;&#x5F00;<code>Enable Kubernetes</code>&#x5373;&#x53EF;&#x542F;&#x52A8;</p>
+<p> <img src="image/traefik_1.png" alt=""></p>
+</li>
+</ol>
+<ol>
+<li><a href="https://kubernetes.io/docs/tasks/tools/install-minikube/" target="_blank">&#x5B89;&#x88C5;MiniKube</a></li>
+<li>&#x542F;&#x52A8;MiniKube: <code>minikube start</code></li>
+</ol>
+<h2 id="&#x8FD0;&#x884C;traefik"><a name="&#x8FD0;&#x884C;traefik" class="anchor-navigation-ex-anchor" href="#&#x8FD0;&#x884C;traefik"><i class="fa fa-link" aria-hidden="true"></i></a>2.2. &#x8FD0;&#x884C;Traefik</h2>
+<ol>
+<li>&#x4E0B;&#x8F7D;github&#x4EE3;&#x7801;: <code>git clone https://github.com/containous/traefik</code></li>
+<li>&#x8FDB;&#x5165;<code>traefik/examples/k8s</code>&#x76EE;&#x5F55;</li>
+<li><p>deployment&#x6A21;&#x5F0F;&#x90E8;&#x7F72;&#xFF0C;&#x521B;&#x5EFA;&#x5BF9;&#x5916;&#x670D;&#x52A1;&#xFF1A;<code>kubectl create -f traefik-deployment.yaml</code></p>
+<blockquote>
+<ul>
+<li>&#x52A0;&#x8F7D;&#x8D44;&#x6E90;: <code>kubectl apply -f traefik-deployment.yaml</code></li>
+<li>&#x53BB;&#x9664;&#x8D44;&#x6E90;&#xFF1A;<code>kubectl delete -f traefik-deployment.yaml</code></li>
+</ul>
+</blockquote>
+<pre class="language-"><code class="lang-js"> kind<span class="token punctuation">:</span> Service
+ apiVersion<span class="token punctuation">:</span> v1
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>service
+   namespace<span class="token punctuation">:</span> kube<span class="token operator">-</span>system
+ spec<span class="token punctuation">:</span>
+   selector<span class="token punctuation">:</span>
+     k8s<span class="token operator">-</span>app<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+   ports<span class="token punctuation">:</span>
+     <span class="token operator">-</span> protocol<span class="token punctuation">:</span> <span class="token constant">TCP</span>
+       port<span class="token punctuation">:</span> <span class="token number">80</span>
+       nodePort<span class="token punctuation">:</span> <span class="token number">32044</span>
+       name<span class="token punctuation">:</span> web
+     <span class="token operator">-</span> protocol<span class="token punctuation">:</span> <span class="token constant">TCP</span>
+       port<span class="token punctuation">:</span> <span class="token number">8080</span>
+       nodePort<span class="token punctuation">:</span> <span class="token number">30423</span>
+       name<span class="token punctuation">:</span> admin
+   type<span class="token punctuation">:</span> NodePort
+</code></pre>
+<p> &#x9ED8;&#x8BA4;<code>type: NodePort</code>&#x4F1A;&#x968F;&#x673A;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x5BF9;&#x5916;&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#xFF0C;&#x82E5;&#x9700;&#x8981;&#x8BBE;&#x5B9A;&#x6307;&#x5B9A;&#x7684;&#x7AEF;&#x53E3;&#xFF0C;&#x8981;&#x5728;ports&#x91CC;&#x914D;&#x7F6E;&#x5B9E;&#x9645;&#x7684;nodePort</p>
+</li>
+<li><p><code>kubectl get pods -n kube-system</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>trafik-ingress-controller</code>&#x5DF2;&#x542F;&#x52A8;</p>
+<pre class="language-"><code class="lang-js"> <span class="token constant">NAME</span>                                         <span class="token constant">READY</span>     <span class="token constant">STATUS</span>    <span class="token constant">RESTARTS</span>   <span class="token constant">AGE</span>
+ coredns<span class="token operator">-</span><span class="token number">86</span>c58d9df4<span class="token operator">-</span>cffc8                     <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">8</span>h
+ coredns<span class="token operator">-</span><span class="token number">86</span>c58d9df4<span class="token operator">-</span>n5dsv                     <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">8</span>h
+ etcd<span class="token operator">-</span>minikube                                <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">7</span>h
+ kube<span class="token operator">-</span>addon<span class="token operator">-</span>manager<span class="token operator">-</span>minikube                  <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">7</span>h
+ kube<span class="token operator">-</span>apiserver<span class="token operator">-</span>minikube                      <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">7</span>h
+ kube<span class="token operator">-</span>controller<span class="token operator">-</span>manager<span class="token operator">-</span>minikube             <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">7</span>h
+ kube<span class="token operator">-</span>proxy<span class="token operator">-</span>ltkl5                             <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">8</span>h
+ kube<span class="token operator">-</span>scheduler<span class="token operator">-</span>minikube                      <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">1</span>          <span class="token number">7</span>h
+ storage<span class="token operator">-</span>provisioner                          <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">8</span>h
+ traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>controller<span class="token operator">-</span><span class="token number">8</span>c8b85bbc<span class="token operator">-</span><span class="token number">9</span>kn5p   <span class="token number">1</span><span class="token operator">/</span><span class="token number">1</span>       Running   <span class="token number">0</span>          <span class="token number">11</span>m
+</code></pre>
+</li>
+<li><p><code>kubectl get services -n kube-system</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x670D;&#x52A1;&#x542F;&#x52A8;&#x7684;ip&#x548C;&#x7AEF;&#x53E3; </p>
+<pre class="language-"><code class="lang-js"> <span class="token constant">NAME</span>                      <span class="token constant">TYPE</span>        <span class="token constant">CLUSTER</span><span class="token operator">-</span><span class="token constant">IP</span>     <span class="token constant">EXTERNAL</span><span class="token operator">-</span><span class="token constant">IP</span>   <span class="token constant">PORT</span><span class="token punctuation">(</span><span class="token constant">S</span><span class="token punctuation">)</span>                       <span class="token constant">AGE</span>
+ kube<span class="token operator">-</span>dns                  ClusterIP   <span class="token number">10.96</span><span class="token number">.0</span><span class="token number">.10</span>     <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">53</span><span class="token operator">/</span><span class="token constant">UDP</span><span class="token punctuation">,</span><span class="token number">53</span><span class="token operator">/</span><span class="token constant">TCP</span>                 <span class="token number">7</span>h
+ traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>service   NodePort    <span class="token number">10.98</span><span class="token number">.51</span><span class="token number">.165</span>   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span><span class="token punctuation">:</span><span class="token number">32044</span><span class="token operator">/</span><span class="token constant">TCP</span><span class="token punctuation">,</span><span class="token number">8080</span><span class="token punctuation">:</span><span class="token number">30423</span><span class="token operator">/</span><span class="token constant">TCP</span>   <span class="token number">11</span>m
+</code></pre>
+<blockquote>
+<ul>
+<li>&#x8BBF;&#x95EE;<code>$(minikube ip):32044</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x5916;&#x7AEF;&#x53E3;&#x8FD4;&#x56DE;&#x7684;&#x9875;&#x9762;</li>
+<li>&#x8BBF;&#x95EE;<code>$(minikube ip):30423</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;Traefik&#x7684;dashboard</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;"><a name="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;" class="anchor-navigation-ex-anchor" href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;"><i class="fa fa-link" aria-hidden="true"></i></a>2.3. &#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;</h2>
+<ol>
+<li><p>&#x542F;&#x52A8;&#x540E;&#x7AEF;&#x670D;&#x52A1;</p>
+<pre class="language-"><code class="lang-js"> kubectl apply <span class="token operator">-</span>f cheese<span class="token operator">-</span>deployments<span class="token punctuation">.</span>yaml
+ kubectl apply <span class="token operator">-</span>f cheese<span class="token operator">-</span>services<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p><code>kubectl get services</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x542F;&#x52A8;&#x7684;TYPE&#x90FD;&#x662F;ClusterIP&#xFF0C;&#x96C6;&#x7FA4;&#x5185;&#x90E8;&#x670D;&#x52A1;&#xFF0C;&#x4E0D;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x7AEF;&#x53E3;</p>
+<pre class="language-"><code class="lang-js"> <span class="token constant">NAME</span>          <span class="token constant">TYPE</span>        <span class="token constant">CLUSTER</span><span class="token operator">-</span><span class="token constant">IP</span>       <span class="token constant">EXTERNAL</span><span class="token operator">-</span><span class="token constant">IP</span>   <span class="token constant">PORT</span><span class="token punctuation">(</span><span class="token constant">S</span><span class="token punctuation">)</span>   <span class="token constant">AGE</span>
+ cheddar       ClusterIP   <span class="token number">10.98</span><span class="token number">.97</span><span class="token number">.163</span>     <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span><span class="token operator">/</span><span class="token constant">TCP</span>    <span class="token number">17</span>s
+ kubernetes    ClusterIP   <span class="token number">10.96</span><span class="token number">.0</span><span class="token number">.1</span>        <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">443</span><span class="token operator">/</span><span class="token constant">TCP</span>   <span class="token number">7</span>h
+ stilton       ClusterIP   <span class="token number">10.108</span><span class="token number">.91</span><span class="token number">.83</span>     <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span><span class="token operator">/</span><span class="token constant">TCP</span>    <span class="token number">17</span>s
+ wensleydale   ClusterIP   <span class="token number">10.110</span><span class="token number">.187</span><span class="token number">.225</span>   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span><span class="token operator">/</span><span class="token constant">TCP</span>    <span class="token number">17</span>s
+</code></pre>
+</li>
+<li><p>&#x901A;&#x8FC7;Ingress&#x5EFA;&#x7ACB;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#xFF1A;<code>kubectl apply -f cheeses-ingress.yaml</code>&#xFF0C;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"> apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ kind<span class="token punctuation">:</span> Ingress
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> cheeses
+   annotations<span class="token punctuation">:</span>
+     traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+ spec<span class="token punctuation">:</span>
+   rules<span class="token punctuation">:</span>
+   <span class="token operator">-</span> host<span class="token punctuation">:</span> stilton<span class="token punctuation">.</span>minikube
+     http<span class="token punctuation">:</span>
+       paths<span class="token punctuation">:</span>
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> stilton
+           servicePort<span class="token punctuation">:</span> http
+   <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+     http<span class="token punctuation">:</span>
+       paths<span class="token punctuation">:</span>
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> cheddar
+           servicePort<span class="token punctuation">:</span> http
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>wensleydale
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> wensleydale
+           servicePort<span class="token punctuation">:</span> http
+</code></pre>
+</li>
+<li><p><code>kubectl describe ingress cheeses</code> &#x67E5;&#x770B; Ingress</p>
+<pre class="language-"><code class="lang-js"> Name<span class="token punctuation">:</span>             cheeses
+ Namespace<span class="token punctuation">:</span>        <span class="token keyword">default</span>
+ Address<span class="token punctuation">:</span>
+ Default backend<span class="token punctuation">:</span>  <span class="token keyword">default</span><span class="token operator">-</span>http<span class="token operator">-</span>backend<span class="token punctuation">:</span><span class="token number">80</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>none<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+ Rules<span class="token punctuation">:</span>
+   Host              Path  Backends
+   <span class="token operator">--</span><span class="token operator">--</span>              <span class="token operator">--</span><span class="token operator">--</span>  <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+   stilton<span class="token punctuation">.</span>minikube
+                     <span class="token operator">/</span>   stilton<span class="token punctuation">:</span><span class="token function">http</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>none<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+   cheeses<span class="token punctuation">.</span>minikube
+                     <span class="token operator">/</span>cheddar       cheddar<span class="token punctuation">:</span><span class="token function">http</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>none<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+                     <span class="token operator">/</span>wensleydale   wensleydale<span class="token punctuation">:</span><span class="token function">http</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>none<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+ Annotations<span class="token punctuation">:</span>
+   kubectl<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>last<span class="token operator">-</span>applied<span class="token operator">-</span>configuration<span class="token punctuation">:</span>  <span class="token punctuation">{</span><span class="token string">&quot;apiVersion&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;extensions/v1beta1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;kind&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;Ingress&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;metadata&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;annotations&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;traefik.frontend.rule.type&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;PathPrefixStrip&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;cheeses&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;namespace&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;default&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;spec&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;rules&quot;</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">&quot;host&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;stilton.minikube&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;paths&quot;</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">&quot;backend&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;serviceName&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;stilton&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;servicePort&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">&quot;host&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;cheeses.minikube&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;paths&quot;</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">&quot;backend&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;serviceName&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;cheddar&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;servicePort&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;/cheddar&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token string">&quot;backend&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;serviceName&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;wensleydale&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;servicePort&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;http&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;/wensleydale&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+   traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span>  PathPrefixStrip
+ Events<span class="token punctuation">:</span>                        <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+</code></pre>
+</li>
+<li><p>&#x6DFB;&#x52A0;dns: <code>echo &quot;$(minikube ip) cheeses.minikube stilton.minikube&quot; | sudo tee -a /etc/hosts</code></p>
+</li>
+<li>&#x5F00;&#x542F;rbac&#xFF0C;&#x6388;&#x6743;&#x89D2;&#x8272;&#x8BBF;&#x95EE;dashboard&#x6743;&#x9650;<code>kubectl apply -f traefik-rbac.yaml</code></li>
+<li><p>&#x8BBF;&#x95EE;<code>$(minikube ip):30423</code>&#x67E5;&#x770B;&#x5F53;&#x524D;Traefik&#x7684;dashboard</p>
+<p> <img src="image/traefik_2.png" alt=""></p>
+</li>
+<li><p>&#x8BBF;&#x95EE;&#x4EE5;&#x4E0B;&#x5730;&#x5740;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6839;&#x636E;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x8FD4;&#x56DE;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x9875;&#x9762;&#xFF1B;&#x8BBF;&#x95EE;&#x5176;&#x4ED6;&#x5730;&#x5740;&#x4F1A;&#x8FD4;&#x56DE;<code>404 not found</code></p>
+<ul>
+<li><code>http://stilton.minikube:32044/</code></li>
+<li><code>http://cheeses.minikube:32044/cheddar</code></li>
+<li><code>http://cheeses.minikube:32044/wensleydale</code></li>
+</ul>
+</li>
+</ol>
+<h1 id="ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;"><a name="ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;" class="anchor-navigation-ex-anchor" href="#ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;"><i class="fa fa-link" aria-hidden="true"></i></a>3. Ingress &#x670D;&#x52A1;&#x6CE8;&#x518C;</h1>
+<p>&#x5F53;&#x4F60;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Ingress&#x5C06;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x8DEF;&#x7531;&#x4E0A;&#x53BB;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x5F53;&#x4F60;&#x542F;&#x52A8;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;cheddar&#x7684;&#x670D;&#x52A1;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x4E3A;&#x5B83;&#x6CE8;&#x518C;&#x4E00;&#x6761;<code>cheeses.minikube/cheddar</code>&#x7684;&#x8DEF;&#x7531;</p>
+<pre class="language-"><code class="lang-js">$ cat cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> cheddar
+  annotations<span class="token punctuation">:</span>
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> cheddar
+          servicePort<span class="token punctuation">:</span> http
+
+$ kubectl apply <span class="token operator">-</span>f cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<ul>
+<li>&#x5F53;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;cheddar-ingress&#x66F4;&#x65B0;cheddar&#x670D;&#x52A1;&#x7684;&#x8DEF;&#x7531;&#x65F6;&#xFF1B;&#x5728;&#x6267;&#x884C;<code>kubectl apply -f cheddar-ingress.yaml</code>&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;cheddar-ingress&#x4F1A;&#x4E2D;&#x65AD;&#x5BFC;&#x81F4;&#x8DEF;&#x7531;&#x4E0D;&#x53EF;&#x7528;</li>
+<li>&#x82E5;&#x4F7F;&#x7528;&#x65B0;&#x7684;<code>xxx-ingress.yaml</code>&#x6CE8;&#x518C;&#x8DEF;&#x7531;&#x65F6;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x6761;&#x548C;&#x5DF2;&#x6709;&#x8DEF;&#x7531;&#x91CD;&#x590D;&#x7684;&#x8DEF;&#x7531;&#xFF1B;&#x4F1A;&#x5C06;&#x8BE5;&#x8DEF;&#x7531;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x66F4;&#x65B0;&#x4E3A;&#x65B0;&#x6CE8;&#x518C;&#x7684;&#x670D;&#x52A1;&#xFF1B; <strong>&#x66F4;&#x65B0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8BE5;&#x8DEF;&#x7531;&#x4F1A;&#x4E2D;&#x65AD;</strong></li>
+</ul>
+<h1 id="&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><a name="&#x8D1F;&#x8F7D;&#x5747;&#x8861;" class="anchor-navigation-ex-anchor" href="#&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x8D1F;&#x8F7D;&#x5747;&#x8861;</h1>
+<p>Traefik&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x9002;&#x5408;&#x505A;&#x7070;&#x5EA6;&#x53D1;&#x5E03;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x6709;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;cheddar&#x548C;wensleydale&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x540C;&#x4E00;&#x4E2A;&#x5165;&#x53E3;75%&#x7684;&#x6D41;&#x91CF;&#x5BFC;&#x5411;cheddar&#xFF0C;25%&#x7684;&#x6D41;&#x91CF;&#x5BFC;&#x5411;wensleydale&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x505A;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code class="lang-js">$ cat cheeses<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> cheeses
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+    traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>service<span class="token operator">-</span>weights<span class="token punctuation">:</span> <span class="token operator">|</span>
+      cheddar<span class="token punctuation">:</span> <span class="token number">75</span><span class="token operator">%</span>
+      wensleydale<span class="token punctuation">:</span> <span class="token number">25</span><span class="token operator">%</span>
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> cheddar
+          servicePort<span class="token punctuation">:</span> http
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> wensleydale
+          servicePort<span class="token punctuation">:</span> http
+
+$ kubectl apply <span class="token operator">-</span>f cheeses<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6279;&#x91CF;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/</code>&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x6D41;&#x91CF;&#x6309;&#x7167;&#x6BD4;&#x4F8B;&#x88AB;&#x5BFC;&#x5165;&#x5230;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x4E0A;&#x53BB;&#x4E86;</p>
+<p>Traefik&#x4E5F;&#x652F;&#x6301;&#x9ED8;&#x8BA4;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#x3002;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x53EA;&#x914D;&#x7F6E;&#x4E86;<code>wensleydale: 25%</code>&#xFF0C;&#x5373;&#x4FBF;&#x4E0D;&#x914D;&#x7F6E;<code>cheddar: 75%</code>&#xFF0C;Traefik&#x4E5F;&#x4F1A;&#x628A;&#x4F59;&#x4E0B;75%&#x7684;&#x6D41;&#x91CF;&#x81EA;&#x52A8;&#x5BFC;&#x5165;&#x5230;cheddar&#x4E0A;&#x53BB;&#x3002;</p>
+<h1 id="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><a name="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;" class="anchor-navigation-ex-anchor" href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;</h1>
+<p>Traefik-Ingress&#x8DEF;&#x7531;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x6700;&#x957F;&#x8DEF;&#x5F84;&#x5339;&#x914D;&#x539F;&#x5219;&#xFF0C;&#x6BD4;&#x5982;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;Ingress&#x90FD;&#x4F7F;&#x7528;&#x524D;&#x7F00;&#x5339;&#x914D;</p>
+<pre class="language-"><code class="lang-js">$ cat cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> cheddar
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> cheddar
+          servicePort<span class="token punctuation">:</span> http
+
+$ cat wensleydale<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> wensleydale
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar<span class="token operator">/</span>wensleydale
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> wensleydale
+          servicePort<span class="token punctuation">:</span> http
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x8F7D;&#x5165;&#x8FD9;&#x4E24;&#x4E2A;Ingress&#xFF1A;<code>kubectl apply -f cheddar-ingress.yaml</code>&#xFF0C;<code>kubectl apply -f wensleydale-ingress.yaml</code>&#xFF0C;&#x5F53;&#x4F60;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/cheddar/wensleydale/xxx</code>&#x65F6;&#xFF0C;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x5206;&#x53D1;&#x5230;wensleydale&#x670D;&#x52A1;&#x4E0A;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x6307;&#x5B9A;&#x8DEF;&#x7531;&#x4F18;&#x5148;&#x7EA7;&#xFF0C;&#x4F7F;&#x7528;<code>traefik.ingress.kubernetes.io/priority</code>&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x8D8A;&#x5927;&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;&#x3002;</p>
+<pre class="language-"><code class="lang-js">$ cat cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> cheddar
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+    traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>priority<span class="token punctuation">:</span> <span class="token string">&quot;2&quot;</span>
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> cheddar
+          servicePort<span class="token punctuation">:</span> http
+
+$ cat wensleydale<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> wensleydale
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+    traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>priority<span class="token punctuation">:</span> <span class="token string">&quot;1&quot;</span>
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar<span class="token operator">/</span>wensleydale
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> wensleydale
+          servicePort<span class="token punctuation">:</span> http
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/cheddar/wensleydale/xxx</code>&#x65F6;&#xFF0C;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x5206;&#x53D1;&#x5230;cheddar&#x670D;&#x52A1;&#x4E0A;&#x3002;</p>
+<hr>
+<blockquote>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;</p>
+<ul>
+<li><a href="https://docs.traefik.io/user-guide/kubernetes/" target="_blank">traefik kubernetes user guide</a></li>
+<li><a href="https://docs.traefik.io/configuration/backends/kubernetes/" target="_blank">traefik ingress provider</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/" target="_blank">kubernetes ingress</a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/kubernetes-objects/" target="_blank">kubernetes&#x5B98;&#x7F51;</a></li>
+<li><a href="http://hardocs.com/d/kubernetes/149-kubectl_describe.html" target="_blank">kubernetes&#x4E2D;&#x6587;&#x624B;&#x518C;</a></li>
+<li><a href="https://www.cnblogs.com/zhaojiankai/p/7898282.html" target="_blank">&#x4F8B;&#x7A0B;1</a></li>
+<li><a href="https://www.qikqiak.com/post/ingress-traefik1/" target="_blank">&#x4F8B;&#x7A0B;2</a></li>
+</ul>
+</blockquote>
+<h2 id="todo"><a name="todo" class="anchor-navigation-ex-anchor" href="#todo"><i class="fa fa-link" aria-hidden="true"></i></a>5.1. TODO</h2>
+<ul>
+<li><p>apply&#x7684;&#x65F6;&#x5019;&#x662F;&#x5426;&#x4F1A;&#x4E2D;&#x65AD;&#x670D;&#x52A1;: &#x89C1; <strong>3. Ingress&#x670D;&#x52A1;&#x6CE8;&#x518C;</strong></p>
+<ul>
+<li>&#x7248;&#x672C;&#x5FEB;&#x901F;&#x5207;&#x6362;&#x505A;&#x4E0D;&#x5230;&#x4E86;</li>
+<li>&#x524D;&#x7F6E;lbc&#x6216;nginx</li>
+</ul>
+</li>
+<li><p>&#x65E5;&#x5FD7;</p>
+</li>
+<li><p>&#x8FDB;&#x5165;traefik pods</p>
+<ul>
+<li>&#x6CA1;&#x6709;&#x5404;&#x79CD;sh</li>
+</ul>
+</li>
+<li><p>rule reg</p>
+</li>
+<li>opentracing</li>
+<li>ConfigMap</li>
+<li>deployment keepalive</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"next":{"title":"网络编程相关","level":"1.9","depth":1,"ref":"","articles":[{"title":"I. HTTP协议之chunk(分块传输编码)","level":"1.9.1","depth":2,"path":"network/chunk.md","ref":"./network/chunk.md","articles":[]}]},"previous":{"title":"Kubernetes相关","level":"1.8","depth":1,"ref":"","articles":[{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"kubernetes/traefik.md","mtime":"2019-03-26T02:21:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T02:27:23.495Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
