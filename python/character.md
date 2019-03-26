@@ -91,10 +91,6 @@
     测试测试
     ```
 
-> 参考链接:
-> 
-> * [python unicode 之痛](https://pycoders-weekly-chinese.readthedocs.io/en/latest/issue5/unipain.html)
-
 # json处理中的字符编码问题
 
 python的官方json包用于做字典<=>字符串之间的转换工作，然而这个转换的过程中，对字符编码的处理上有一些需要额外注意的地方
@@ -193,3 +189,7 @@ UnicodeDecodeError: 'ascii' codec can't decode byte 0xe6 in position 10: ordinal
 * 当使用json.dumps()处理含有中文字符的字典时，需要格外注意编码问题
 * 如果源输入是utf-8编码，直接使用json.dumps(a, ensure_ascii=False)即可，默认encoding=utf-8，返回的就是一个utf-8编码的str
 * 如果源输入是其他编码，如gbk，则使用json.dumps(a, ensure_ascii=False, encoding="gbk")，返回的是一个unicode，可以根据需要encode成目标编码的str进行传输
+
+> 参考链接:
+> 
+> * [python unicode 之痛](https://pycoders-weekly-chinese.readthedocs.io/en/latest/issue5/unipain.html)

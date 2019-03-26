@@ -16,10 +16,6 @@
 	* 线程涉及到用户态和内核态的切换：需要切换通用寄存器(8个)，程序计数器PC，指令寄存器IR，地址寄存器AR，累加寄存器AC，状态寄存器EFLAGS等
 	* 协程上下文切换只涉及到栈指针和三个寄存器(程序计数器PC, 栈指针寄存器SP, 数据寄存器DX）的切换
 
-> 参考链接：
-> 
-> * [Golang协程详解](http://www.cnblogs.com/liang1101/p/7285955.html)
-> * [通用寄存器](https://blog.csdn.net/sinat_38972110/article/details/72927858)
 
 # Go协程调度
 
@@ -58,11 +54,6 @@ goroutine有三个状态：
 1. 当G执行完毕返回后，go会调用`runtime.exit()`方法回收G(包括回收栈指针, 清空寄存器SP、 PC...)
 2. 然后将G放入P的空闲队列中，等待`runtime.newproc()`方法取出
 
-> 参考链接：
-> 
-> * [golang之协程](http://www.cnblogs.com/chenny7/p/4498322.html)
-> * [goroutine的生老病死](https://tiancaiamao.gitbooks.io/go-internals/content/zh/05.2.html)
-> * [谈goroutine调度器](https://tonybai.com/2017/06/23/an-intro-about-goroutine-scheduler/)
 
 # Go channel
 
@@ -85,9 +76,6 @@ channel分为以下两种类型：
 	* open：通过make分配channel空间。可读可写
 	* close: 通过`close()`关闭channel。close的channel != nil；可以继续从中读取数据，但是不能写入(panic)
 
-> 参考链接：
-> 
-> [gotraining/concurrency/channels](https://github.com/ardanlabs/gotraining/blob/master/topics/go/concurrency/channels/README.md)
 
 ## 基于channel实现的异步日志模型
 
@@ -187,3 +175,14 @@ close
 * 单核过多线程未必会提高效率，更多的抢占式调度和上下文切换，有时反而会让效率降低；经验之谈：3 thread per core is best(from William Kennedy)
 * 对于cpu-bound work，高并发未必会提高效率(cpu密集型工作的切换还是需要cpu来调度)
 * 对于io-bound work，应该最大限度地利用并发来提高效率
+
+---
+
+> 参考链接：
+> 
+> * [golang之协程](http://www.cnblogs.com/chenny7/p/4498322.html)
+> * [goroutine的生老病死](https://tiancaiamao.gitbooks.io/go-internals/content/zh/05.2.html)
+> * [谈goroutine调度器](https://tonybai.com/2017/06/23/an-intro-about-goroutine-scheduler/)
+> * [Golang协程详解](http://www.cnblogs.com/liang1101/p/7285955.html)
+> * [通用寄存器](https://blog.csdn.net/sinat_38972110/article/details/72927858)
+> * [gotraining/concurrency/channels](https://github.com/ardanlabs/gotraining/blob/master/topics/go/concurrency/channels/README.md)

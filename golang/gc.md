@@ -33,14 +33,6 @@ golang在进行GC的时候是需要一小段时间来暂停程序的运行的。
 * go1.8使用`hybrid write barrier`，去除了`rescan grey stacks`的STW，STW时间在10-100微秒
 * go1.9后提升了对大对象的收集效率，STW时间基本稳定在100微秒内
 
-> 参考链接：
-> 
-> * [gotraining/pointers/gc](https://github.com/maniafish/gotraining/tree/master/topics/go/language/pointers)
-> * [golang垃圾回收机制](https://lengzzz.com/note/gc-in-golang)
-> * [Golang 垃圾回收剖析](http://legendtkl.com/2017/04/28/golang-gc/)
-> * [知乎: write barrier](https://www.zhihu.com/question/62000722)
-> * [为Go语言GC正名－2秒到1毫秒的演变史](http://studygolang.com/articles/7516)
-> * [go 1.8 eliminate stw stack re-scanning](https://github.com/golang/proposal/blob/master/design/17503-eliminate-rescan.md)
 
 # 减轻GC压力
 
@@ -50,6 +42,14 @@ golang gc的时间长短，主要和待GC的对象数量有关，待GC的对象�
 
 临时对象池，用于复用已产生的对象，减少程序内对象的数量，减轻GC压力。sync.Pool是并发安全的。
 
+---
+
 > 参考链接：
 > 
+> * [gotraining/pointers/gc](https://github.com/maniafish/gotraining/tree/master/topics/go/language/pointers)
+> * [golang垃圾回收机制](https://lengzzz.com/note/gc-in-golang)
+> * [Golang 垃圾回收剖析](http://legendtkl.com/2017/04/28/golang-gc/)
+> * [知乎: write barrier](https://www.zhihu.com/question/62000722)
+> * [为Go语言GC正名－2秒到1毫秒的演变史](http://studygolang.com/articles/7516)
+> * [go 1.8 eliminate stw stack re-scanning](https://github.com/golang/proposal/blob/master/design/17503-eliminate-rescan.md)
 > * [sync.Pool](https://golang.org/pkg/sync/#Pool)

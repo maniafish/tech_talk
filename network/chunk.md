@@ -20,10 +20,6 @@ HTTP 1.1引入分块传输编码提供了以下几点好处：
 * 每一个非空的块都以该块包含数据的字节数（字节数以十六进制表示）开始，跟随一个CRLF（回车及换行），然后是数据本身，最后块CRLF结束。在一些实现中，块大小和CRLF之间填充有白空格（0x20）。
 * 最后一块是单行，由块大小（0），一些可选的填充白空格，以及CRLF。最后一块不再包含任何数据，但是可以发送可选的尾部，包括消息头字段。消息最后以CRLF结尾。
 
-> 参考链接:
-> 
-> * [wiki: 分块传输编码](https://zh.wikipedia.org/wiki/%E5%88%86%E5%9D%97%E4%BC%A0%E8%BE%93%E7%BC%96%E7%A0%81)
-
 # golang http server 与 chunk
 
 golang http 包中，处理请求返回的response结构体里，用于写入body的Writer是一个chunkWriter。我们可以通过官方包`net/http/server.go: func (c *conn) readRequest(ctx context.Context) (w *response, err error)`方法看到：
@@ -175,3 +171,9 @@ func main() {
 * golang的http包在传输数据body超过2048字节时，会自动采用分块传输编码(chunk)。
 * 当显式地设置response头部的"Content-Length"后，golang将强制采用整包传输，不会使用分块传输编码。
 * 当显式地设置response头部的"Transfer-Encoding"为chunked后，golang将强制采用分块传输编码。
+
+---
+
+> 参考链接:
+> 
+> * [wiki: 分块传输编码](https://zh.wikipedia.org/wiki/%E5%88%86%E5%9D%97%E4%BC%A0%E8%BE%93%E7%BC%96%E7%A0%81)

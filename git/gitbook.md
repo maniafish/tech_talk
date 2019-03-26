@@ -221,6 +221,8 @@ Serving book on http://localhost:4000
 
 * 只需执行上述6 - 9 步即可
 
+---
+
 > 参考链接：
 > 
 > * [gitbook简明教程](http://www.chengweiyang.cn/gitbook/basic-usage/README.html)

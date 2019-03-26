@@ -9,12 +9,6 @@
 * 连续栈：当栈空间不足的时候申请一个2倍于当前大小的新栈，并把所有数据拷贝到新栈， 接下来的所有调用执行都发生在新栈上。
 * 每个function维护着各自的栈帧(stack frame)，当function退出时会释放栈帧
 
-> 参考链接：
->   
-> * [go语言连续栈](https://tiancaiamao.gitbooks.io/go-internals/content/zh/03.5.html)
-> * [为何说Goroutine的栈空间可以无限大](http://blog.xiayf.cn/2014/01/17/goroutine-stack-infinite/)
-> * [Goroutine stack](https://studygolang.com/articles/10597)
-
 ## function内部的栈操作
 
 用一段简单的代码来说明Go函数调用及传参时的栈操作：
@@ -72,11 +66,6 @@ func main() {
 ```
 事实上，即便我定义了指针调用，以上的数据也都是在栈上拷贝的；那么Golang中的数据什么时候会被分配到堆上呢？
 
-> 参考链接：
-> 
-> * [Golang汇编快速指南](http://blog.rootk.com/post/golang-asm.html)
-> * [Golang汇编](https://lrita.github.io/2017/12/12/golang-asm/#how)
-> * [Golang汇编命令解读](http://www.cnblogs.com/yjf512/p/6132868.html)
 
 # Golang逃逸分析
 
@@ -209,9 +198,6 @@ func main() {
 * main()中的对象c，由于作为参数p传入g()后发生了逃逸，因此c也发生了逃逸
 * 当然，如果定义ret.Data为int(instead of *int)的话，对象p也是不会逃逸的(执行了拷贝)
 
-> 参考链接：
-> 
-> * [Go语言逃逸分析](https://gocn.io/article/355)
 
 # 对开发者的一些建议
 
@@ -239,3 +225,16 @@ ret = &Ret{}
 return ret
 ```
 对阅读代码也容易产生误导
+
+---
+
+> 参考链接：
+> 
+> * [Golang汇编快速指南](http://blog.rootk.com/post/golang-asm.html)
+> * [Golang汇编](https://lrita.github.io/2017/12/12/golang-asm/#how)
+> * [Golang汇编命令解读](http://www.cnblogs.com/yjf512/p/6132868.html)
+> * [Go语言逃逸分析](https://gocn.io/article/355)
+> * [go语言连续栈](https://tiancaiamao.gitbooks.io/go-internals/content/zh/03.5.html)
+> * [为何说Goroutine的栈空间可以无限大](http://blog.xiayf.cn/2014/01/17/goroutine-stack-infinite/)
+> * [Goroutine stack](https://studygolang.com/articles/10597)
+
