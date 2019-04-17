@@ -8,6 +8,7 @@
     * [I. vim替换特殊符号](./linux/vim_replace.md)
     * [II. vim剪贴板的使用](./linux/vim_paste.md)
     * [III. vim的插件及配置](./linux/vim_conf.md)
+    * [IV. ab压测工具](./linux/ab.md)
 
 * python相关
     * [I. 字符编码问题](./python/character.md)
@@ -32,5 +33,7 @@
 * CockRoachDB相关
 * Kubernetes相关
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)
+    * [II. ConfigMap的使用](./kubernetes/configmap.md)
+    * [附. 部分指令参考](./kubernetes/commands.md)
 * 网络编程相关
     * [I. HTTP协议之chunk(分块传输编码)](./network/chunk.md)
