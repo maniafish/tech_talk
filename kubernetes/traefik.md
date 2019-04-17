@@ -166,6 +166,126 @@
 	* `http://cheeses.minikube:32044/cheddar`
 	* `http://cheeses.minikube:32044/wensleydale`
 
+# 通过ConfigMap对Traefik网关进行配置
+
+1. 创建ConfigMap，在k8s上注册Traefik配置资源
+
+	```js
+	$ cat traefik-config.yaml
+	apiVersion: v1
+	kind: ConfigMap
+	metadata:
+	  name: traefik-config
+	  namespace: kube-system
+	data:
+	  traefik.toml: |
+	    defaultEntryPoints = ["http"]
+	
+	    [entryPoints]
+	      [entryPoints.http]
+	      address = ":80"
+	      	
+	    [accessLog]
+	    filePath = "/logs/traefik.access.log"
+	    format = "json"
+	    
+	$ kubectl apply -f traefik-config.yaml
+	```
+	
+	这里我们做一个简单的配置，设置Traefik的accesslog以json格式打印到`/logs/traefik.access.log`路径下。
+	
+	> 更多丰富的Traefik配置选项可以查阅官方文档：[Traefik Configuration](https://docs.traefik.io/configuration/commons/)
+	
+2. 	让Traefik Deployment引用ConfigMap资源
+
+	```js
+	$ cat traefik-deployment.yaml
+	---
+	apiVersion: v1
+	kind: ServiceAccount
+	metadata:
+	  name: traefik-ingress-controller
+	  namespace: kube-system
+	---
+	kind: Deployment
+	apiVersion: extensions/v1beta1
+	metadata:
+	  name: traefik-ingress-controller
+	  namespace: kube-system
+	  labels:
+	    k8s-app: traefik-ingress-lb
+	spec:
+	  replicas: 2
+	  selector:
+	    matchLabels:
+	      k8s-app: traefik-ingress-lb
+	  template:
+	    metadata:
+	      labels:
+	        k8s-app: traefik-ingress-lb
+	        name: traefik-ingress-lb
+	    spec:
+	      serviceAccountName: traefik-ingress-controller
+	      terminationGracePeriodSeconds: 60
+	      containers:
+	      - image: traefik
+	        name: traefik-ingress-lb
+	        ports:
+	        - name: http
+	          containerPort: 80
+	        - name: admin
+	          containerPort: 8080
+	        args:
+	        - --configfile=/config/traefik.toml
+	        - --api
+	        - --kubernetes
+	        - --logLevel=INFO
+	        volumeMounts:
+	        - mountPath: /config
+	          name: traefik-config
+	        - mountPath: /logs
+	          name: traefik-log
+	      volumes:
+	      - name: traefik-config
+	        configMap:
+	          name: traefik-config
+	      - name: traefik-log
+	        hostPath:
+	          path: /tmp/log/traefik
+	---
+	kind: Service
+	apiVersion: v1
+	metadata:
+	  name: traefik-ingress-service
+	  namespace: kube-system
+	spec:
+	  selector:
+	    k8s-app: traefik-ingress-lb
+	  ports:
+	    - protocol: TCP
+	      port: 80
+	      nodePort: 30036
+	      name: web
+	    - protocol: TCP
+	      port: 8080
+	      nodePort: 30037
+	      name: admin
+	  type: NodePort
+	  
+	$ kubectl apply -f traefik-deployment.yaml
+	```
+	
+	* 这里我们通过`volumeMounts`将之前注册的ConfigMap资源`traefik-config`挂载到容器的`/config`目录下；并且制定启动Traefik的参数`args: --configfile=/config/traefik.toml`，使用`traefik.toml`的配置
+	* 通过`volumeMounts`将容器的日志挂载到宿主机的`/tmp/log/traefik`目录下
+
+3. 启动Traefik后，会发现宿主机的`/tmp/log/traefik`目录下出现了`traefik.access.log`
+4. 访问`localhost:30036`，即可在`traefik.access.log`中看到请求日志
+
+	```js
+	$ tail -f /tmp/log/traefik/traefik.access.log
+	{"BackendAddr":"","BackendName":"Traefik","BackendURL":{"Scheme":"","Opaque":"","User":null,"Host":"","Path":"/","RawPath":"","ForceQuery":false,"RawQuery":"","Fragment":""},"ClientAddr":"192.168.65.3:54144","ClientHost":"192.168.65.3","ClientPort":"54144","ClientUsername":"-","DownstreamContentSize":19,"DownstreamStatus":404,"DownstreamStatusLine":"404 Not Found","Duration":264044,"FrontendName":"backend not found","OriginContentSize":19,"OriginDuration":20445,"OriginStatus":404,"OriginStatusLine":"404 Not Found","Overhead":243599,"RequestAddr":"localhost:30036","RequestContentSize":0,"RequestCount":98,"RequestHost":"localhost","RequestLine":"GET / HTTP/1.1","RequestMethod":"GET","RequestPath":"/","RequestPort":"30036","RequestProtocol":"HTTP/1.1","RetryAttempts":0,"StartLocal":"2019-04-17T10:19:18.315341342Z","StartUTC":"2019-04-17T10:19:18.315341342Z","downstream_Content-Type":"text/plain; charset=utf-8","downstream_X-Content-Type-Options":"nosniff","level":"info","msg":"","origin_Content-Type":"text/plain; charset=utf-8","origin_X-Content-Type-Options":"nosniff","request_Accept":"*/*","request_User-Agent":"curl/7.51.0","time":"2019-04-17T10:19:18Z"}
+	```
+	
 # 配置服务优先级
 
 Traefik-Ingress路由默认采用最长路径匹配原则，比如以下两个Ingress都使用前缀匹配

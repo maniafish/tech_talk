@@ -231,6 +231,7 @@ $ kubectl apply -f hello.yaml
 # 注意
 
 * 参考以上的例子，可以在k8s中通过ConfigMap动态地为服务加载配置资源
+* 引用ConfigMap的服务，其namespace要和对应的ConfigMap资源一致
 * 当你变更ConfigMap的内容后重载并不会影响当前引用该ConfigMap的服务；比如上面的例子
 
 	1. 修改ConfigMap内容，将response对应的value从`hello, world`改为`bye, world`，然后重载ConfigMap
