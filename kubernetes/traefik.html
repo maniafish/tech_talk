@@ -61,6 +61,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="configmap.html" />
+    
     
 
     </head>
@@ -202,6 +204,19 @@
             
                     
                     III. vim的插件及配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../linux/ab.html">
+            
+                <a href="../linux/ab.html">
+            
+                    
+                    IV. ab压测工具
             
                 </a>
             
@@ -493,6 +508,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.8.2" data-path="configmap.html">
+            
+                <a href="configmap.html">
+            
+                    
+                    II. ConfigMap的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="commands.html">
+            
+                <a href="commands.html">
+            
+                    
+                    附. 部分指令参考
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -575,7 +616,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#traefik"><b>1. </b>Traefik</a></li><li><span class="title-icon "></span><a href="#&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;deployment&#x6A21;&#x5F0F;"><b>2. </b>&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;(Deployment&#x6A21;&#x5F0F;)</a></li><ul><li><span class="title-icon "></span><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><b>2.1. </b>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#&#x8FD0;&#x884C;traefik"><b>2.2. </b>&#x8FD0;&#x884C;Traefik</a></li><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;"><b>2.3. </b>&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;</a></li></ul><li><span class="title-icon "></span><a href="#ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;"><b>3. </b>Ingress &#x670D;&#x52A1;&#x6CE8;&#x518C;</a></li><li><span class="title-icon "></span><a href="#&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><b>4. </b>&#x8D1F;&#x8F7D;&#x5747;&#x8861;</a></li><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><b>5. </b>&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;</a></li><ul><li><span class="title-icon "></span><a href="#todo"><b>5.1. </b>TODO</a></li></ul></ul></div><a href="#traefik" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;"><a name="kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;" class="anchor-navigation-ex-anchor" href="#kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Kubernetes&#x4F7F;&#x7528;Traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;</font></h4>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#traefik"><b>1. </b>Traefik</a></li><li><span class="title-icon "></span><a href="#&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;deployment&#x6A21;&#x5F0F;"><b>2. </b>&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x5B9E;&#x8DF5;(Deployment&#x6A21;&#x5F0F;)</a></li><ul><li><span class="title-icon "></span><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"><b>2.1. </b>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</a></li><li><span class="title-icon "></span><a href="#&#x8FD0;&#x884C;traefik"><b>2.2. </b>&#x8FD0;&#x884C;Traefik</a></li><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;"><b>2.3. </b>&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x8DEF;&#x7531;</a></li></ul><li><span class="title-icon "></span><a href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><b>3. </b>&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;</a></li><li><span class="title-icon "></span><a href="#&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><b>4. </b>&#x8D1F;&#x8F7D;&#x5747;&#x8861;</a></li><li><span class="title-icon "></span><a href="#&#x7070;&#x5EA6;&#x53D1;&#x5E03;"><b>5. </b>&#x7070;&#x5EA6;&#x53D1;&#x5E03;</a></li><ul><li><span class="title-icon "></span><a href="#&#x5E94;&#x7528;&#x90E8;&#x7F72;"><b>5.1. </b>&#x5E94;&#x7528;&#x90E8;&#x7F72;</a></li><li><span class="title-icon "></span><a href="#&#x5E94;&#x7528;&#x5347;&#x7EA7;"><b>5.2. </b>&#x5E94;&#x7528;&#x5347;&#x7EA7;</a></li><ul><li><span class="title-icon "></span><a href="#&#x90E8;&#x7F72;gm-v2&#x670D;&#x52A1;"><b>5.2.1. </b>&#x90E8;&#x7F72;gm-v2&#x670D;&#x52A1;</a></li><li><span class="title-icon "></span><a href="#50&#x7070;&#x5EA6;"><b>5.2.2. </b>&quot;50%&quot;&#x7070;&#x5EA6;</a></li><li><span class="title-icon "></span><a href="#&#x7CBE;&#x51C6;&#x7070;&#x5EA6;"><b>5.2.3. </b>&#x7CBE;&#x51C6;&#x7070;&#x5EA6;</a></li></ul></ul><li><span class="title-icon "></span><a href="#ip&#x9650;&#x5236;"><b>6. </b>IP&#x9650;&#x5236;</a></li><li><span class="title-icon "></span><a href="#&#x5B9A;&#x5236;header"><b>7. </b>&#x5B9A;&#x5236;Header</a></li></ul></div><a href="#traefik" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;"><a name="kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;" class="anchor-navigation-ex-anchor" href="#kubernetes&#x4F7F;&#x7528;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Kubernetes&#x4F7F;&#x7528;Traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;</font></h4>
 <hr>
 <h1 id="traefik"><a name="traefik" class="anchor-navigation-ex-anchor" href="#traefik"><i class="fa fa-link" aria-hidden="true"></i></a>1. Traefik</h1>
 <ul>
@@ -695,6 +736,14 @@
            serviceName<span class="token punctuation">:</span> wensleydale
            servicePort<span class="token punctuation">:</span> http
 </code></pre>
+<blockquote>
+<ul>
+<li><code>traefik.frontend.rule.type: PathPrefixStrip</code>&#x8868;&#x793A;&#x4F7F;&#x7528;&#x8DEF;&#x7531;&#x524D;&#x7F00;&#x5339;&#x914D;&#xFF0C;&#x4E14;&#x8F6C;&#x53D1;&#x5230;&#x540E;&#x7AEF;&#x524D;&#x4F1A;&#x5C06;&#x5339;&#x914D;&#x5230;&#x7684;&#x524D;&#x7F00;&#x53BB;&#x6389;(strip)&#xFF1B;&#x56E0;&#x6B64;&#x5F53;&#x4F60;&#x8BBF;&#x95EE;<code>/cheddar/call</code>&#x65F6;&#x5019;&#xFF0C;&#x8F6C;&#x53D1;&#x5230;&#x540E;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#x4E2D;&#x7684;path&#x4F1A;&#x53D8;&#x6210;<code>/call</code>&#xFF1B;&#x5982;&#x679C;&#x53EA;&#x9700;&#x8981;&#x505A;&#x524D;&#x7F00;&#x5339;&#x914D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>PathPrefix</code></li>
+<li>&#x76EE;&#x524D;<code>traefik.ingress.kubernetes.io/rule-type</code>&#x652F;&#x6301;Path, PathPrefix, PathStrip, PathPrefixStrip&#x8FD9;&#x4E94;&#x79CD;&#x89C4;&#x5219;</li>
+<li>Traefik&#x7684;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x652F;&#x6301;&#x6B63;&#x5219;&#x5339;&#x914D;&#xFF0C;&#x683C;&#x5F0F;&#x4E3A;<code>$param:$pattern</code>&#xFF0C;&#x82E5;<code>:$pattern</code>&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x91C7;&#x53D6;&#x901A;&#x914D;&#x7B26;&#x5339;&#x914D;&#xFF1B;&#x5982;<code>/cheddar/{name}/{id:[0-9]+}</code>&#xFF0C;&#x5339;&#x914D;<code>/cheddar/a/123</code>&#x7B49;&#x3002;Traefik&#x91C7;&#x7528;<a href="https://github.com/google/re2/wiki/Syntax" target="_blank">golang&#x7684;&#x6B63;&#x5219;&#x89C4;&#x5219;</a></li>
+<li><code>PathPrefixStrip</code>&#x4E0D;&#x652F;&#x6301;&#x53BB;&#x9664;&#x5E26;&#x6709;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8DEF;&#x5F84;</li>
+</ul>
+</blockquote>
 </li>
 <li><p><code>kubectl describe ingress cheeses</code> &#x67E5;&#x770B; Ingress</p>
 <pre class="language-"><code class="lang-js"> Name<span class="token punctuation">:</span>             cheeses
@@ -730,66 +779,7 @@
 </ul>
 </li>
 </ol>
-<h1 id="ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;"><a name="ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;" class="anchor-navigation-ex-anchor" href="#ingress-&#x670D;&#x52A1;&#x6CE8;&#x518C;"><i class="fa fa-link" aria-hidden="true"></i></a>3. Ingress &#x670D;&#x52A1;&#x6CE8;&#x518C;</h1>
-<p>&#x5F53;&#x4F60;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Ingress&#x5C06;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x8DEF;&#x7531;&#x4E0A;&#x53BB;&#x3002;</p>
-<p>&#x6BD4;&#x5982;&#x5F53;&#x4F60;&#x542F;&#x52A8;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;cheddar&#x7684;&#x670D;&#x52A1;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x4E3A;&#x5B83;&#x6CE8;&#x518C;&#x4E00;&#x6761;<code>cheeses.minikube/cheddar</code>&#x7684;&#x8DEF;&#x7531;</p>
-<pre class="language-"><code class="lang-js">$ cat cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
-apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
-kind<span class="token punctuation">:</span> Ingress
-metadata<span class="token punctuation">:</span>
-  name<span class="token punctuation">:</span> cheddar
-  annotations<span class="token punctuation">:</span>
-    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
-spec<span class="token punctuation">:</span>
-  rules<span class="token punctuation">:</span>
-  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
-    http<span class="token punctuation">:</span>
-      paths<span class="token punctuation">:</span>
-      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>cheddar
-        backend<span class="token punctuation">:</span>
-          serviceName<span class="token punctuation">:</span> cheddar
-          servicePort<span class="token punctuation">:</span> http
-
-$ kubectl apply <span class="token operator">-</span>f cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
-</code></pre>
-<p>&#x6CE8;&#x610F;&#xFF1A;</p>
-<ul>
-<li>&#x5F53;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;cheddar-ingress&#x66F4;&#x65B0;cheddar&#x670D;&#x52A1;&#x7684;&#x8DEF;&#x7531;&#x65F6;&#xFF1B;&#x5728;&#x6267;&#x884C;<code>kubectl apply -f cheddar-ingress.yaml</code>&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;cheddar-ingress&#x4F1A;&#x4E2D;&#x65AD;&#x5BFC;&#x81F4;&#x8DEF;&#x7531;&#x4E0D;&#x53EF;&#x7528;</li>
-<li>&#x82E5;&#x4F7F;&#x7528;&#x65B0;&#x7684;<code>xxx-ingress.yaml</code>&#x6CE8;&#x518C;&#x8DEF;&#x7531;&#x65F6;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x6761;&#x548C;&#x5DF2;&#x6709;&#x8DEF;&#x7531;&#x91CD;&#x590D;&#x7684;&#x8DEF;&#x7531;&#xFF1B;&#x4F1A;&#x5C06;&#x8BE5;&#x8DEF;&#x7531;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x66F4;&#x65B0;&#x4E3A;&#x65B0;&#x6CE8;&#x518C;&#x7684;&#x670D;&#x52A1;&#xFF1B; <strong>&#x66F4;&#x65B0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8BE5;&#x8DEF;&#x7531;&#x4F1A;&#x4E2D;&#x65AD;</strong></li>
-</ul>
-<h1 id="&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><a name="&#x8D1F;&#x8F7D;&#x5747;&#x8861;" class="anchor-navigation-ex-anchor" href="#&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x8D1F;&#x8F7D;&#x5747;&#x8861;</h1>
-<p>Traefik&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x9002;&#x5408;&#x505A;&#x7070;&#x5EA6;&#x53D1;&#x5E03;&#x3002;</p>
-<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x6709;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;cheddar&#x548C;wensleydale&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x540C;&#x4E00;&#x4E2A;&#x5165;&#x53E3;75%&#x7684;&#x6D41;&#x91CF;&#x5BFC;&#x5411;cheddar&#xFF0C;25%&#x7684;&#x6D41;&#x91CF;&#x5BFC;&#x5411;wensleydale&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x505A;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;</p>
-<pre class="language-"><code class="lang-js">$ cat cheeses<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
-apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
-kind<span class="token punctuation">:</span> Ingress
-metadata<span class="token punctuation">:</span>
-  name<span class="token punctuation">:</span> cheeses
-  annotations<span class="token punctuation">:</span>
-    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
-    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
-    traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>service<span class="token operator">-</span>weights<span class="token punctuation">:</span> <span class="token operator">|</span>
-      cheddar<span class="token punctuation">:</span> <span class="token number">75</span><span class="token operator">%</span>
-      wensleydale<span class="token punctuation">:</span> <span class="token number">25</span><span class="token operator">%</span>
-spec<span class="token punctuation">:</span>
-  rules<span class="token punctuation">:</span>
-  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
-    http<span class="token punctuation">:</span>
-      paths<span class="token punctuation">:</span>
-      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
-        backend<span class="token punctuation">:</span>
-          serviceName<span class="token punctuation">:</span> cheddar
-          servicePort<span class="token punctuation">:</span> http
-      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
-        backend<span class="token punctuation">:</span>
-          serviceName<span class="token punctuation">:</span> wensleydale
-          servicePort<span class="token punctuation">:</span> http
-
-$ kubectl apply <span class="token operator">-</span>f cheeses<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
-</code></pre>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x6279;&#x91CF;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/</code>&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x6D41;&#x91CF;&#x6309;&#x7167;&#x6BD4;&#x4F8B;&#x88AB;&#x5BFC;&#x5165;&#x5230;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x4E0A;&#x53BB;&#x4E86;</p>
-<p>Traefik&#x4E5F;&#x652F;&#x6301;&#x9ED8;&#x8BA4;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#x3002;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x53EA;&#x914D;&#x7F6E;&#x4E86;<code>wensleydale: 25%</code>&#xFF0C;&#x5373;&#x4FBF;&#x4E0D;&#x914D;&#x7F6E;<code>cheddar: 75%</code>&#xFF0C;Traefik&#x4E5F;&#x4F1A;&#x628A;&#x4F59;&#x4E0B;75%&#x7684;&#x6D41;&#x91CF;&#x81EA;&#x52A8;&#x5BFC;&#x5165;&#x5230;cheddar&#x4E0A;&#x53BB;&#x3002;</p>
-<h1 id="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><a name="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;" class="anchor-navigation-ex-anchor" href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;</h1>
+<h1 id="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><a name="&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;" class="anchor-navigation-ex-anchor" href="#&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x914D;&#x7F6E;&#x670D;&#x52A1;&#x4F18;&#x5148;&#x7EA7;</h1>
 <p>Traefik-Ingress&#x8DEF;&#x7531;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x6700;&#x957F;&#x8DEF;&#x5F84;&#x5339;&#x914D;&#x539F;&#x5219;&#xFF0C;&#x6BD4;&#x5982;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;Ingress&#x90FD;&#x4F7F;&#x7528;&#x524D;&#x7F00;&#x5339;&#x914D;</p>
 <pre class="language-"><code class="lang-js">$ cat cheddar<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
 apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
@@ -868,6 +858,568 @@ spec<span class="token punctuation">:</span>
           servicePort<span class="token punctuation">:</span> http
 </code></pre>
 <p>&#x6B64;&#x65F6;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/cheddar/wensleydale/xxx</code>&#x65F6;&#xFF0C;&#x8BF7;&#x6C42;&#x4F1A;&#x88AB;&#x5206;&#x53D1;&#x5230;cheddar&#x670D;&#x52A1;&#x4E0A;&#x3002;</p>
+<blockquote>
+<p>&#x9ED8;&#x8BA4;&#x4E0D;&#x8BBE;&#x7F6E;<code>traefik.ingress.kubernetes.io/priority</code>&#x65F6;&#x7684;&#x8DEF;&#x7531;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;&#xFF1B;&#x6240;&#x4EE5;&#x5EFA;&#x8BAE;&#x662F;&#x90FD;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x4EE5;&#x514D;&#x8BBE;&#x7F6E;&#x4E86;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x8DEF;&#x7531;&#x88AB;&#x672A;&#x8BBE;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;&#x7684;&#x8DEF;&#x7531;&#x8986;&#x76D6;</p>
+</blockquote>
+<h1 id="&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><a name="&#x8D1F;&#x8F7D;&#x5747;&#x8861;" class="anchor-navigation-ex-anchor" href="#&#x8D1F;&#x8F7D;&#x5747;&#x8861;"><i class="fa fa-link" aria-hidden="true"></i></a>4. &#x8D1F;&#x8F7D;&#x5747;&#x8861;</h1>
+<p>Traefik&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x6709;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;cheddar&#x548C;wensleydale&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x540C;&#x4E00;&#x4E2A;&#x5165;&#x53E3;75%&#x7684;&#x6D41;&#x91CF;&#x5BFC;&#x5411;cheddar&#xFF0C;25%&#x7684;&#x6D41;&#x91CF;&#x5BFC;&#x5411;wensleydale&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x505A;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code class="lang-js">$ cat cheeses<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> cheeses
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefixStrip
+    traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>service<span class="token operator">-</span>weights<span class="token punctuation">:</span> <span class="token operator">|</span>
+      cheddar<span class="token punctuation">:</span> <span class="token number">75</span><span class="token operator">%</span>
+      wensleydale<span class="token punctuation">:</span> <span class="token number">25</span><span class="token operator">%</span>
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> cheeses<span class="token punctuation">.</span>minikube
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> cheddar
+          servicePort<span class="token punctuation">:</span> http
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token operator">/</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> wensleydale
+          servicePort<span class="token punctuation">:</span> http
+
+$ kubectl apply <span class="token operator">-</span>f cheeses<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6279;&#x91CF;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/</code>&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x6D41;&#x91CF;&#x6309;&#x7167;&#x6BD4;&#x4F8B;&#x88AB;&#x5BFC;&#x5165;&#x5230;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x4E0A;&#x53BB;&#x4E86;</p>
+<p>Traefik&#x4E5F;&#x652F;&#x6301;&#x9ED8;&#x8BA4;&#x81EA;&#x52A8;&#x914D;&#x7F6E;&#x3002;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x53EA;&#x914D;&#x7F6E;&#x4E86;<code>wensleydale: 25%</code>&#xFF0C;&#x5373;&#x4FBF;&#x4E0D;&#x914D;&#x7F6E;<code>cheddar: 75%</code>&#xFF0C;Traefik&#x4E5F;&#x4F1A;&#x628A;&#x4F59;&#x4E0B;75%&#x7684;&#x6D41;&#x91CF;&#x81EA;&#x52A8;&#x5BFC;&#x5165;&#x5230;cheddar&#x4E0A;&#x53BB;&#x3002;</p>
+<blockquote>
+<p>&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7684;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x4E2D;&#xFF0C;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x8BE5;&#x89C4;&#x5219;&#x90FD;&#x4E0D;&#x4F1A;&#x751F;&#x6548;&#x3002;&#x5982;<code>cheddar</code>&#x670D;&#x52A1;&#x5173;&#x95ED;&#x7684;&#x8BDD;&#xFF0C;&#x8BBF;&#x95EE;<code>cheeses.minikube:32044/</code>&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x4F1A;&#x5168;&#x90E8;&#x8FD4;&#x56DE;<code>404 Not Found</code></p>
+</blockquote>
+<h1 id="&#x7070;&#x5EA6;&#x53D1;&#x5E03;"><a name="&#x7070;&#x5EA6;&#x53D1;&#x5E03;" class="anchor-navigation-ex-anchor" href="#&#x7070;&#x5EA6;&#x53D1;&#x5E03;"><i class="fa fa-link" aria-hidden="true"></i></a>5. &#x7070;&#x5EA6;&#x53D1;&#x5E03;</h1>
+<h2 id="&#x5E94;&#x7528;&#x90E8;&#x7F72;"><a name="&#x5E94;&#x7528;&#x90E8;&#x7F72;" class="anchor-navigation-ex-anchor" href="#&#x5E94;&#x7528;&#x90E8;&#x7F72;"><i class="fa fa-link" aria-hidden="true"></i></a>5.1. &#x5E94;&#x7528;&#x90E8;&#x7F72;</h2>
+<ol>
+<li><p>&#x521B;&#x5EFA;&#x672C;&#x5730;&#x955C;&#x50CF;&#xFF0C;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;http&#x670D;&#x52A1;&#x5668;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x955C;&#x50CF;&#x7684;&#x8BDD;&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;minikube&#x865A;&#x62DF;&#x673A;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x7531;&#x4E8E;&#x865A;&#x62DF;&#x673A;&#x73AF;&#x5883;&#x6CA1;&#x6709;&#x955C;&#x50CF;&#x800C;&#x5BFC;&#x81F4;&#x62C9;&#x53D6;&#x955C;&#x50CF;&#x5931;&#x8D25;</p>
+</blockquote>
+<pre class="language-"><code class="lang-js"> $ cat demo<span class="token punctuation">.</span>go
+ <span class="token keyword">package</span> main
+
+ <span class="token keyword">import</span> <span class="token punctuation">(</span>
+     <span class="token string">&quot;fmt&quot;</span>
+     <span class="token string">&quot;io&quot;</span>
+     <span class="token string">&quot;log&quot;</span>
+     <span class="token string">&quot;net/http&quot;</span>
+
+     <span class="token string">&quot;github.com/gorilla/mux&quot;</span>
+ <span class="token punctuation">)</span>
+
+ type my404Handler struct<span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+ <span class="token function">func</span> <span class="token punctuation">(</span>h <span class="token operator">*</span>my404Handler<span class="token punctuation">)</span> <span class="token function">ServeHTTP</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     io<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> <span class="token string">&quot;gm-v1: 404 not Found!\n&quot;</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment">// DemoServer the web server</span>
+ func <span class="token function">DemoServer</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> r <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     gameid<span class="token punctuation">,</span> _ <span class="token punctuation">:</span><span class="token operator">=</span> mux<span class="token punctuation">.</span><span class="token function">Vars</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">&quot;gameid&quot;</span><span class="token punctuation">]</span>
+     io<span class="token punctuation">.</span><span class="token function">WriteString</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">&quot;gm-v1: game %v\n&quot;</span><span class="token punctuation">,</span> gameid<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+
+ func <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     router <span class="token punctuation">:</span><span class="token operator">=</span> mux<span class="token punctuation">.</span><span class="token function">NewRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+     router<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/{gameid}/gm/call&quot;</span><span class="token punctuation">,</span> DemoServer<span class="token punctuation">)</span>
+     router<span class="token punctuation">.</span>NotFoundHandler <span class="token operator">=</span> <span class="token operator">&amp;</span>my404Handler<span class="token punctuation">{</span><span class="token punctuation">}</span>
+     log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span><span class="token function">ListenAndServe</span><span class="token punctuation">(</span><span class="token string">&quot;:8080&quot;</span><span class="token punctuation">,</span> router<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+
+ $ cat Dockerfile
+ <span class="token constant">FROM</span> golang<span class="token punctuation">:</span><span class="token number">1.9</span><span class="token number">.6</span>
+
+ <span class="token constant">COPY</span> <span class="token punctuation">.</span><span class="token operator">/</span>demo<span class="token punctuation">.</span>go <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>
+ <span class="token constant">WORKDIR</span> <span class="token operator">/</span>go<span class="token operator">/</span>src
+ <span class="token constant">RUN</span> go <span class="token keyword">get</span> github<span class="token punctuation">.</span>com<span class="token operator">/</span>gorilla<span class="token operator">/</span>mux
+
+ <span class="token constant">CMD</span> <span class="token punctuation">[</span><span class="token string">&quot;go&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;run&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;demo.go&quot;</span><span class="token punctuation">]</span>
+
+ $ docker build <span class="token operator">-</span>t demo<span class="token operator">-</span>gm<span class="token punctuation">:</span>v1 <span class="token punctuation">.</span>
+</code></pre>
+<ul>
+<li>&#x6211;&#x4EEC;&#x5C06;&#x4E0A;&#x8FF0;&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x4E2D;&#x7684;v1&#x6539;&#x6210;v2&#xFF0C;&#x518D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<code>demo-gm:v2</code>&#x955C;&#x50CF;</li>
+</ul>
+</li>
+<li><p>&#x4F7F;&#x7528;Deployment&#x6A21;&#x5F0F;&#x90E8;&#x7F72;&#x5E94;&#x7528;&#x955C;&#x50CF;&#xFF0C;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;</p>
+<pre class="language-"><code class="lang-js"> $ cat gm<span class="token operator">-</span>v1<span class="token punctuation">.</span>yaml
+ apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ kind<span class="token punctuation">:</span> Deployment
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+   labels<span class="token punctuation">:</span>
+     app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+ spec<span class="token punctuation">:</span>
+   replicas<span class="token punctuation">:</span> <span class="token number">2</span>
+   selector<span class="token punctuation">:</span>
+     matchLabels<span class="token punctuation">:</span>
+       app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+   template<span class="token punctuation">:</span>
+     metadata<span class="token punctuation">:</span>
+       labels<span class="token punctuation">:</span>
+         app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+     spec<span class="token punctuation">:</span>
+       containers<span class="token punctuation">:</span>
+       <span class="token operator">-</span> name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+         image<span class="token punctuation">:</span> demo<span class="token operator">-</span>gm<span class="token punctuation">:</span>v1
+         ports<span class="token punctuation">:</span>
+         <span class="token operator">-</span> containerPort<span class="token punctuation">:</span> <span class="token number">8080</span>
+ <span class="token operator">--</span><span class="token operator">-</span>
+ apiVersion<span class="token punctuation">:</span> v1
+ kind<span class="token punctuation">:</span> Service
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+ spec<span class="token punctuation">:</span>
+   ports<span class="token punctuation">:</span>
+   <span class="token operator">-</span> name<span class="token punctuation">:</span> http
+     port<span class="token punctuation">:</span> <span class="token number">80</span>
+     targetPort<span class="token punctuation">:</span> <span class="token number">8080</span>
+   selector<span class="token punctuation">:</span>
+     app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+
+ $ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v1<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x4F7F;&#x7528;Ingress&#x6CE8;&#x518C;&#x670D;&#x52A1;</p>
+<pre class="language-"><code class="lang-js">$ cat gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+          servicePort<span class="token punctuation">:</span> http
+
+$ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;traefik</p>
+<pre class="language-"><code class="lang-js"> $ cat traefik<span class="token operator">-</span>deployment<span class="token punctuation">.</span>yaml
+ <span class="token operator">--</span><span class="token operator">-</span>
+ apiVersion<span class="token punctuation">:</span> v1
+ kind<span class="token punctuation">:</span> ServiceAccount
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>controller
+   namespace<span class="token punctuation">:</span> kube<span class="token operator">-</span>system
+ <span class="token operator">--</span><span class="token operator">-</span>
+ kind<span class="token punctuation">:</span> Deployment
+ apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>controller
+   namespace<span class="token punctuation">:</span> kube<span class="token operator">-</span>system
+   labels<span class="token punctuation">:</span>
+     k8s<span class="token operator">-</span>app<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+ spec<span class="token punctuation">:</span>
+   replicas<span class="token punctuation">:</span> <span class="token number">2</span>
+   selector<span class="token punctuation">:</span>
+     matchLabels<span class="token punctuation">:</span>
+       k8s<span class="token operator">-</span>app<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+   template<span class="token punctuation">:</span>
+     metadata<span class="token punctuation">:</span>
+       labels<span class="token punctuation">:</span>
+         k8s<span class="token operator">-</span>app<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+         name<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+     spec<span class="token punctuation">:</span>
+       serviceAccountName<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>controller
+       terminationGracePeriodSeconds<span class="token punctuation">:</span> <span class="token number">60</span>
+       containers<span class="token punctuation">:</span>
+       <span class="token operator">-</span> image<span class="token punctuation">:</span> traefik
+         name<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+         ports<span class="token punctuation">:</span>
+         <span class="token operator">-</span> name<span class="token punctuation">:</span> http
+           containerPort<span class="token punctuation">:</span> <span class="token number">80</span>
+         <span class="token operator">-</span> name<span class="token punctuation">:</span> admin
+           containerPort<span class="token punctuation">:</span> <span class="token number">8080</span>
+         args<span class="token punctuation">:</span>
+         <span class="token operator">-</span> <span class="token operator">--</span>api
+         <span class="token operator">-</span> <span class="token operator">--</span>kubernetes
+         <span class="token operator">-</span> <span class="token operator">--</span>logLevel<span class="token operator">=</span><span class="token constant">INFO</span>
+ <span class="token operator">--</span><span class="token operator">-</span>
+ kind<span class="token punctuation">:</span> Service
+ apiVersion<span class="token punctuation">:</span> v1
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>service
+   namespace<span class="token punctuation">:</span> kube<span class="token operator">-</span>system
+ spec<span class="token punctuation">:</span>
+   selector<span class="token punctuation">:</span>
+     k8s<span class="token operator">-</span>app<span class="token punctuation">:</span> traefik<span class="token operator">-</span>ingress<span class="token operator">-</span>lb
+   ports<span class="token punctuation">:</span>
+     <span class="token operator">-</span> protocol<span class="token punctuation">:</span> <span class="token constant">TCP</span>
+       port<span class="token punctuation">:</span> <span class="token number">80</span>
+       nodePort<span class="token punctuation">:</span> <span class="token number">30036</span>
+       name<span class="token punctuation">:</span> web
+     <span class="token operator">-</span> protocol<span class="token punctuation">:</span> <span class="token constant">TCP</span>
+       port<span class="token punctuation">:</span> <span class="token number">8080</span>
+       nodePort<span class="token punctuation">:</span> <span class="token number">30037</span>
+       name<span class="token punctuation">:</span> admin
+   type<span class="token punctuation">:</span> NodePort
+
+ $ kubectl apply <span class="token operator">-</span>f traefik<span class="token operator">-</span>deployment<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x8BBF;&#x95EE;<code>gm-v1</code>&#x670D;&#x52A1;</p>
+<pre class="language-"><code class="lang-js"> $ curl <span class="token string">&apos;localhost:30036/dm0/gm/call&apos;</span>
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+
+ $ curl &apos;localhost<span class="token punctuation">:</span><span class="token number">30036</span><span class="token operator">/</span>dm0<span class="token operator">/</span>gm<span class="token operator">/</span>test
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> <span class="token number">404</span> not Found<span class="token operator">!</span>
+</code></pre>
+</li>
+</ol>
+<h2 id="&#x5E94;&#x7528;&#x5347;&#x7EA7;"><a name="&#x5E94;&#x7528;&#x5347;&#x7EA7;" class="anchor-navigation-ex-anchor" href="#&#x5E94;&#x7528;&#x5347;&#x7EA7;"><i class="fa fa-link" aria-hidden="true"></i></a>5.2. &#x5E94;&#x7528;&#x5347;&#x7EA7;</h2>
+<h3 id="&#x90E8;&#x7F72;gm-v2&#x670D;&#x52A1;"><a name="&#x90E8;&#x7F72;gm-v2&#x670D;&#x52A1;" class="anchor-navigation-ex-anchor" href="#&#x90E8;&#x7F72;gm-v2&#x670D;&#x52A1;"><i class="fa fa-link" aria-hidden="true"></i></a>5.2.1. &#x90E8;&#x7F72;gm-v2&#x670D;&#x52A1;</h3>
+<pre class="language-"><code class="lang-js">$ cat gm<span class="token operator">-</span>v2<span class="token punctuation">.</span>yaml
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Deployment
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+  labels<span class="token punctuation">:</span>
+    app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+spec<span class="token punctuation">:</span>
+  replicas<span class="token punctuation">:</span> <span class="token number">2</span>
+  selector<span class="token punctuation">:</span>
+    matchLabels<span class="token punctuation">:</span>
+      app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+  template<span class="token punctuation">:</span>
+    metadata<span class="token punctuation">:</span>
+      labels<span class="token punctuation">:</span>
+        app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+    spec<span class="token punctuation">:</span>
+      containers<span class="token punctuation">:</span>
+      <span class="token operator">-</span> name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+        image<span class="token punctuation">:</span> demo<span class="token operator">-</span>gm<span class="token punctuation">:</span>v2
+        ports<span class="token punctuation">:</span>
+        <span class="token operator">-</span> containerPort<span class="token punctuation">:</span> <span class="token number">8080</span>
+<span class="token operator">--</span><span class="token operator">-</span>
+apiVersion<span class="token punctuation">:</span> v1
+kind<span class="token punctuation">:</span> Service
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+spec<span class="token punctuation">:</span>
+  ports<span class="token punctuation">:</span>
+  <span class="token operator">-</span> name<span class="token punctuation">:</span> http
+    port<span class="token punctuation">:</span> <span class="token number">80</span>
+    targetPort<span class="token punctuation">:</span> <span class="token number">8080</span>
+  selector<span class="token punctuation">:</span>
+    app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+
+$ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v2<span class="token punctuation">.</span>yaml
+</code></pre>
+<h3 id="50&#x7070;&#x5EA6;"><a name="50&#x7070;&#x5EA6;" class="anchor-navigation-ex-anchor" href="#50&#x7070;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>5.2.2. &quot;50%&quot;&#x7070;&#x5EA6;</h3>
+<ol>
+<li><p>&#x4F7F;&#x7528;Ingress&#x6CE8;&#x518C;<code>gm-v2</code>&#x670D;&#x52A1;</p>
+<pre class="language-"><code class="lang-js"> $ cat gm<span class="token operator">-</span>v2<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+ apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ kind<span class="token punctuation">:</span> Ingress
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+   annotations<span class="token punctuation">:</span>
+     kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+     traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+ spec<span class="token punctuation">:</span>
+   rules<span class="token punctuation">:</span>
+   <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+     http<span class="token punctuation">:</span>
+       paths<span class="token punctuation">:</span>
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+           servicePort<span class="token punctuation">:</span> http
+
+ $ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v2<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x901A;&#x8FC7;<code>kubectl get ingress</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6B64;&#x65F6;<code>gm-v1</code>&#x548C;<code>gm-v2</code>&#x662F;&#x5E76;&#x5B58;&#x7684;</p>
+<pre class="language-"><code class="lang-js"> <span class="token constant">NAME</span>      <span class="token constant">HOSTS</span>       <span class="token constant">ADDRESS</span>   <span class="token constant">PORTS</span>     <span class="token constant">AGE</span>
+ gm<span class="token operator">-</span>v1     localhost             <span class="token number">80</span>        <span class="token number">4</span>h
+ gm<span class="token operator">-</span>v2     localhost             <span class="token number">80</span>        <span class="token number">3</span>h
+</code></pre>
+</li>
+<li><p>&#x901A;&#x8FC7;&#x7B80;&#x5355;&#x7684;&#x7A0B;&#x5E8F;20&#x6B21;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x6B64;&#x65F6;&#x201C;50%&#x201D;&#x7684;&#x6D41;&#x91CF;&#x88AB;&#x5206;&#x53D1;&#x5230;&#x4E86;<code>gm-v2</code></p>
+<pre class="language-"><code class="lang-js"> gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ map<span class="token punctuation">[</span>unknown<span class="token punctuation">:</span><span class="token number">0</span> v1<span class="token punctuation">:</span><span class="token number">10</span> v2<span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">]</span>
+</code></pre>
+<blockquote>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x7ED9;&#x8FD9;&#x201C;50%&#x201D;&#x52A0;&#x4E2A;&#x5F15;&#x53F7;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6B64;&#x65F6;&#x7684;&#x6D41;&#x91CF;&#x4F1A;&#x5747;&#x5300;&#x5730;&#x5206;&#x53D1;&#x7ED9;gm-v1&#x548C;gm-v2&#x6240;&#x6709;&#x7684;pod&#xFF0C;&#x5982;&#x679C;gm-v1&#x542F;&#x52A8;&#x4E86;2&#x4E2A;pod&#xFF0C;gm-v2&#x542F;&#x52A8;&#x4E86;4&#x4E2A;pod&#xFF0C;&#x90A3;&#x4E48;&#x5206;&#x53D1;&#x5230;gm-v1&#x548C;gm-v2&#x7684;&#x6D41;&#x91CF;&#x4E3A;<code>1:2</code></p>
+</blockquote>
+</li>
+<li><p>&#x901A;&#x8FC7;<code>kubectl delete ingress gm-v1</code>&#xFF0C;&#x5220;&#x9664;<code>gm-v1</code>&#x7684;&#x8DEF;&#x7531;</p>
+</li>
+<li><p>&#x7136;&#x540E;&#x518D;&#x6B21;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6D41;&#x91CF;&#x5168;&#x90E8;&#x5230;&#x5206;&#x53D1;&#x5230;&#x4E86;<code>gm-v2</code></p>
+<pre class="language-"><code class="lang-js"> gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ map<span class="token punctuation">[</span>v1<span class="token punctuation">:</span><span class="token number">0</span> v2<span class="token punctuation">:</span><span class="token number">20</span> unknown<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="&#x7CBE;&#x51C6;&#x7070;&#x5EA6;"><a name="&#x7CBE;&#x51C6;&#x7070;&#x5EA6;" class="anchor-navigation-ex-anchor" href="#&#x7CBE;&#x51C6;&#x7070;&#x5EA6;"><i class="fa fa-link" aria-hidden="true"></i></a>5.2.3. &#x7CBE;&#x51C6;&#x7070;&#x5EA6;</h3>
+<ol>
+<li><p>&#x901A;&#x8FC7;Ingress&#x6CE8;&#x518C;/dm0/gm&#x8BBF;&#x95EE;gm-v1&#x670D;&#x52A1;&#xFF0C;&#x6B64;&#x65F6;&#x6D41;&#x91CF;&#x5168;&#x90E8;&#x8F6C;&#x53D1;&#x5230;gm-v1</p>
+<pre class="language-"><code class="lang-js"> $ cat gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+ apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ kind<span class="token punctuation">:</span> Ingress
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> dm0<span class="token operator">-</span>gm
+   annotations<span class="token punctuation">:</span>
+     kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+     traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+ spec<span class="token punctuation">:</span>
+   rules<span class="token punctuation">:</span>
+   <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+     http<span class="token punctuation">:</span>
+       paths<span class="token punctuation">:</span>
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+           servicePort<span class="token punctuation">:</span> http
+
+ $ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;name(dm0-gm)&#xFF0C;&#x6CE8;&#x518C;&#x7070;&#x5EA6;&#x8DEF;&#x7531;&#xFF1B;&#x6B64;&#x65F6;&#x7531;&#x4E8E;Ingress name&#x76F8;&#x540C;&#xFF0C;&#x4F1A;&#x8986;&#x76D6;&#x4E4B;&#x524D;&#x7684;&#x8DEF;&#x7531;</p>
+<pre class="language-"><code class="lang-js"> $ cat gm<span class="token operator">-</span>v2<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+ apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ kind<span class="token punctuation">:</span> Ingress
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> dm0<span class="token operator">-</span>gm
+   annotations<span class="token punctuation">:</span>
+     kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+     traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+     traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>service<span class="token operator">-</span>weights<span class="token punctuation">:</span> <span class="token operator">|</span>
+       gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> <span class="token number">75</span><span class="token operator">%</span>
+       gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> <span class="token number">25</span><span class="token operator">%</span>
+ spec<span class="token punctuation">:</span>
+   rules<span class="token punctuation">:</span>
+   <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+     http<span class="token punctuation">:</span>
+       paths<span class="token punctuation">:</span>
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+           servicePort<span class="token punctuation">:</span> http
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+           servicePort<span class="token punctuation">:</span> http
+
+ $ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v2<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x6B64;&#x65F6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;25%&#x7684;&#x6D41;&#x91CF;&#x88AB;&#x8F6C;&#x53D1;&#x5230;&#x4E86;<code>gm-v2</code></p>
+<pre class="language-"><code class="lang-js"> gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v1<span class="token punctuation">:</span> game dm0
+ map<span class="token punctuation">[</span>v2<span class="token punctuation">:</span><span class="token number">4</span> unknown<span class="token punctuation">:</span><span class="token number">0</span> v1<span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span>
+</code></pre>
+</li>
+<li><p>&#x66F4;&#x65B0;Ingress: <code>dm0-gm</code></p>
+<pre class="language-"><code class="lang-js"> $ cat gm<span class="token operator">-</span>v2<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+ apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+ kind<span class="token punctuation">:</span> Ingress
+ metadata<span class="token punctuation">:</span>
+   name<span class="token punctuation">:</span> dm0<span class="token operator">-</span>gm
+   annotations<span class="token punctuation">:</span>
+     kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+     traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+ spec<span class="token punctuation">:</span>
+   rules<span class="token punctuation">:</span>
+   <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+     http<span class="token punctuation">:</span>
+       paths<span class="token punctuation">:</span>
+       <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+         backend<span class="token punctuation">:</span>
+           serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v2
+           servicePort<span class="token punctuation">:</span> http
+
+ $ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v2<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+</li>
+<li><p>&#x6B64;&#x65F6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x6240;&#x6709;&#x6D41;&#x91CF;&#x90FD;&#x88AB;&#x8F6C;&#x53D1;&#x5230;&#x4E86;<code>gm-v2</code></p>
+<pre class="language-"><code class="lang-js"> gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ gm<span class="token operator">-</span>v2<span class="token punctuation">:</span> game dm0
+ map<span class="token punctuation">[</span>v1<span class="token punctuation">:</span><span class="token number">0</span> v2<span class="token punctuation">:</span><span class="token number">20</span> unknown<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">]</span>
+</code></pre>
+</li>
+</ol>
+<h1 id="ip&#x9650;&#x5236;"><a name="ip&#x9650;&#x5236;" class="anchor-navigation-ex-anchor" href="#ip&#x9650;&#x5236;"><i class="fa fa-link" aria-hidden="true"></i></a>6. IP&#x9650;&#x5236;</h1>
+<p>Traefik&#x652F;&#x6301;&#x5BF9;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x7531;&#x505A;ip&#x767D;&#x540D;&#x5355;&#x9650;&#x5236;</p>
+<pre class="language-"><code class="lang-js">$ cat gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> dm0<span class="token operator">-</span>gm
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm0/gm</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+          servicePort<span class="token punctuation">:</span> http
+
+<span class="token operator">--</span><span class="token operator">-</span>
+
+apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+kind<span class="token punctuation">:</span> Ingress
+metadata<span class="token punctuation">:</span>
+  name<span class="token punctuation">:</span> dm1<span class="token operator">-</span>gm
+  annotations<span class="token punctuation">:</span>
+    kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+    traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+    traefik<span class="token punctuation">.</span>ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>whitelist<span class="token operator">-</span>source<span class="token operator">-</span>range<span class="token punctuation">:</span> <span class="token string">&quot;127.0.0.1&quot;</span>
+spec<span class="token punctuation">:</span>
+  rules<span class="token punctuation">:</span>
+  <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+    http<span class="token punctuation">:</span>
+      paths<span class="token punctuation">:</span>
+      <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm1/gm</span>
+        backend<span class="token punctuation">:</span>
+          serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+          servicePort<span class="token punctuation">:</span> http
+
+$ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+<ul>
+<li>&#x6B64;&#x65F6;&#xFF0C;&#x8BBF;&#x95EE;<code>/dm1/gm</code>&#x7684;&#x6765;&#x6E90;ip&#x82E5;&#x4E0D;&#x662F;127.0.0.1&#xFF0C;&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x4F1A;&#x8FD4;&#x56DE;<code>403 Forbidden</code>&#xFF1B;&#x8BBF;&#x95EE;<code>dm0/gm</code>&#x7684;&#x4E0D;&#x53D7;ip&#x9650;&#x5236;</li>
+<li>&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;<code>ingress.kubernetes.io/whitelist-x-forwarded-for: &quot;true&quot;</code>&#xFF0C;&#x4F7F;&#x7528;HTTP&#x5934;&#x90E8;&#x7684;<code>X-Forwarded-For</code>&#x5B57;&#x6BB5;&#x7684;ip&#x505A;&#x6821;&#x9A8C;</li>
+<li>&#x652F;&#x6301;&#x591A;ip&#x548C;&#x901A;&#x914D;&#x7B26;&#xFF0C;&#x5982;<code>traefik.ingress.kubernetes.io/whitelist-source-range: &quot;1.2.3.0/24, fe80::/16&quot;</code></li>
+</ul>
+<h1 id="&#x5B9A;&#x5236;header"><a name="&#x5B9A;&#x5236;header" class="anchor-navigation-ex-anchor" href="#&#x5B9A;&#x5236;header"><i class="fa fa-link" aria-hidden="true"></i></a>7. &#x5B9A;&#x5236;Header</h1>
+<ul>
+<li><p>&#x5B9A;&#x5236;&#x8BF7;&#x6C42;&#x5934;</p>
+<pre class="language-"><code class="lang-js">  $ cat gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+  apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
+  kind<span class="token punctuation">:</span> Ingress
+  metadata<span class="token punctuation">:</span>
+    name<span class="token punctuation">:</span> dm2<span class="token operator">-</span>gm
+    annotations<span class="token punctuation">:</span>
+      kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>ingress<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">:</span> traefik
+      traefik<span class="token punctuation">.</span>frontend<span class="token punctuation">.</span>rule<span class="token punctuation">.</span>type<span class="token punctuation">:</span> PathPrefix
+      ingress<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>custom<span class="token operator">-</span>request<span class="token operator">-</span>headers<span class="token punctuation">:</span> <span class="token string">&quot;X-Custom-Id: test&quot;</span>
+  spec<span class="token punctuation">:</span>
+    rules<span class="token punctuation">:</span>
+    <span class="token operator">-</span> host<span class="token punctuation">:</span> localhost
+      http<span class="token punctuation">:</span>
+        paths<span class="token punctuation">:</span>
+        <span class="token operator">-</span> path<span class="token punctuation">:</span> <span class="token regex">/dm2/gm</span>
+          backend<span class="token punctuation">:</span>
+            serviceName<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
+            servicePort<span class="token punctuation">:</span> http
+
+  $ kubectl apply <span class="token operator">-</span>f gm<span class="token operator">-</span>v1<span class="token operator">-</span>ingress<span class="token punctuation">.</span>yaml
+</code></pre>
+<ul>
+<li>&#x540E;&#x7AEF;&#x6536;&#x5230;&#x7684;&#x8BF7;&#x6C42;&#x4E2D;&#x4F1A;&#x5305;&#x542B;&#x8BF7;&#x6C42;&#x5934;<code>X-Custom-Id</code></li>
+<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>&quot;Header1: Value1||Header2: Value2||...</code>&#x7684;&#x65B9;&#x5F0F;&#x8BBE;&#x5B9A;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x5934;</li>
+<li><p>&#x7ECF;&#x8FC7;traefik&#x53CD;&#x5411;&#x4EE3;&#x7406;&#x8F6C;&#x53D1;&#x7684;&#x8BF7;&#x6C42;&#x4F1A;&#x81EA;&#x52A8;&#x5E26;&#x4E0A;&#x4EE5;&#x4E0B;&#x5934;&#x90E8;</p>
+<ul>
+<li><code>X-Forwarded-Host</code></li>
+<li><code>X-Forwarded-Port</code></li>
+<li><code>X-Forwarded-Server</code></li>
+<li><code>X-Forwarded-For</code></li>
+<li><code>X-Real-Ip</code></li>
+<li><code>X-Forwarded-Proto</code></li>
+<li><code>User-Agent</code></li>
+<li><code>Accept-Encoding</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x5B9A;&#x5236;&#x8FD4;&#x56DE;&#x5934;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x8BF7;&#x6C42;&#x5934;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x662F;annotations&#x6362;&#x6210;&#x4E86;<code>ingress.kubernetes.io/custom-response-headers</code></p>
+</li>
+</ul>
 <hr>
 <blockquote>
 <p>&#x53C2;&#x8003;&#x94FE;&#x63A5;</p>
@@ -881,27 +1433,6 @@ spec<span class="token punctuation">:</span>
 <li><a href="https://www.qikqiak.com/post/ingress-traefik1/" target="_blank">&#x4F8B;&#x7A0B;2</a></li>
 </ul>
 </blockquote>
-<h2 id="todo"><a name="todo" class="anchor-navigation-ex-anchor" href="#todo"><i class="fa fa-link" aria-hidden="true"></i></a>5.1. TODO</h2>
-<ul>
-<li><p>apply&#x7684;&#x65F6;&#x5019;&#x662F;&#x5426;&#x4F1A;&#x4E2D;&#x65AD;&#x670D;&#x52A1;: &#x89C1; <strong>3. Ingress&#x670D;&#x52A1;&#x6CE8;&#x518C;</strong></p>
-<ul>
-<li>&#x7248;&#x672C;&#x5FEB;&#x901F;&#x5207;&#x6362;&#x505A;&#x4E0D;&#x5230;&#x4E86;</li>
-<li>&#x524D;&#x7F6E;lbc&#x6216;nginx</li>
-</ul>
-</li>
-<li><p>&#x65E5;&#x5FD7;</p>
-</li>
-<li><p>&#x8FDB;&#x5165;traefik pods</p>
-<ul>
-<li>&#x6CA1;&#x6709;&#x5404;&#x79CD;sh</li>
-</ul>
-</li>
-<li><p>rule reg</p>
-</li>
-<li>opentracing</li>
-<li>ConfigMap</li>
-<li>deployment keepalive</li>
-</ul>
 
                                 
                                 </section>
@@ -930,6 +1461,10 @@ spec<span class="token punctuation">:</span>
             
                 
                 
+                <a href="configmap.html" class="navigation navigation-next navigation-unique" aria-label="Next page: II. ConfigMap的使用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -937,7 +1472,7 @@ spec<span class="token punctuation">:</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"next":{"title":"网络编程相关","level":"1.9","depth":1,"ref":"","articles":[{"title":"I. HTTP协议之chunk(分块传输编码)","level":"1.9.1","depth":2,"path":"network/chunk.md","ref":"./network/chunk.md","articles":[]}]},"previous":{"title":"Kubernetes相关","level":"1.8","depth":1,"ref":"","articles":[{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"kubernetes/traefik.md","mtime":"2019-03-26T02:21:17.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T02:27:23.495Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"next":{"title":"II. ConfigMap的使用","level":"1.8.2","depth":2,"path":"kubernetes/configmap.md","ref":"./kubernetes/configmap.md","articles":[]},"previous":{"title":"Kubernetes相关","level":"1.8","depth":1,"ref":"","articles":[{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]},{"title":"II. ConfigMap的使用","level":"1.8.2","depth":2,"path":"kubernetes/configmap.md","ref":"./kubernetes/configmap.md","articles":[]},{"title":"附. 部分指令参考","level":"1.8.3","depth":2,"path":"kubernetes/commands.md","ref":"./kubernetes/commands.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"kubernetes/traefik.md","mtime":"2019-04-15T14:13:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-17T08:26:30.305Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
