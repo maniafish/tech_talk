@@ -4,7 +4,7 @@
 
 # Traefik
 
-* [官方地址](https://docs.traefik.io/)
+* [官网地址](https://traefik.io/)
 * [github地址](https://github.com/containous/traefik)
 
 # 反向代理实践(Deployment模式)
