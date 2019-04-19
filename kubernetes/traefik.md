@@ -4,6 +4,8 @@
 
 # Traefik
 
+Traefik是一个云原生边界网关，可以实现http反向代理和负载均衡，并且可以作为k8s集群的Ingress Controller，结合Ingress实现k8s的服务注册和路由等功能。
+
 * [官网地址](https://traefik.io/)
 * [github地址](https://github.com/containous/traefik)
 
@@ -414,7 +416,7 @@ $ kubectl apply -f cheeses-ingress.yaml
 
 Traefik也支持默认自动配置。比如上面这个例子，如果你只配置了`wensleydale: 25%`，即便不配置`cheddar: 75%`，Traefik也会把余下75%的流量自动导入到cheddar上去。
 
-> 负载均衡的两个服务中，任意一个服务不可用，该规则都不会生效。如`cheddar`服务关闭的话，访问`cheeses.minikube:32044/`的请求就会全部返回`404 Not Found`
+> 负载均衡的两个服务中，任意一个服务未启用，该规则都不会生效。如`cheddar`服务关闭的话，访问`cheeses.minikube:32044/`的请求就会全部返回`404 Not Found`
 
 # 灰度发布
 
@@ -978,3 +980,4 @@ $ kubectl apply -f gm-v1-ingress.yaml
 > * [kubernetes中文手册](http://hardocs.com/d/kubernetes/149-kubectl_describe.html)
 > * [例程1](https://www.cnblogs.com/zhaojiankai/p/7898282.html)
 > * [例程2](https://www.qikqiak.com/post/ingress-traefik1/)
+> * [使用traefik作为kubernetes的ingress](https://www.cnblogs.com/breezey/p/9113951.html)
