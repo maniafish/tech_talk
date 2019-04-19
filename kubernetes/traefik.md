@@ -13,8 +13,7 @@
 
 1. 启动k8s: mac下载桌面版docker，打开`Enable Kubernetes`即可启动
 	
-	![](./image/traefik_1.png)
-	
+    ![](./image/traefik_1.png)
 
 1. [安装MiniKube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 1. 启动MiniKube: `minikube start`
