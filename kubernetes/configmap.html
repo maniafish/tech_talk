@@ -833,120 +833,9 @@ $ kubectl apply <span class="token operator">-</span>f hello<span class="token p
 <ul>
 <li>&#x53C2;&#x8003;&#x4EE5;&#x4E0A;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;k8s&#x4E2D;&#x901A;&#x8FC7;ConfigMap&#x52A8;&#x6001;&#x5730;&#x4E3A;&#x670D;&#x52A1;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x8D44;&#x6E90;</li>
 <li>&#x5F15;&#x7528;ConfigMap&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x5176;namespace&#x8981;&#x548C;&#x5BF9;&#x5E94;&#x7684;ConfigMap&#x8D44;&#x6E90;&#x4E00;&#x81F4;</li>
-<li><p>&#x5F53;&#x4F60;&#x53D8;&#x66F4;ConfigMap&#x7684;&#x5185;&#x5BB9;&#x540E;&#x91CD;&#x8F7D;&#x5E76;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5F53;&#x524D;&#x5F15;&#x7528;&#x8BE5;ConfigMap&#x7684;&#x670D;&#x52A1;&#xFF1B;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;</p>
-<ol>
-<li><p>&#x4FEE;&#x6539;ConfigMap&#x5185;&#x5BB9;&#xFF0C;&#x5C06;response&#x5BF9;&#x5E94;&#x7684;value&#x4ECE;<code>hello, world</code>&#x6539;&#x4E3A;<code>bye, world</code>&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x8F7D;ConfigMap</p>
-<pre class="language-"><code class="lang-js"> $ kubectl apply <span class="token operator">-</span>f config<span class="token punctuation">.</span>yaml
- configmap <span class="token string">&quot;special-config&quot;</span> configured
-
- $ kubectl describe configmap special<span class="token operator">-</span>config
- Name<span class="token punctuation">:</span>         special<span class="token operator">-</span>config
- Namespace<span class="token punctuation">:</span>    <span class="token keyword">default</span>
- Labels<span class="token punctuation">:</span>       <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
- Annotations<span class="token punctuation">:</span>  kubectl<span class="token punctuation">.</span>kubernetes<span class="token punctuation">.</span>io<span class="token operator">/</span>last<span class="token operator">-</span>applied<span class="token operator">-</span>configuration<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&quot;apiVersion&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;v1&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;data&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;response&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;bye, world\n&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;test.conf&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;a = b\n&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;kind&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;ConfigMap&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;metadata&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token string">&quot;annotations&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;special-config&quot;</span><span class="token punctuation">,</span>&quot;na<span class="token operator">...</span>
-
- Data
- <span class="token operator">===</span><span class="token operator">=</span>
- response<span class="token punctuation">:</span>
- <span class="token operator">--</span><span class="token operator">--</span>
- bye<span class="token punctuation">,</span> world
-
- test<span class="token punctuation">.</span>conf<span class="token punctuation">:</span>
- <span class="token operator">--</span><span class="token operator">--</span>
- a <span class="token operator">=</span> b
-
- Events<span class="token punctuation">:</span>  <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
-</code></pre>
-<p> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x73B0;&#x5728;&#x7684;response&#x7684;&#x5185;&#x5BB9;&#x5DF2;&#x7ECF;&#x53D8;&#x6210;&#x4E86;<code>bye, world</code></p>
-</li>
-<li><p>&#x7136;&#x800C;&#x6211;&#x4EEC;&#x6B64;&#x65F6;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x8FD4;&#x56DE;&#x7684;&#x4ECD;&#x7136;&#x662F;<code>hello, world</code></p>
-<pre class="language-"><code class="lang-js"> $ curl <span class="token string">&apos;127.0.0.1:30011&apos;</span>
- hello<span class="token punctuation">,</span> world
-</code></pre>
-</li>
-<li><p>&#x8C03;&#x7528;<code>kubectl apply -f hello.yaml</code>&#x91CD;&#x8F7D;&#x4EE5;&#x4E0B;&#x5E94;&#x7528;&#x670D;&#x52A1;&#xFF0C;k8s&#x4F1A;&#x8BA4;&#x4E3A;&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x6CA1;&#x6709;&#x53D8;&#x5316;</p>
-<pre class="language-"><code class="lang-js"> deployment<span class="token punctuation">.</span>extensions <span class="token string">&quot;gm-v1&quot;</span> unchanged
- service <span class="token string">&quot;gm-v1&quot;</span> unchanged
-</code></pre>
-</li>
-<li><p>&#x91CD;&#x8F7D;&#x540E;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x8FD4;&#x56DE;&#x7684;&#x4E5F;&#x4ECD;&#x7136;&#x662F;<code>hello, world</code></p>
-</li>
-</ol>
-</li>
-<li><p>&#x5982;&#x679C;&#x5E0C;&#x671B;&#x53D8;&#x66F4;&#x7684;ConfigMap&#x751F;&#x6548;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x65B0;&#x7684;name&#x6216;&#x8005;&#x65B0;&#x7684;key&#xFF0C;&#x4E0D;&#x80FD;&#x53BB;&#x5F71;&#x54CD;&#x5DF2;&#x6CE8;&#x518C;&#x7684;&#x8D44;&#x6E90;</p>
-<ol>
-<li><p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x65B0;&#x7684;key(response.v2)&#x6765;&#x66F4;&#x65B0;&#x914D;&#x7F6E;</p>
-<pre class="language-"><code class="lang-js"> $ cat config<span class="token punctuation">.</span>yaml
- apiVersion<span class="token punctuation">:</span> v1
- kind<span class="token punctuation">:</span> ConfigMap
- metadata<span class="token punctuation">:</span>
-   name<span class="token punctuation">:</span> special<span class="token operator">-</span>config
-   namespace<span class="token punctuation">:</span> <span class="token keyword">default</span>
- data<span class="token punctuation">:</span>
-   response<span class="token punctuation">:</span> <span class="token operator">|</span>
-     hello<span class="token punctuation">,</span> world
-   test<span class="token punctuation">.</span>conf<span class="token punctuation">:</span> <span class="token operator">|</span>
-     a <span class="token operator">=</span> b
-   response<span class="token punctuation">.</span>v2<span class="token punctuation">:</span>
-     bye<span class="token punctuation">,</span> world
-</code></pre>
-</li>
-<li><p>&#x5E94;&#x7528;&#x670D;&#x52A1;&#x91CC;&#x5F15;&#x7528;&#x65B0;&#x7684;ConfigMap key(response.v2)</p>
-<pre class="language-"><code class="lang-js"> $ cat hello<span class="token punctuation">.</span>yaml
- apiVersion<span class="token punctuation">:</span> extensions<span class="token operator">/</span>v1beta1
- kind<span class="token punctuation">:</span> Deployment
- metadata<span class="token punctuation">:</span>
-   name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
-   labels<span class="token punctuation">:</span>
-     app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
- spec<span class="token punctuation">:</span>
-   replicas<span class="token punctuation">:</span> <span class="token number">2</span>
-   selector<span class="token punctuation">:</span>
-     matchLabels<span class="token punctuation">:</span>
-       app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
-   template<span class="token punctuation">:</span>
-     metadata<span class="token punctuation">:</span>
-       labels<span class="token punctuation">:</span>
-         app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
-     spec<span class="token punctuation">:</span>
-       containers<span class="token punctuation">:</span>
-       <span class="token operator">-</span> name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
-         image<span class="token punctuation">:</span> demo<span class="token operator">-</span>hello<span class="token punctuation">:</span>v1
-         volumeMounts<span class="token punctuation">:</span>
-         <span class="token operator">-</span> name<span class="token punctuation">:</span> config<span class="token operator">-</span>volume
-           mountPath<span class="token punctuation">:</span> <span class="token operator">/</span>go<span class="token operator">/</span>src<span class="token operator">/</span>config<span class="token punctuation">.</span>toml
-           subPath<span class="token punctuation">:</span> config<span class="token punctuation">.</span>toml
-       volumes<span class="token punctuation">:</span>
-         <span class="token operator">-</span> name<span class="token punctuation">:</span> config<span class="token operator">-</span>volume
-           configMap<span class="token punctuation">:</span>
-             name<span class="token punctuation">:</span> special<span class="token operator">-</span>config
-             items<span class="token punctuation">:</span>
-             <span class="token operator">-</span> key<span class="token punctuation">:</span> response<span class="token punctuation">.</span>v2
-               path<span class="token punctuation">:</span> config<span class="token punctuation">.</span>toml
- <span class="token operator">--</span><span class="token operator">-</span>
- apiVersion<span class="token punctuation">:</span> v1
- kind<span class="token punctuation">:</span> Service
- metadata<span class="token punctuation">:</span>
-   name<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
- spec<span class="token punctuation">:</span>
-   ports<span class="token punctuation">:</span>
-   <span class="token operator">-</span> name<span class="token punctuation">:</span> http
-     port<span class="token punctuation">:</span> <span class="token number">80</span>
-     targetPort<span class="token punctuation">:</span> <span class="token number">8080</span>
-     nodePort<span class="token punctuation">:</span> <span class="token number">30011</span>
-   type<span class="token punctuation">:</span> NodePort
-   selector<span class="token punctuation">:</span>
-     app<span class="token punctuation">:</span> gm<span class="token operator">-</span>v1
-
- $ kubectl apply <span class="token operator">-</span>f hello<span class="token punctuation">.</span>yaml
-</code></pre>
-</li>
-<li><p>&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD4;&#x56DE;&#x4E86;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x5185;&#x5BB9;</p>
-<pre class="language-"><code class="lang-js"> $ curl <span class="token string">&apos;127.0.0.1:30011&apos;</span>
- bye<span class="token punctuation">,</span> world
-</code></pre>
-</li>
-</ol>
+<li>&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x662F;subPath&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x8BDD;&#xFF0C;&#x5F53;&#x4F60;&#x53D8;&#x66F4;&#x4E86;ConfigMap&#x91CC;&#x76F8;&#x5E94;key&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5BB9;&#x5E76;&#x91CD;&#x8F7D;&#x540E;&#xFF0C;&#x5BB9;&#x5668;&#x5185;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5E76;&#x4E0D;&#x4F1A;&#x66F4;&#x65B0;(<a href="https://github.com/kubernetes/kubernetes/issues/50345" target="_blank">issue-50345</a>)<ul>
+<li>&#x7528;Path&#x7684;&#x65B9;&#x5F0F;&#x52A0;&#x8F7D;&#x6574;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x914D;&#x7F6E;&#x8DEF;&#x5F84;&#x7684;&#x5185;&#x5BB9;&#x4F1A;&#x66F4;&#x65B0;</li>
+</ul>
 </li>
 </ul>
 <blockquote>
@@ -998,7 +887,7 @@ $ kubectl apply <span class="token operator">-</span>f hello<span class="token p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"II. ConfigMap的使用","level":"1.8.2","depth":2,"next":{"title":"附. 部分指令参考","level":"1.8.3","depth":2,"path":"kubernetes/commands.md","ref":"./kubernetes/commands.md","articles":[]},"previous":{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"kubernetes/configmap.md","mtime":"2019-04-17T09:20:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-19T03:19:47.356Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"II. ConfigMap的使用","level":"1.8.2","depth":2,"next":{"title":"附. 部分指令参考","level":"1.8.3","depth":2,"path":"kubernetes/commands.md","ref":"./kubernetes/commands.md","articles":[]},"previous":{"title":"I. Kubernetes使用Traefik反向代理","level":"1.8.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"kubernetes/configmap.md","mtime":"2019-04-24T08:00:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-24T08:01:03.684Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
