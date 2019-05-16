@@ -232,8 +232,9 @@ $ kubectl apply -f hello.yaml
 
 * 参考以上的例子，可以在k8s中通过ConfigMap动态地为服务加载配置资源
 * 引用ConfigMap的服务，其namespace要和对应的ConfigMap资源一致
-* 如果你使用的是subPath的方式来加载配置文件的话，当你变更了ConfigMap里相应key对应的内容并重载后，容器内的配置文件内容并不会更新([issue-50345](https://github.com/kubernetes/kubernetes/issues/50345))
+* 如果使用的是subPath的方式来加载配置文件，当变更了ConfigMap里相应key对应的内容并重载后，容器内的配置文件内容并不会更新([issue-50345](https://github.com/kubernetes/kubernetes/issues/50345))
     * 用Path的方式加载整个目录，配置路径的内容会更新
+    * 用subPath的方式，重启pod后，配置才会更新
 
 > 参考链接：
 > 

@@ -968,8 +968,6 @@ $ kubectl apply -f gm-v1-ingress.yaml
 		* `Accept-Encoding`
 
 * 定制返回头的方法和请求头一样，只是annotations换成了`ingress.kubernetes.io/custom-response-headers`
-
----
 	
 > 参考链接
 > 
