@@ -35,6 +35,12 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
 " 4 YouCompleteMe 2 complete the code 代码补全器
 Plugin 'Valloric/YouCompleteMe'
+" 4 markdown .md文件编辑
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+" 4 mark 颜色标记插件
+Plugin 'inkarkat/vim-ingo-library'
+Plugin 'inkarkat/vim-mark'
 call vundle#end()
 " required
 " To ignore plugin indent changes, instead use:
@@ -61,7 +67,8 @@ syntax enable
 syntax on
 
 " colorscheme darkblue
-" 设置vim主题为molokai，显示原色
+" 设置vim主题为molokai，显示原色；将主题molokai.vim放到~/.vim/color目录下方可使用
+" https://github.com/tomasr/molokai
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
@@ -120,6 +127,9 @@ nnoremap<leader>d :sp<CR>
 " 垂直分屏
 nnoremap<leader>f :vs<CR>
 
+" 4 yaml 设置yaml文件的缩进为两个空格
+autocmd FileType yaml,html setlocal ts=2 sts=2 sw=2 expandtab
+
 " 4 vim-flake8
 let g:flake8_cmd="/usr/local/bin/flake8"
 " 4 syntastic
@@ -143,6 +153,13 @@ silent! nnoremap<leader>s :NERDTreeClose<CR>
 " 4 ycm
 nnoremap <leader>q :YcmCompleter GoToDefinitionElseDeclaration<CR>
 set completeopt=menu,menuone
+
+" 4 mark
+let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwDefaultHighlightingNum = 9
+nnoremap<leader>N :MarkClear<CR>
+nmap <Plug>IgnoreMarkSearchNext <Plug>MarkSearchNext
+nmap <Plug>IgnoreMarkSearchPrev <Plug>MarkSearchPrev
 ```
 
 # 使用Vundle进行插件管理
@@ -152,7 +169,7 @@ set completeopt=menu,menuone
 
 # YouCompleteMe代码补全插件安装
 
-1. 安装7.5+版本的vim，添加python3支持
+1. 安装7.5+版本的vim，添加python3支持(以下`with-python-xxx`和`with-python3-xxx`配置对应的是机器上实际的python目录，没有安装python的需要安装后再指定)
 
 	```js
 	$ git clone https://github.com/vim/vim.git
