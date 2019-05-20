@@ -4,7 +4,7 @@
 
 # 我的vim配置
 
-```javascript
+```js
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
@@ -17,24 +17,24 @@ call vundle#begin()
 " 4 vundle
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
-" 4 the syntax checking when saving
-Plugin 'scrooloose/syntastic'
-" 4 pep8 style checking
-Plugin 'nvie/vim-flake8'
-" 4 background color
+" 4 background color vim主题设置
 Plugin 'altercation/vim-colors-solarized'
-" 4 file tree init input :NERDTree in vim
+" 4 file tree init input :NERDTree in vim 目录管理
 Plugin 'scrooloose/nerdtree'
-" 4 search file
+" 4 search file 文件检索(ctrl-p)
 Plugin 'kien/ctrlp.vim'
-" 4 vim-go
-Plugin 'fatih/vim-go'
-" 4 YouCompleteMe 2 complete the code
-Plugin 'Valloric/YouCompleteMe'
-" 4 vim-python-pep8-indent
-Plugin 'hynek/vim-python-pep8-indent'
-" 4 minibufexpl
+" 4 minibufexpl 文件缓冲区(顶端显示最近打开的文件)
 Plugin 'fholgado/minibufexpl.vim'
+" 4 the syntax checking when saving 语法检查
+Plugin 'scrooloose/syntastic'
+" 4 pep8 style checking python格式检查
+Plugin 'nvie/vim-flake8'
+" 4 vim-python-pep8-indent python代码按照pep8规范自动缩进
+Plugin 'hynek/vim-python-pep8-indent'
+" 4 vim-go golang代码相关插件，要求已经安装了golang环境
+Plugin 'fatih/vim-go'
+" 4 YouCompleteMe 2 complete the code 代码补全器
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 " required
 " To ignore plugin indent changes, instead use:
@@ -51,44 +51,75 @@ filetype indent on
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" 设置了自动缩进的情况下，通过以下配置使退格键生效
 set backspace=indent,eol,start
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
+" line enables syntax highlighting by default. 语法高亮
 syntax enable
 syntax on
+
 " colorscheme darkblue
+" 设置vim主题为molokai，显示原色
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
+
+" 设置tab为4个空格
 set tabstop=4
 set softtabstop=4
-set shiftwidth=4
 set expandtab
+" 设置缩进为4个空格
+set shiftwidth=4
+" 设置自动缩进
 set autoindent
 set cindent
 set smartindent
+
+" 设置行号
 set nu
-set ic
+" 高亮游标所在行
+set cursorline
+" 设置倒数第二行位置显示当前游标行列信息
 set statusline=%f%r%m%*%=[Line:%l/%L,Col:%c]
 set laststatus=2
 set ruler
+
+" 搜索不区分大小写
+set ic
+" 搜索匹配时立刻反应
 set incsearch
-"set hlsearch
-set cursorline
-"set textwidth=79
+" 搜索高亮，这里不开启
+" set hlsearch
+
+" 设置文件为unix系统格式
 set fileformat=unix
-let &termencoding=&encoding
+" 设置文件解码方式，以下任意一种方式匹配则使用该方式解码
 set fileencodings=utf-8,gb18030,gbk,gb2312,big5
+" 设置终端显示编码和实际编码一致
+let &termencoding=&encoding
+
+" 不生成备份文件.un~
 set nobackup
 set nowritebackup
-" 4 code fold
+
+" 4 code fold 代码折叠
 set foldmethod=indent
+" 设高默认代码折叠级别，即默认不折叠
 set foldlevelstart=99
-map<space> za
-map<leader>c :set paste<CR>
-map<leader>v :set nopaste<CR>
-map<leader>d :sp<CR>
-map<leader>f :vs<CR>
+" normal模式下非递归映射: 空格键->代码折叠
+nnoremap<space> za
+
+" 粘贴模式开关
+nnoremap<leader>c :set paste<CR>
+nnoremap<leader>v :set nopaste<CR>
+
+" 水平分屏
+nnoremap<leader>d :sp<CR>
+" 垂直分屏
+nnoremap<leader>f :vs<CR>
+
 " 4 vim-flake8
 let g:flake8_cmd="/usr/local/bin/flake8"
 " 4 syntastic
@@ -101,17 +132,44 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-map<leader>g :GoMetaLinter<CR>
-map<leader>w :GoDef<CR>
+nnoremap<leader>g :GoMetaLinter<CR>
+nnoremap<leader>w :GoDef<CR>
 
 " 4 NERDTree
-silent! map<leader>A :NERDTree<CR>
-silent! map<leader>a :NERDTreeFind<CR>
-silent! map<leader>s :NERDTreeClose<CR>
+silent! nnoremap<leader>A :NERDTree<CR>
+silent! nnoremap<leader>a :NERDTreeFind<CR>
+silent! nnoremap<leader>s :NERDTreeClose<CR>
 
 " 4 ycm
 nnoremap <leader>q :YcmCompleter GoToDefinitionElseDeclaration<CR>
 set completeopt=menu,menuone
 ```
 
-# TODO: 注释说明, vundle及部分插件安装
+# 使用Vundle进行插件管理
+
+* 安装流程见：[官方github](https://github.com/VundleVim/Vundle.vim)中的"Quick Start"
+* 通过Vundle安装的插件在"~/.vim/bundle"目录下
+
+# YouCompleteMe代码补全插件安装
+
+1. 安装7.5+版本的vim，添加python3支持
+
+	```js
+	$ git clone https://github.com/vim/vim.git
+	$ cd vim
+	$ ./configure --with-features=huge \
+	--enable-multibyte \
+	--enable-rubyinterp=yes \
+	--enable-pythoninterp=yes \
+	--with-python-config-dir=/usr/lib/python2.7/config \
+	--enable-python3interp=yes \
+	--with-python3-config-dir=/usr/lib/python3.4/config \
+	--enable-perlinterp=yes \
+	--enable-luainterp=yes \
+	--enable-gui=gtk2 \
+	--enable-cscope \
+	--prefix=$HOME/runtime
+	$ make && make install
+	```
+
+2. 安装YouCompleteMe：[官网github](https://github.com/Valloric/YouCompleteMe)，通过vundle安装即可
