@@ -664,6 +664,12 @@ Plugin <span class="token string">&apos;hynek/vim-python-pep8-indent&apos;</span
 Plugin <span class="token string">&apos;fatih/vim-go&apos;</span>
 &quot; <span class="token number">4</span> YouCompleteMe <span class="token number">2</span> complete the code &#x4EE3;&#x7801;&#x8865;&#x5168;&#x5668;
 Plugin <span class="token string">&apos;Valloric/YouCompleteMe&apos;</span>
+&quot; <span class="token number">4</span> markdown <span class="token punctuation">.</span>md&#x6587;&#x4EF6;&#x7F16;&#x8F91;
+Plugin <span class="token string">&apos;godlygeek/tabular&apos;</span>
+Plugin <span class="token string">&apos;plasticboy/vim-markdown&apos;</span>
+&quot; <span class="token number">4</span> mark &#x989C;&#x8272;&#x6807;&#x8BB0;&#x63D2;&#x4EF6;
+Plugin <span class="token string">&apos;inkarkat/vim-ingo-library&apos;</span>
+Plugin <span class="token string">&apos;inkarkat/vim-mark&apos;</span>
 call vundle#<span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 &quot; required
 &quot; To ignore plugin indent changes<span class="token punctuation">,</span> instead use<span class="token punctuation">:</span>
@@ -690,7 +696,8 @@ syntax enable
 syntax on
 
 &quot; colorscheme darkblue
-&quot; &#x8BBE;&#x7F6E;vim&#x4E3B;&#x9898;&#x4E3A;molokai&#xFF0C;&#x663E;&#x793A;&#x539F;&#x8272;
+&quot; &#x8BBE;&#x7F6E;vim&#x4E3B;&#x9898;&#x4E3A;molokai&#xFF0C;&#x663E;&#x793A;&#x539F;&#x8272;&#xFF1B;&#x5C06;&#x4E3B;&#x9898;molokai<span class="token punctuation">.</span>vim&#x653E;&#x5230;<span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>vim<span class="token operator">/</span>color&#x76EE;&#x5F55;&#x4E0B;&#x65B9;&#x53EF;&#x4F7F;&#x7528;
+&quot; https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>tomasr<span class="token operator">/</span>molokai
 <span class="token keyword">let</span> g<span class="token punctuation">:</span>molokai_original <span class="token operator">=</span> <span class="token number">1</span>
 <span class="token keyword">let</span> g<span class="token punctuation">:</span>rehash256 <span class="token operator">=</span> <span class="token number">1</span>
 colorscheme molokai
@@ -749,6 +756,9 @@ nnoremap<span class="token operator">&lt;</span>leader<span class="token operato
 &quot; &#x5782;&#x76F4;&#x5206;&#x5C4F;
 nnoremap<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>f <span class="token punctuation">:</span>vs<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
 
+&quot; <span class="token number">4</span> yaml &#x8BBE;&#x7F6E;yaml&#x6587;&#x4EF6;&#x7684;&#x7F29;&#x8FDB;&#x4E3A;&#x4E24;&#x4E2A;&#x7A7A;&#x683C;
+autocmd FileType yaml<span class="token punctuation">,</span>html setlocal ts<span class="token operator">=</span><span class="token number">2</span> sts<span class="token operator">=</span><span class="token number">2</span> sw<span class="token operator">=</span><span class="token number">2</span> expandtab
+
 &quot; <span class="token number">4</span> vim<span class="token operator">-</span>flake8
 <span class="token keyword">let</span> g<span class="token punctuation">:</span>flake8_cmd<span class="token operator">=</span><span class="token string">&quot;/usr/local/bin/flake8&quot;</span>
 &quot; <span class="token number">4</span> syntastic
@@ -772,6 +782,13 @@ silent<span class="token operator">!</span> nnoremap<span class="token operator"
 &quot; <span class="token number">4</span> ycm
 nnoremap <span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span>q <span class="token punctuation">:</span>YcmCompleter GoToDefinitionElseDeclaration<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
 <span class="token keyword">set</span> completeopt<span class="token operator">=</span>menu<span class="token punctuation">,</span>menuone
+
+&quot; <span class="token number">4</span> mark
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>mwDefaultHighlightingPalette <span class="token operator">=</span> <span class="token string">&apos;maximum&apos;</span>
+<span class="token keyword">let</span> g<span class="token punctuation">:</span>mwDefaultHighlightingNum <span class="token operator">=</span> <span class="token number">9</span>
+nnoremap<span class="token operator">&lt;</span>leader<span class="token operator">&gt;</span><span class="token constant">N</span> <span class="token punctuation">:</span>MarkClear<span class="token operator">&lt;</span><span class="token constant">CR</span><span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>Plug<span class="token operator">&gt;</span>IgnoreMarkSearchNext <span class="token operator">&lt;</span>Plug<span class="token operator">&gt;</span>MarkSearchNext
+nmap <span class="token operator">&lt;</span>Plug<span class="token operator">&gt;</span>IgnoreMarkSearchPrev <span class="token operator">&lt;</span>Plug<span class="token operator">&gt;</span>MarkSearchPrev
 </code></pre>
 <h1 id="&#x4F7F;&#x7528;vundle&#x8FDB;&#x884C;&#x63D2;&#x4EF6;&#x7BA1;&#x7406;"><a name="&#x4F7F;&#x7528;vundle&#x8FDB;&#x884C;&#x63D2;&#x4EF6;&#x7BA1;&#x7406;" class="anchor-navigation-ex-anchor" href="#&#x4F7F;&#x7528;vundle&#x8FDB;&#x884C;&#x63D2;&#x4EF6;&#x7BA1;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x4F7F;&#x7528;Vundle&#x8FDB;&#x884C;&#x63D2;&#x4EF6;&#x7BA1;&#x7406;</h1>
 <ul>
@@ -780,7 +797,7 @@ nnoremap <span class="token operator">&lt;</span>leader<span class="token operat
 </ul>
 <h1 id="youcompleteme&#x4EE3;&#x7801;&#x8865;&#x5168;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;"><a name="youcompleteme&#x4EE3;&#x7801;&#x8865;&#x5168;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;" class="anchor-navigation-ex-anchor" href="#youcompleteme&#x4EE3;&#x7801;&#x8865;&#x5168;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;"><i class="fa fa-link" aria-hidden="true"></i></a>3. YouCompleteMe&#x4EE3;&#x7801;&#x8865;&#x5168;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</h1>
 <ol>
-<li><p>&#x5B89;&#x88C5;7.5+&#x7248;&#x672C;&#x7684;vim&#xFF0C;&#x6DFB;&#x52A0;python3&#x652F;&#x6301;</p>
+<li><p>&#x5B89;&#x88C5;7.5+&#x7248;&#x672C;&#x7684;vim&#xFF0C;&#x6DFB;&#x52A0;python3&#x652F;&#x6301;(&#x4EE5;&#x4E0B;<code>with-python-xxx</code>&#x548C;<code>with-python3-xxx</code>&#x914D;&#x7F6E;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x673A;&#x5668;&#x4E0A;&#x5B9E;&#x9645;&#x7684;python&#x76EE;&#x5F55;&#xFF0C;&#x6CA1;&#x6709;&#x5B89;&#x88C5;python&#x7684;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x540E;&#x518D;&#x6307;&#x5B9A;)</p>
 <pre class="language-"><code class="lang-js"> $ git clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>vim<span class="token operator">/</span>vim<span class="token punctuation">.</span>git
  $ cd vim
  $ <span class="token punctuation">.</span><span class="token operator">/</span>configure <span class="token operator">--</span><span class="token keyword">with</span><span class="token operator">-</span>features<span class="token operator">=</span>huge \
@@ -844,7 +861,7 @@ nnoremap <span class="token operator">&lt;</span>leader<span class="token operat
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"III. vim的插件及配置","level":"1.3.3","depth":2,"next":{"title":"IV. ab压测工具","level":"1.3.4","depth":2,"path":"linux/ab.md","ref":"./linux/ab.md","articles":[]},"previous":{"title":"II. vim剪贴板的使用","level":"1.3.2","depth":2,"path":"linux/vim_paste.md","ref":"./linux/vim_paste.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"linux/vim_conf.md","mtime":"2019-05-20T02:51:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-20T02:51:27.066Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"III. vim的插件及配置","level":"1.3.3","depth":2,"next":{"title":"IV. ab压测工具","level":"1.3.4","depth":2,"path":"linux/ab.md","ref":"./linux/ab.md","articles":[]},"previous":{"title":"II. vim剪贴板的使用","level":"1.3.2","depth":2,"path":"linux/vim_paste.md","ref":"./linux/vim_paste.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"linux/vim_conf.md","mtime":"2019-05-20T04:04:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-20T04:04:55.338Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
