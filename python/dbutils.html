@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>III. Go程序运行跟踪器trace · maniafish's technology blog</title>
+        <title>II. python数据库连接池DBUtils · maniafish's technology blog</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,7 +62,7 @@
 
     
     
-    <link rel="prev" href="delve.html" />
+    <link rel="prev" href="character.html" />
     
 
     </head>
@@ -256,9 +256,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../python/character.html">
+        <li class="chapter " data-level="1.4.1" data-path="character.html">
             
-                <a href="../python/character.html">
+                <a href="character.html">
             
                     
                     I. 浅析json dump的字符编码问题
@@ -269,9 +269,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../python/dbutils.html">
+        <li class="chapter active" data-level="1.4.2" data-path="dbutils.html">
             
-                <a href="../python/dbutils.html">
+                <a href="dbutils.html">
             
                     
                     II. python数据库连接池DBUtils
@@ -450,9 +450,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="go_test.html">
+        <li class="chapter " data-level="1.6.1" data-path="../go_tool/go_test.html">
             
-                <a href="go_test.html">
+                <a href="../go_tool/go_test.html">
             
                     
                     I. Go程序基准测试
@@ -463,9 +463,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="delve.html">
+        <li class="chapter " data-level="1.6.2" data-path="../go_tool/delve.html">
             
-                <a href="delve.html">
+                <a href="../go_tool/delve.html">
             
                     
                     II. Go调试工具delve
@@ -476,9 +476,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.3" data-path="trace.html">
+        <li class="chapter " data-level="1.6.3" data-path="../go_tool/trace.html">
             
-                <a href="trace.html">
+                <a href="../go_tool/trace.html">
             
                     
                     III. Go程序运行跟踪器trace
@@ -627,7 +627,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >III. Go程序运行跟踪器trace</a>
+        <a href=".." >II. python数据库连接池DBUtils</a>
     </h1>
 </div>
 
@@ -642,15 +642,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#todo"><b>1. </b>TODO</a></li></ul></div><a href="#todo" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace"><a name="go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace" class="anchor-navigation-ex-anchor" href="#go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Go&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8DDF;&#x8E2A;&#x5668;trace</font></h4>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#&#x6982;&#x8FF0;"><b>1. </b>&#x6982;&#x8FF0;</a></li><ul><li><span class="title-icon "></span><a href="#steadydb"><b>1.1. </b>SteadyDB</a></li><li><span class="title-icon "></span><a href="#persistentdb"><b>1.2. </b>PersistentDB</a></li><li><span class="title-icon "></span><a href="#pooleddb"><b>1.3. </b>PooledDB</a></li></ul></ul></div><a href="#&#x6982;&#x8FF0;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="python&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;dbutils"><a name="python&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;dbutils" class="anchor-navigation-ex-anchor" href="#python&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;dbutils"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">python&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;DBUtils</font></h4>
 <hr>
-<h1 id="todo"><a name="todo" class="anchor-navigation-ex-anchor" href="#todo"><i class="fa fa-link" aria-hidden="true"></i></a>1. TODO</h1>
-<hr>
-<blockquote>
-<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;:</p>
+<h1 id="&#x6982;&#x8FF0;"><a name="&#x6982;&#x8FF0;" class="anchor-navigation-ex-anchor" href="#&#x6982;&#x8FF0;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x6982;&#x8FF0;</h1>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x590D;&#x7528;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x8FDE;&#x63A5;&#x6C60;&#x66FF;&#x4EE3;&#x77ED;&#x8FDE;&#x63A5;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8BBF;&#x95EE;&#x6548;&#x7387;&#xFF0C;&#x907F;&#x514D;&#x9891;&#x7E41;&#x5730;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x3002;python&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;DBUtils&#x63D0;&#x4F9B;&#x4E86;&#x9AD8;&#x6548;&#x3001;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x8FDE;&#x63A5;&#x6C60;&#x3002;</p>
+<p>DBUtils&#x63D0;&#x4F9B;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
 <ul>
-<li><a href="https://blog.lab99.org/post/golang-2017-10-20-video-seven-ways-to-profile-go-apps.html#fang-fa-qi-go-tool-trace" target="_blank">7&#x79CD;go&#x7A0B;&#x5E8F;&#x6027;&#x80FD;&#x5206;&#x6790;&#x7684;&#x65B9;&#x6CD5;</a></li>
-<li><a href="https://www.itcodemonkey.com/article/5419.html" target="_blank">&#x6DF1;&#x5165;&#x6D45;&#x51FA; Go trace</a></li>
+<li>SteadyDB</li>
+<li>PersistentDB</li>
+<li>PooledDB</li>
+</ul>
+<h2 id="steadydb"><a name="steadydb" class="anchor-navigation-ex-anchor" href="#steadydb"><i class="fa fa-link" aria-hidden="true"></i></a>1.1. SteadyDB</h2>
+<p>SteadyDB&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x201C;&#x5F3A;&#x786C;&#x201D;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x4E22;&#x5931;&#x6216;&#x65AD;&#x5F00;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x5F3A;&#x5236;&#x91CD;&#x8FDE;&#x3002;&#x5B83;&#x662F;DBUtils&#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x79CD;&#x6700;&#x57FA;&#x672C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#xFF0C;&#x5E95;&#x5C42;&#x91C7;&#x7528;<a href="https://www.python.org/dev/peps/pep-0249/" target="_blank">DB-API 2&#x89C4;&#x8303;</a>&#x7684;&#x6570;&#x636E;&#x5E93;&#x6A21;&#x578B;&#x3002;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x4E0D;&#x76F4;&#x63A5;&#x4F7F;&#x7528;SteadyDB&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x5C01;&#x88C5;&#x4E86;SteadyDB&#x7684;&#x8FDE;&#x63A5;&#x7C7B;&#x578B;&#xFF1A;PersistentDB&#x548C;PooledDB&#x3002;</p>
+<h2 id="persistentdb"><a name="persistentdb" class="anchor-navigation-ex-anchor" href="#persistentdb"><i class="fa fa-link" aria-hidden="true"></i></a>1.2. PersistentDB</h2>
+<p>PersistentDB&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x79CD;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;</p>
+<p><img src="image/dbutils_1.jpg" alt=""></p>
+<ol>
+<li>&#x5F53;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;a&#x542F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;PersistentDB&#x4F1A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x4E13;&#x4F9B;&#x8BE5;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;</li>
+<li>&#x5F53;&#x7EBF;&#x7A0B;a&#x5173;&#x95ED;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x8BE5;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x4F1A;&#x7EE7;&#x7EED;&#x4FDD;&#x6301;open&#x72B6;&#x6001;&#xFF0C;&#x4E0B;&#x6B21;&#x7EBF;&#x7A0B;a&#x8C03;&#x7528;&#x65F6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;</li>
+<li>&#x76F4;&#x5230;&#x7EBF;&#x7A0B;a&#x6D88;&#x4EA1;&#x65F6;&#xFF0C;&#x8BE5;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x4F1A;&#x81EA;&#x52A8;&#x5173;&#x95ED;</li>
+</ol>
+<p>PersistentDB&#x53EF;&#x4EE5;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x901A;&#x8FC7;&#x8FDE;&#x63A5;&#x590D;&#x7528;&#x6765;&#x63D0;&#x9AD8;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x6548;&#x7387;&#xFF1B;&#x4F46;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x4E0D;&#x80FD;&#x5728;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x95F4;&#x590D;&#x7528;&#xFF0C;&#x6700;&#x5927;&#x9650;&#x5EA6;&#x5730;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3002;</p>
+<h2 id="pooleddb"><a name="pooleddb" class="anchor-navigation-ex-anchor" href="#pooleddb"><i class="fa fa-link" aria-hidden="true"></i></a>1.3. PooledDB</h2>
+<p>PooledDB&#x540C;&#x6837;&#x63D0;&#x4F9B;&#x4E86;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#xFF0C;&#x548C;PersistentDB&#x7684;&#x533A;&#x522B;&#x662F;&#xFF1A;&#x540C;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x95F4;&#x590D;&#x7528;&#x3002;</p>
+<p><img src="image/dbutils_2.jpg" alt=""></p>
+<ul>
+<li>PooledDB&#x63D0;&#x4F9B;&#x4E86;<code>mincached</code>&#x548C;<code>maxcached</code>&#x9009;&#x9879;&#xFF1B;&#x5206;&#x522B;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x521D;&#x59CB;&#x5316;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;&#x4EE5;&#x53CA;&#x8FDE;&#x63A5;&#x6C60;&#x91CC;&#x5141;&#x8BB8;&#x7684;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;</li>
+<li><p>PooledDB&#x63D0;&#x4F9B;&#x4E86;<code>maxshared</code>&#x9009;&#x9879;&#xFF0C;&#x7528;&#x4E8E;&#x8BBE;&#x5B9A;&#x5171;&#x4EAB;&#x8FDE;&#x63A5;&#x6C60;&#x5927;&#x5C0F;&#x3002;&#x5F53;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x914D;&#x7F6E;&#x4E86;<code>maxshared &gt; 0</code>&#x624D;&#x4F1A;&#x521B;&#x5EFA;<code>PooledSharedDBConnection</code>&#xFF0C;&#x4ECE;<code>_shared_cache</code>&#x4E2D;&#x53D6;&#x51FA;&#x8FDE;&#x63A5;&#x4F9B;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x5171;&#x7528;&#xFF1B;&#x9ED8;&#x8BA4;&#x8BE5;&#x53C2;&#x6570;&#x4E3A;0&#xFF0C;&#x521B;&#x5EFA;&#x7684;&#x662F;<code>PooledDedicatedDBConnection</code>&#xFF0C;&#x4ECE;&#x5F53;&#x524D;&#x7A7A;&#x95F2;&#x7684;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;&#x53D6;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x4F9B;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E13;&#x7528;&#xFF0C;&#x4F7F;&#x7528;&#x5B8C;&#x6BD5;&#x540E;&#x653E;&#x56DE;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6C60;&#x4E2D;</p>
+<ul>
+<li><code>maxshared</code>&#x53C2;&#x6570;&#x53EA;&#x6709;&#x5728;<code>creator.threadsafety &gt; 1</code>&#x65F6;&#x624D;&#x751F;&#x6548;</li>
+<li><p>&#x7531;&#x4E8E;pymysql&#x548C;MySQLdb&#x6A21;&#x5757;&#x7684;threadsafety&#x90FD;&#x4E3A;1&#xFF0C;&#x56E0;&#x6B64;&#x5F53;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x4F5C;&#x4E3A;creator&#x65F6;&#xFF0C;<code>maxshared</code>&#x4E0D;&#x751F;&#x6548;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x90FD;&#x662F;<code>PooledDedicatedDBConnection</code></p>
+<p><img src="image/dbutils_3.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#x8FD8;&#x6709;&#x4E00;&#x79CD;SimplePooledDB&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x57FA;&#x672C;&#x7684;&#x8FDE;&#x63A5;&#x6C60;&#x529F;&#x80FD;&#xFF1B;&#x4F46;&#x662F;&#x5B83;&#x6BD4;&#x8D77;PooledDB&#x5C11;&#x4E86;&#x6545;&#x969C;&#x91CD;&#x8FDE;&#x529F;&#x80FD;&#xFF0C;&#x56E0;&#x6B64;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x4E0A;&#x4E0D;&#x5EFA;&#x8BAE;&#x5C06;&#x5176;&#x76F4;&#x63A5;&#x7528;&#x4E8E;&#x751F;&#x4EA7;&#x73AF;&#x5883;</p>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
+<ul>
+<li><a href="https://cito.github.io/w4py-olde-docs/Webware/DBUtils/Docs/UsersGuide.html" target="_blank">DBUtils&#x5B98;&#x65B9;&#x6307;&#x5357;</a></li>
 </ul>
 </blockquote>
 
@@ -680,7 +711,7 @@
 
             
                 
-                <a href="delve.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: II. Go调试工具delve">
+                <a href="character.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: I. 浅析json dump的字符编码问题">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -692,7 +723,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"III. Go程序运行跟踪器trace","level":"1.6.3","depth":2,"next":{"title":"CockRoachDB相关","level":"1.7","depth":1,"ref":"","articles":[]},"previous":{"title":"II. Go调试工具delve","level":"1.6.2","depth":2,"path":"go_tool/delve.md","ref":"./go_tool/delve.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"go_tool/trace.md","mtime":"2019-03-26T02:22:15.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-21T10:02:34.803Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"II. python数据库连接池DBUtils","level":"1.4.2","depth":2,"next":{"title":"golang语言相关","level":"1.5","depth":1,"ref":"","articles":[{"title":"I. Go的性能指标","level":"1.5.1","depth":2,"path":"golang/performance.md","ref":"./golang/performance.md","articles":[]},{"title":"II. Go的堆栈分配","level":"1.5.2","depth":2,"path":"golang/heap_stack.md","ref":"./golang/heap_stack.md","articles":[]},{"title":"III. Go的垃圾回收","level":"1.5.3","depth":2,"path":"golang/gc.md","ref":"./golang/gc.md","articles":[]},{"title":"IV. Go的协程","level":"1.5.4","depth":2,"path":"golang/goroutine.md","ref":"./golang/goroutine.md","articles":[]},{"title":"V. Go的调试信息","level":"1.5.5","depth":2,"path":"golang/stack_trace.md","ref":"./golang/stack_trace.md","articles":[]},{"title":"VI. Go的interface","level":"1.5.6","depth":2,"path":"golang/composition.md","ref":"./golang/composition.md","articles":[]},{"title":"VII. Go的变量作用域","level":"1.5.7","depth":2,"path":"golang/operator.md","ref":"./golang/operator.md","articles":[]},{"title":"VIII. Go的slice","level":"1.5.8","depth":2,"path":"golang/slice.md","ref":"./golang/slice.md","articles":[]},{"title":"IX. Go的defer处理","level":"1.5.9","depth":2,"path":"golang/defer.md","ref":"./golang/defer.md","articles":[]},{"title":"X. Go随机数生成的并发安全问题","level":"1.5.10","depth":2,"path":"golang/rand.md","ref":"./golang/rand.md","articles":[]}]},"previous":{"title":"I. 浅析json dump的字符编码问题","level":"1.4.1","depth":2,"path":"python/character.md","ref":"./python/character.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"python/dbutils.md","mtime":"2019-05-21T10:02:08.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-21T10:02:34.803Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
