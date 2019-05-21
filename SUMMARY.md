@@ -12,7 +12,8 @@
     * [V. 非root用户安装终极shell zsh](./linux/zsh.md)
 
 * python相关
-    * [I. 字符编码问题](./python/character.md)
+    * [I. 浅析json dump的字符编码问题](./python/character.md)
+    * [II. python数据库连接池DBUtils](./python/dbutils.md)
 
 * golang语言相关
     * [I. Go的性能指标](./golang/performance.md)

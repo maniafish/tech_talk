@@ -1,8 +1,8 @@
-#### <font color="blue">字符编码问题</font>
+#### <font color="blue">浅析json dump的字符编码问题</font>
 
 ---
 
-了解python字符编码之前，要先了解一个老生常谈的问题，"unicode" 和 "str" 有什么区别
+说到python json dump的字符编码问题之前，要先了解一个老生常谈的问题，"unicode" 和 "str" 有什么区别
 
 # unicode 和 str
 
