@@ -1,5 +1,13 @@
-VER=$1
+MAIN_VER=1
+GIT_CNT=`git rev-list --count HEAD`
+VER=${MAIN_VER}.${GIT_CNT}
 
+if [ "$1" == "" ]; then
+    echo "no commit msg"
+    exit 1
+fi
+
+git commit -m "$1"
 /bin/rm -rf _book/
 sed -i '' 's#https://maniafish.github.io#https://github.com/maniafish#g' README.md
 sed -i '' '/目录/d' README.md
