@@ -122,8 +122,8 @@ nnoremap<space> za
 nnoremap<leader>c :set paste<CR>
 nnoremap<leader>v :set nopaste<CR>
 " 粘贴时使用0寄存器替换匿名寄存器
-nnoremap p "0p
-nnoremap P "0P
+noremap p "0p
+noremap P "0P
 
 " 水平分屏
 nnoremap<leader>d :sp<CR>
