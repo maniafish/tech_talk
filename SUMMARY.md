@@ -31,8 +31,8 @@
     * [I. Go程序基准测试](./go_tool/go_test.md)
     * [II. Go调试工具delve](./go_tool/delve.md)
     * [III. Go程序运行跟踪器trace](./go_tool/trace.md)
+    * [IV. Go代码调优利器pprof + go-torch](./go_tool/go-torch.md)
 
-* CockRoachDB相关
 * Kubernetes相关
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)
     * [II. ConfigMap的使用](./kubernetes/configmap.md)
