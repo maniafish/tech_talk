@@ -642,13 +642,98 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof--go-torch"><a name="go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof--go-torch" class="anchor-navigation-ex-anchor" href="#go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof--go-torch"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof + go-torch</font></h4>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#pprof&#x7684;&#x4F7F;&#x7528;"><b>1. </b>pprof&#x7684;&#x4F7F;&#x7528;</a></li><li><span class="title-icon "></span><a href="#go-torch&#x7684;&#x4F7F;&#x7528;"><b>2. </b>go-torch&#x7684;&#x4F7F;&#x7528;</a></li></ul></div><a href="#pprof&#x7684;&#x4F7F;&#x7528;" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h4 id="go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof--go-torch"><a name="go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof--go-torch" class="anchor-navigation-ex-anchor" href="#go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof--go-torch"><i class="fa fa-link" aria-hidden="true"></i></a><font color="blue">Go&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;pprof + go-torch</font></h4>
 <hr>
-<p>&#x5982;&#x4F55;&#x5206;&#x6790;&#x6211;&#x4EEC;golang&#x670D;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x6027;&#x80FD;&#x5462;&#xFF1F;golang&#x63D0;&#x4F9B;&#x4E86;pprof&#x5DE5;&#x5177;&#x6765;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5206;&#x6790;cpu&#x3001;&#x5806;&#x6808;&#x3001;goroutine&#x3001;&#x9501;&#x5360;&#x7528;&#x7B49;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4FE1;&#x606F;&#x3002;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x6559;&#x7A0B;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/EDDYCJY/blog/blob/master/golang/2018-09-15-Golang%20%E5%A4%A7%E6%9D%80%E5%99%A8%E4%B9%8B%E6%80%A7%E8%83%BD%E5%89%96%E6%9E%90%20PProf.md" target="_blank">Golang &#x5927;&#x6740;&#x5668;&#x4E4B;&#x6027;&#x80FD;&#x5256;&#x6790; PProf</a></p>
+<h1 id="pprof&#x7684;&#x4F7F;&#x7528;"><a name="pprof&#x7684;&#x4F7F;&#x7528;" class="anchor-navigation-ex-anchor" href="#pprof&#x7684;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>1. pprof&#x7684;&#x4F7F;&#x7528;</h1>
+<p>&#x5982;&#x4F55;&#x5206;&#x6790;&#x6211;&#x4EEC;golang&#x670D;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;&#x7684;&#x8FD0;&#x884C;&#x6027;&#x80FD;&#xFF0C;&#x5E76;&#x4E14;&#x627E;&#x5230;&#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x548C;&#x4F18;&#x5316;&#x70B9;&#x5462;&#xFF1F;golang&#x63D0;&#x4F9B;&#x4E86;pprof&#x5DE5;&#x5177;&#x6765;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5206;&#x6790;cpu&#x3001;&#x5806;&#x6808;&#x3001;goroutine&#x3001;&#x9501;&#x5360;&#x7528;&#x7B49;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4FE1;&#x606F;&#x3002;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x6559;&#x7A0B;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/EDDYCJY/blog/blob/master/golang/2018-09-15-Golang%20%E5%A4%A7%E6%9D%80%E5%99%A8%E4%B9%8B%E6%80%A7%E8%83%BD%E5%89%96%E6%9E%90%20PProf.md" target="_blank">Golang &#x5927;&#x6740;&#x5668;&#x4E4B;&#x6027;&#x80FD;&#x5256;&#x6790; PProf</a></p>
+<ul>
+<li><p>&#x5BF9;&#x4E8E;golang&#x7684;http server&#x5E94;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x9ED8;&#x8BA4;&#x7684;http handler&#xFF0C;&#x53EA;&#x9700;&#x8981;<code>import _ &quot;net/http/pprof&quot;</code>&#xFF1B;pprof&#x4F1A;&#x81EA;&#x52A8;&#x5728;&#x4F60;&#x7684;http server&#x4E0A;&#x6CE8;&#x518C;&#x4EE5;&#x4E0B;&#x63A5;&#x53E3;:</p>
+<ul>
+<li>/debug/pprof/</li>
+<li>/debug/pprof/cmdline</li>
+<li>/debug/pprof/profile</li>
+<li>/debug/pprof/symbol</li>
+<li>/debug/pprof/trace</li>
+</ul>
+</li>
+<li><p>&#x82E5;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x5176;&#x4ED6;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x8FDB;&#x884C;&#x8DEF;&#x7531;&#x6CE8;&#x518C;&#xFF0C;&#x5982;<code>github.com/gorilla/mux</code>&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x81EA;&#x884C;&#x6CE8;&#x518C;pprof&#x63A5;&#x53E3;:</p>
+<pre class="language-"><code class="lang-js">  <span class="token keyword">import</span> <span class="token punctuation">(</span>
+      <span class="token string">&quot;github.com/gorilla/mux&quot;</span>
+      <span class="token string">&quot;net/http/pprof&quot;</span>
+  <span class="token punctuation">)</span>
+
+  func <span class="token function">AttachProfiler</span><span class="token punctuation">(</span>router <span class="token operator">*</span>mux<span class="token punctuation">.</span>Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      router<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/debug/pprof/&quot;</span><span class="token punctuation">,</span> pprof<span class="token punctuation">.</span>Index<span class="token punctuation">)</span>
+      router<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/debug/pprof/cmdline&quot;</span><span class="token punctuation">,</span> pprof<span class="token punctuation">.</span>Cmdline<span class="token punctuation">)</span>
+      router<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/debug/pprof/profile&quot;</span><span class="token punctuation">,</span> pprof<span class="token punctuation">.</span>Profile<span class="token punctuation">)</span>
+      router<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/debug/pprof/symbol&quot;</span><span class="token punctuation">,</span> pprof<span class="token punctuation">.</span>Symbol<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul>
+<h1 id="go-torch&#x7684;&#x4F7F;&#x7528;"><a name="go-torch&#x7684;&#x4F7F;&#x7528;" class="anchor-navigation-ex-anchor" href="#go-torch&#x7684;&#x4F7F;&#x7528;"><i class="fa fa-link" aria-hidden="true"></i></a>2. go-torch&#x7684;&#x4F7F;&#x7528;</h1>
+<p>pprof&#x53EF;&#x4EE5;&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x57FA;&#x672C;&#x7684;&#x6027;&#x80FD;&#x5206;&#x6790;&#x56FE;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x52A0;&#x76F4;&#x89C2;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x6027;&#x80FD;&#x8C03;&#x4F18;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x706B;&#x7130;&#x56FE;&#x5DE5;&#x5177;go-torch</p>
+<ol>
+<li><p>&#x5B89;&#x88C5;Flame Graph</p>
+<pre class="language-"><code class="lang-js"> git clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>brendangregg<span class="token operator">/</span>FlameGraph<span class="token punctuation">.</span>git
+ cp FlameGraph<span class="token operator">/</span>flamegraph<span class="token punctuation">.</span>pl <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin
+</code></pre>
+</li>
+<li><p>&#x5B89;&#x88C5;go-torch</p>
+<pre class="language-"><code class="lang-js"> go <span class="token keyword">get</span> <span class="token operator">-</span>v github<span class="token punctuation">.</span>com<span class="token operator">/</span>uber<span class="token operator">/</span>go<span class="token operator">-</span>torch
+</code></pre>
+</li>
+<li><p>&#x4F7F;&#x7528;go-torch&#x5206;&#x6790;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#xFF0C;&#x6BD4;&#x5982;&#x4EE5;&#x4E0B;&#x8FD9;&#x6BB5;&#x670D;&#x52A1;&#x5668;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code class="lang-js"> <span class="token keyword">package</span> main
+
+ <span class="token keyword">import</span> <span class="token punctuation">(</span>
+     <span class="token string">&quot;log&quot;</span>
+     <span class="token string">&quot;math/rand&quot;</span>
+     <span class="token string">&quot;net/http&quot;</span>
+     _ <span class="token string">&quot;net/http/pprof&quot;</span>
+     <span class="token string">&quot;time&quot;</span>
+ <span class="token punctuation">)</span>
+
+ <span class="token comment">// base64&#x4F7F;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x96C6;</span>
+ <span class="token keyword">const</span> letterBytes <span class="token operator">=</span> <span class="token string">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/+=&quot;</span>
+
+ func <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     handler <span class="token punctuation">:</span><span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span>w http<span class="token punctuation">.</span>ResponseWriter<span class="token punctuation">,</span> req <span class="token operator">*</span>http<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         body <span class="token punctuation">:</span><span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span>byte<span class="token punctuation">,</span> <span class="token number">2048</span><span class="token punctuation">)</span>
+         <span class="token keyword">for</span> i <span class="token punctuation">:</span><span class="token operator">=</span> range body <span class="token punctuation">{</span>
+             body<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> letterBytes<span class="token punctuation">[</span>rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>letterBytes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+         <span class="token punctuation">}</span>
+
+         time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> time<span class="token punctuation">.</span>MillisecondSecond<span class="token punctuation">)</span>
+         w<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span>
+     <span class="token punctuation">}</span>
+
+     http<span class="token punctuation">.</span><span class="token function">HandleFunc</span><span class="token punctuation">(</span><span class="token string">&quot;/random_bytes&quot;</span><span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+     log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span><span class="token function">ListenAndServe</span><span class="token punctuation">(</span><span class="token string">&quot;:8080&quot;</span><span class="token punctuation">,</span> nil<span class="token punctuation">)</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x529F;&#x80FD;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x8BBF;&#x95EE;<code>127.0.0.1:8080/random_bytes</code>&#x63A5;&#x53E3;&#xFF0C;100&#x6BEB;&#x79D2;&#x540E;&#x8FD4;&#x56DE;&#x957F;&#x5EA6;&#x4E3A;2048&#x7684;&#x968F;&#x673A;&#x5B57;&#x7B26;&#x4E32;</p>
+</blockquote>
+</li>
+<li><p>&#x6267;&#x884C;<code>go run main.go</code>&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#x540E;&#xFF0C;&#x4F7F;&#x7528;ab&#x5DE5;&#x5177;&#x6301;&#x7EED;&#x538B;&#x6D4B;&#x63A5;&#x53E3;</p>
+<pre class="language-"><code class="lang-js"> $ ab <span class="token operator">-</span>n10000 <span class="token operator">-</span>c <span class="token number">20</span> <span class="token string">&apos;127.0.0.1:8080/random_bytes&apos;</span>
+</code></pre>
+</li>
+<li><p>&#x4E8E;&#x6B64;&#x540C;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;go-torch&#x83B7;&#x53D6;&#x6027;&#x80FD;&#x5206;&#x6790;&#x6570;&#x636E;&#xFF0C;&#x91C7;&#x6837;&#x65F6;&#x95F4;&#x4E3A;30&#x79D2;&#xFF0C;&#x91C7;&#x6837;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;main.svg&#x6587;&#x4EF6;&#x4E2D;</p>
+<pre class="language-"><code class="lang-js"> $ go<span class="token operator">-</span>torch <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token punctuation">:</span><span class="token number">8080</span><span class="token operator">/</span>debug<span class="token operator">/</span>pprof<span class="token operator">/</span>profile <span class="token operator">-</span>t <span class="token number">30</span> <span class="token operator">-</span>f main<span class="token punctuation">.</span>svg
+</code></pre>
+</li>
+<li><p>&#x91C7;&#x6837;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x6253;&#x5F00;main.svg&#x5373;&#x53EF;&#x770B;&#x5230;&#x5206;&#x6790;&#x7ED3;&#x679C;&#xFF0C;&#x6A2A;&#x8F74;&#x7684;&#x5BBD;&#x5EA6;&#x8868;&#x793A;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x8FD0;&#x884C;&#x65F6;&#x95F4;&#x5360;&#x603B;&#x65F6;&#x95F4;&#x7684;&#x767E;&#x5206;&#x6BD4;</p>
+<p> <img src="image/go-torch_1.png" alt=""></p>
+</li>
+</ol>
 <blockquote>
 <p>&#x53C2;&#x8003;&#x94FE;&#x63A5;:</p>
 <ul>
-<li><a href="https://github.com/EDDYCJY/blog/blob/master/golang/2018-09-15-Golang%20%E5%A4%A7%E6%9D%80%E5%99%A8%E4%B9%8B%E6%80%A7%E8%83%BD%E5%89%96%E6%9E%90%20PProf.md" target="_blank">Golang &#x5927;&#x6740;&#x5668;&#x4E4B;&#x6027;&#x80FD;&#x5256;&#x6790; PProf</a></li>
+<li><a href="https://github.com/uber-archive/go-torch" target="_blank">go-torch&#x5B98;&#x7F51;</a></li>
+<li><a href="https://github.com/brendangregg/FlameGraph" target="_blank">Flame Graphs</a></li>
+<li><a href="https://lihaoquan.me/2017/1/1/Profiling-and-Optimizing-Go-using-go-torch.html" target="_blank">&#x4EE3;&#x7801;&#x8C03;&#x4F18;&#x5229;&#x5668;-&#x706B;&#x7130;&#x56FE;</a></li>
 </ul>
 </blockquote>
 
@@ -690,7 +775,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"IV. Go代码调优利器pprof + go-torch","level":"1.6.4","depth":2,"next":{"title":"Kubernetes相关","level":"1.7","depth":1,"ref":"","articles":[{"title":"I. Kubernetes使用Traefik反向代理","level":"1.7.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]},{"title":"II. ConfigMap的使用","level":"1.7.2","depth":2,"path":"kubernetes/configmap.md","ref":"./kubernetes/configmap.md","articles":[]},{"title":"附. 部分指令参考","level":"1.7.3","depth":2,"path":"kubernetes/commands.md","ref":"./kubernetes/commands.md","articles":[]}]},"previous":{"title":"III. Go程序运行跟踪器trace","level":"1.6.3","depth":2,"path":"go_tool/trace.md","ref":"./go_tool/trace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish/tech_talk/"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"go_tool/go-torch.md","mtime":"2019-06-12T07:02:00.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-14T07:22:51.387Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"IV. Go代码调优利器pprof + go-torch","level":"1.6.4","depth":2,"next":{"title":"Kubernetes相关","level":"1.7","depth":1,"ref":"","articles":[{"title":"I. Kubernetes使用Traefik反向代理","level":"1.7.1","depth":2,"path":"kubernetes/traefik.md","ref":"./kubernetes/traefik.md","articles":[]},{"title":"II. ConfigMap的使用","level":"1.7.2","depth":2,"path":"kubernetes/configmap.md","ref":"./kubernetes/configmap.md","articles":[]},{"title":"附. 部分指令参考","level":"1.7.3","depth":2,"path":"kubernetes/commands.md","ref":"./kubernetes/commands.md","articles":[]}]},"previous":{"title":"III. Go程序运行跟踪器trace","level":"1.6.3","depth":2,"path":"go_tool/trace.md","ref":"./go_tool/trace.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","search-pro","anchor-navigation-ex","-highlight","prism","prism-themes"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":true,"tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"tocLevel4Icon":"fa fa-hand-o-right","printLog":false,"multipleH1":true,"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"prism":{"css":["prism-themes/themes/prism-base16-ateliersulphurpool.light.css"],"lang":{"flow":"typescript"},"ignore":["mermaid","eval-js"]},"search-pro":{},"prism-themes":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"mania_fish<mania_fish@163.com>","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"maniafish's technology blog","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"github 主页":"https://github.com/maniafish/tech_talk/"}},"gitbook":"*","description":"technology note","extension":null},"file":{"path":"go_tool/go-torch.md","mtime":"2019-06-18T08:05:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-06-18T08:07:30.725Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
