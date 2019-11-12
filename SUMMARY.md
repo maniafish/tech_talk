@@ -32,6 +32,7 @@
     * [II. Go调试工具delve](./go_tool/delve.md)
     * [III. Go程序运行跟踪器trace](./go_tool/trace.md)
     * [IV. Go代码调优利器pprof + go-torch](./go_tool/go-torch.md)
+    	* [4.1 pprof的使用](./go_tool/pprof.md)
 
 * Kubernetes相关
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)

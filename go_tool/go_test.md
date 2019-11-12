@@ -102,7 +102,7 @@ goconvey是一款针对Golang的测试框架，可以管理和运行测试用例
 推荐的golang基准测试指令:
 
 ```js
-go test -bench="BenchmarkLogger" -benchtime=3s -run=none -cpuprofile=cpu.prof 
+go test -bench="BenchmarkLogger" -benchtime=3s -run=none -count=5 -cpuprofile=cpu.prof 
 ```
 
 * -bench: 执行哪些基准测试方法
@@ -112,6 +112,7 @@ go test -bench="BenchmarkLogger" -benchtime=3s -run=none -cpuprofile=cpu.prof
 	* 支持正则表达式，如`^BenchmarkLogger$`，就能唯一定位到`BenchmarkLogger`方法
 
 * -benchtime: 执行每个基准测试方法的时间，默认为1s，一般不超过3s
+* -count: 执行几次基准测试
 * -run: 执行哪些单元测试用例
 
 	* `-run=none`表示只执行基准测试，不执行单元测试用例
