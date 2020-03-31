@@ -7,6 +7,10 @@ git push origin master
 sed -i '' 's#https://maniafish.github.io#https://github.com/maniafish#g' README.md
 sed -i '' '/目录/d' README.md
 gitbook build
+if [ $? -ne 0 ];then
+    return 1
+fi
+
 /bin/rm -rf ../tech_talk_pages/*
 cp -rf _book/* ../tech_talk_pages/
 cp -rf node_modules/ ../tech_talk_pages/node_modules
