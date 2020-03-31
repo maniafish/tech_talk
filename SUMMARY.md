@@ -38,5 +38,9 @@
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)
     * [II. ConfigMap的使用](./kubernetes/configmap.md)
     * [附. 部分指令参考](./kubernetes/commands.md)
+
+* Kafka相关
+    * [I. Kafka入门](./Kafka/quick_start.md)
+
 * 网络编程相关
     * [I. HTTP协议之chunk(分块传输编码)](./network/chunk.md)
