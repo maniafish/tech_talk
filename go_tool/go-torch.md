@@ -4,7 +4,7 @@
 
 # pprof的使用
 
-如何分析我们golang服务端代码的运行性能，并且找到程序的性能瓶颈和优化点呢？golang提供了pprof工具来帮助我们分析cpu、堆栈、goroutine、锁占用等程序运行信息。简单的使用教程可以参考：[Golang 大杀器之性能剖析 PProf](./pprof.md)
+如何分析我们golang服务端代码的运行性能，并且找到程序的性能瓶颈和优化点呢？golang提供了pprof工具来帮助我们分析cpu、堆栈、goroutine、锁占用等程序运行信息。简单的使用教程可以参考：[Golang 大杀器之性能剖析 PProf](https://github.com/EDDYCJY/blog/blob/7b021d0dee361f5cf966aae8f7f505e19b79b1a2/tools/go-tool-pprof.md)
 
 * 对于golang的http server应用，如果使用的是默认的http handler，只需要`import _ "net/http/pprof"`；pprof会自动在你的http server上注册以下接口:
 

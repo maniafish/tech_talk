@@ -33,8 +33,7 @@
     * [XI. Go程序基准测试](./go_tool/go_test.md)
     * [XII. Go调试工具delve](./go_tool/delve.md)
     * [XIII. Go程序运行跟踪器trace](./go_tool/trace.md)
-    * [XIV. Go代码调优利器pprof](./go_tool/pprof.md)
-    * [XV. Go代码调优利器go-torch](./go_tool/go-torch.md)
+    * [XIV. Go代码调优利器pprof + go-torch](./go_tool/go-torch.md)
 
 * Kubernetes相关
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)
