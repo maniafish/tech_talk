@@ -1,4 +1,4 @@
-#### <font color="blue">Go代码调优利器pprof + go-torch</font>
+#### <font color="blue">Go代码调优利器go-torch</font>
 
 ---
 

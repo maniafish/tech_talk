@@ -10,12 +10,16 @@
     * [III. vim的插件及配置](./linux/vim_conf.md)
     * [IV. ab压测工具](./linux/ab.md)
     * [V. 非root用户安装终极shell zsh](./linux/zsh.md)
+ 
+* mysql数据库相关
+
+	* [I. 浅谈sql_mode对数据库的影响](./mysql/sql_mode.md)
 
 * python相关
     * [I. 浅析json dump的字符编码问题](./python/character.md)
     * [II. python数据库连接池DBUtils](./python/dbutils.md)
 
-* golang语言相关
+* golang相关
     * [I. Go的性能指标](./golang/performance.md)
     * [II. Go的堆栈分配](./golang/heap_stack.md)
     * [III. Go的垃圾回收](./golang/gc.md)
@@ -26,13 +30,11 @@
     * [VIII. Go的slice](./golang/slice.md)
     * [IX. Go的defer处理](./golang/defer.md)
     * [X. Go随机数生成的并发安全问题](./golang/rand.md)
-
-* golang工具相关
-    * [I. Go程序基准测试](./go_tool/go_test.md)
-    * [II. Go调试工具delve](./go_tool/delve.md)
-    * [III. Go程序运行跟踪器trace](./go_tool/trace.md)
-    * [IV. Go代码调优利器pprof + go-torch](./go_tool/go-torch.md)
-    	* [4.1 pprof的使用](./go_tool/pprof.md)
+    * [XI. Go程序基准测试](./go_tool/go_test.md)
+    * [XII. Go调试工具delve](./go_tool/delve.md)
+    * [XIII. Go程序运行跟踪器trace](./go_tool/trace.md)
+    * [XIV. Go代码调优利器pprof](./go_tool/pprof.md)
+    * [XV. Go代码调优利器go-torch](./go_tool/go-torch.md)
 
 * Kubernetes相关
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)

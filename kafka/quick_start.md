@@ -68,6 +68,8 @@ Kafka 是由 Linkedin 公司开发的，它是一个分布式的，支持多分�
 	$ kafka-topics.sh --list --bootstrap-server localhost:9092
 	```
 	
+	> 删除topic命令：`kafka-topics.sh --delete --bootstrap-server localhost:9092 --topic test`
+	
 1. 启动消费者
 
 	```js
