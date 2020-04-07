@@ -122,7 +122,7 @@ func main() {
 	h := IntHeap([]int{1, 2, 5})
 	heap.Init(&h)
 	heap.Push(&h, 3)
-	// 遍历弹出堆顶元素，弹出顺序为1, 2, 3, 5
+	// 遍历弹出堆顶(h[0])元素，弹出顺序为1, 2, 3, 5
 	for h.Len() > 0 {
 		fmt.Println(heap.Pop(&h))
 	}
