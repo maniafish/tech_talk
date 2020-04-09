@@ -10,6 +10,7 @@
     * [III. vim的插件及配置](./linux/vim_conf.md)
     * [IV. ab压测工具](./linux/ab.md)
     * [V. 非root用户安装终极shell zsh](./linux/zsh.md)
+    * [VI. Sublime Text + PlantUML高效画图](./linux/plantuml.md)
  
 * mysql数据库相关
 
