@@ -4,13 +4,6 @@
     "extension": null,
     "generator": "site",
     "links": {
-        "sharing": {
-            "all": null,
-            "facebook": null,
-            "google": null,
-            "twitter": null,
-            "weibo": null
-        },
         "sidebar": {
             "github 主页": "https://github.com/maniafish/tech_talk/"
         }
@@ -38,7 +31,9 @@
         "anchor-navigation-ex",
         "-highlight",
         "prism",
-        "prism-themes"
+        "prism-themes",
+        "-sharing",
+        "sharing-plus"
     ],
     "pluginsConfig": {
         "anchor-navigation-ex": {
@@ -59,6 +54,19 @@
                 "mermaid",
                 "eval-js"
             ]
+        },
+        "sharing": {
+             "douban": true,
+             "facebook": true,
+             "google": true,
+             "qq": true,
+             "qzone": true,
+             "twitter": true,
+             "weibo": true,
+          "all": [
+               "douban", "facebook", "google", "instapaper", "linkedin","twitter", "weibo",
+               "messenger","qq", "qzone","viber","whatsapp"
+           ]
         }
     }
 }

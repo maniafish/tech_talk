@@ -36,6 +36,7 @@
     * [XIII. Go程序运行跟踪器trace](./go_tool/trace.md)
     * [XIV. Go代码调优利器pprof + go-torch](./go_tool/go-torch.md)
     * [XV. Go实现队列、堆、栈](./golang/container.md)
+    * [XVI. (TODO)Go的大小比较](./golang/compare.md)
 
 * Kubernetes相关
     * [I. Kubernetes使用Traefik反向代理](./kubernetes/traefik.md)

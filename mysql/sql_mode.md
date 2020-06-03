@@ -303,7 +303,231 @@ mysql官方文档关于该值有这样的说明：
 
 该值用于禁止自动创建密码为空的用户。当没有设置该值时：
 
-* 示例1
+* 示例1(给不存在的用户授权时，自动创建了密码为空的新用户)
+
+	```js
+	> GRANT SELECT ON *.* TO testuser1;
+	> SELECT user, host, authentication_string FROM mysql.user WHERE user = 'testuser1';
+	+-----------+------+-----------------------+
+	| user      | host | authentication_string |
+	+-----------+------+-----------------------+
+	| testuser1 | %    |                       |
+	+-----------+------+-----------------------+
+	
+	> SHOW GRANTS FOR 'testuser1'@'%';
+	+----------------------------------------+
+	| Grants for testuser1@%                 |
+	+----------------------------------------+
+	| GRANT SELECT ON *.* TO 'testuser1'@'%' |
+	+----------------------------------------+
+	```
+
+当设置了该值，即`SET SESSION sql_mode='NO_AUTO_CREATE_USER';`时：
+
+* 示例1(给不存在的用户授权时返回错误)
+
+	```js
+	> GRANT SELECT ON *.* TO testuser2;
+	(1133, "Can't find any matching row in the user table")
+	```
+
+* 示例2(给不存在的用户授权并添加密码即可授权成功)
+
+	```js
+	> GRANT SELECT ON *.* TO testuser2 IDENTIFIED BY 'test';
+	> SELECT user, host, authentication_string FROM mysql.user WHERE user = 'testuser2';
+	+-----------+------+-------------------------------------------+
+	| user      | host | authentication_string                     |
+	+-----------+------+-------------------------------------------+
+	| testuser2 | %    | *94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29 |
+	+-----------+------+-------------------------------------------+
+	
+	> SHOW GRANTS FOR 'testuser2'@'%';
+	+----------------------------------------+
+	| Grants for testuser2@%                 |
+	+----------------------------------------+
+	| GRANT SELECT ON *.* TO 'testuser2'@'%' |
+	+----------------------------------------+
+	```
+
+<font color="red"><b>配置建议：建议设置该值，可以防止创建空密码用户导致数据库访问安全问题</b></font>
+
+## `NO_AUTO_VALUE_ON_ZERO`
+
+该值用于允许自增字段插入0值。当没有设置该值时：
+
+* 示例1(由于id的定义是自增值`AUTO_INCREMENT`，因此默认从1开始)
+
+	```js
+	> INSERT INTO TEST(id) VALUES(0);
+	> SELECT id FROM TEST;
+	+----+
+	| id |
+	+----+
+	| 1  |
+	+----+
+	```
+
+* 示例2(当表中已经有自增id时，插入0值实际入库的值以当前`AUTO_INCREMENT`为准)
+
+	```js
+	> SELECT id FROM TEST;
+	+----+
+	| id |
+	+----+
+	| 1  |
+	| 2  |
+	| 4  |
+	| 6  |
+	+----+
+	
+	> SHOW CREATE TABLE TEST;
+	+-------+----------------------------------------------------------+
+	| Table | Create Table                                             |
+	+-------+----------------------------------------------------------+
+	| TEST  | CREATE TABLE `TEST` (                                    |
+	|       |   `id` int(11) NOT NULL AUTO_INCREMENT,                  |
+	|       |   `d` date DEFAULT NULL,                                 |
+	|       |   `dt` datetime DEFAULT CURRENT_TIMESTAMP,               |
+	|       |   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,     |
+	|       |   `value` varchar(255) NOT NULL DEFAULT '',              |
+	|       |   `num` bigint(20) NOT NULL DEFAULT '0',                 |
+	|       |   PRIMARY KEY (`id`)                                     |
+	|       | ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 |
+	+-------+----------------------------------------------------------+
+		
+	# AUTO_INCREMENT=7，因此下一次插入的0值被设置为7
+	> INSERT INTO TEST(id) VALUES(0);
+	> SELECT id FROM TEST;
+	+----+
+	| id |
+	+----+
+	| 1  |
+	| 2  |
+	| 4  |
+	| 6  |
+	| 7  |
+	+----+
+	```
+	
+当设置了该值，即`SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';`时：
+
+* 示例1(插入0值，实际入库也为0)
+
+	```js
+	> INSERT INTO TEST(id) VALUES(0);
+	> SELECT id FROM TEST;
+	+----+
+	| id |
+	+----+
+	| 0  |
+	+----+
+	```
+	
+* 示例2(对已有0值的，继续插入会返回错误)
+
+	```js
+	> INSERT INTO TEST(id) VALUES(0);
+	(1062, "Duplicate entry '0' for key 'PRIMARY'")
+	```
+
+* 示例3(当前表的`AUTO_INCREMENT`不再影响0值插入的实际值)
+
+	```js
+	> SELECT id FROM TEST;
+	+----+
+	| id |
+	+----+
+	| 1  |
+	| 2  |
+	| 4  |
+	| 6  |
+	+----+
+	
+	> SHOW CREATE TABLE TEST;
+	+-------+----------------------------------------------------------+
+	| Table | Create Table                                             |
+	+-------+----------------------------------------------------------+
+	| TEST  | CREATE TABLE `TEST` (                                    |
+	|       |   `id` int(11) NOT NULL AUTO_INCREMENT,                  |
+	|       |   `d` date DEFAULT NULL,                                 |
+	|       |   `dt` datetime DEFAULT CURRENT_TIMESTAMP,               |
+	|       |   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,     |
+	|       |   `value` varchar(255) NOT NULL DEFAULT '',              |
+	|       |   `num` bigint(20) NOT NULL DEFAULT '0',                 |
+	|       |   PRIMARY KEY (`id`)                                     |
+	|       | ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 |
+	+-------+----------------------------------------------------------+
+
+	> INSERT INTO TEST(id) VALUES(0);
+	# 实际入库依然为0
+	> SELECT id FROM TEST;
+	+----+
+	| id |
+	+----+
+	| 0  |
+	| 1  |
+	| 2  |
+	| 4  |
+	| 6  |
+	+----+
+	```
+
+<font color="red"><b>配置建议：一般我们不建议在入库时去设置自增字段的值，这样可以保持自增字段在每次入库记录时保持自增连续性。在规范的数据库操作前提下，该值设置与否影响不大</b></font>
+
+## `NO_BACKSLASH_ESCAPES`
+
+该值用于将反斜杠`\`作为普通字符使用。默认反斜杠是作为转义字符使用的，当没有设置该值时：
+
+* 示例1(入库转义字符)：
+
+	```js
+	> INSERT INTO TEST(value) VALUES("1\t2");
+	# \t被作为转义字符tab入库
+	> SELECT value FROM TEST;
+	+--------+
+	| value  |
+	+--------+
+	| 1    2 |
+	+--------+
+	```
+	
+* 示例2(入库反斜杠):
+
+	```js
+	> INSERT INTO TEST(value) VALUES("1\\2")
+	> SELECT value FROM TEST;
+	+-------+
+	| value |
+	+-------+
+	| 1\2   |
+	+-------+
+	```
+
+当设置了该值，即`SET SESSION sql_mode='NO_BACKSLASH_ESCAPES';`时：
+
+* 示例1(入库普通字符)：
+
+	```js
+	> INSERT INTO TEST(value) VALUES("1\t2");
+	# \t被作为普通字符入库
+	> SELECT value FROM TEST;
+	+-------+
+	| value |
+	+-------+
+	| 1\t2  |
+	+-------+
+	```
+	
+<font color="red"><b>配置建议：正常情况下反斜杠都是作为转义字符使用的，若用户有特殊需求，可以配置该值</b></font>
+
+## `NO_DIR_IN_CREATE`
+
+该值用于忽略所有INDEX DIRECTORY和DATA DIRECTORY选项；这两个选项用于指定创建表时存放索引和数据的目录位置，通常存放在mysql默认路径下，不会专门去设定这个目录。
+
+## `NO_ENGINE_SUBSTITUTION`
+
+
 
 ---
 
