@@ -3,6 +3,23 @@
 ---
 
 1. [环境配置](https://www.gin-vue-admin.com/docs/env/)
+2. 统一数据库字符集为utf8
+
+	```js
+	+--------------------------+-----------------------------------------------------------+
+	| Variable_name            | Value                                                     |
+	+--------------------------+-----------------------------------------------------------+
+	| character_set_client     | utf8                                                      |
+	| character_set_connection | utf8                                                      |
+	| character_set_database   | utf8                                                      |
+	| character_set_filesystem | binary                                                    |
+	| character_set_results    | utf8                                                      |
+	| character_set_server     | utf8                                                      |
+	| character_set_system     | utf8                                                      |
+	| character_sets_dir       | /usr/local/mysql-5.7.28-macos10.14-x86_64/share/charsets/ |
+	+--------------------------+-----------------------------------------------------------+
+	```
+	
 2. 初始化数据库，在数据库中导入项目下的`.docker-compose/docker-entrypoint-initdb.d/init.sql`
 	* 具体的数据库地址为`server/config.yaml`中`mysql`部分指定的数据库
 	

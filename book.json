@@ -33,7 +33,8 @@
         "prism",
         "prism-themes",
         "-sharing",
-        "sharing-plus"
+        "sharing-plus",
+        "popup"
     ],
     "pluginsConfig": {
         "anchor-navigation-ex": {
