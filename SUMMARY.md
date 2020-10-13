@@ -52,3 +52,4 @@
 * 全栈开发相关(Gin-Vue-Admin)
 	* [I. 安装和启动](./gin-vue-admin/install.md)
 	* [II. 运用脚手架添加菜单](./gin-vue-admin/add_module.md)
+        * [示例代码](./gin-vue-admin/project_a.md)
