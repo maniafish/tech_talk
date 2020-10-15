@@ -13,7 +13,6 @@
     * [VI. Sublime Text + PlantUML高效画图](./linux/plantuml.md)
  
 * mysql数据库相关
-
 	* [I. 浅谈sql_mode对数据库的影响](./mysql/sql_mode.md)
 
 * python相关
@@ -49,7 +48,9 @@
 * 网络编程相关
     * [I. HTTP协议之chunk(分块传输编码)](./network/chunk.md)
 
-* 全栈开发相关(Gin-Vue-Admin)
+* [全栈开发相关(Gin-Vue-Admin)]()
 	* [I. 安装和启动](./gin-vue-admin/install.md)
 	* [II. 运用脚手架添加菜单](./gin-vue-admin/add_module.md)
-        * [示例代码](./gin-vue-admin/project_a.md)
+		* [附录代码](./gin-vue-admin/project_a.md)
+	
+	* [III. 用户管理](./gin-vue-admin/user.md)

@@ -34,7 +34,9 @@
         "prism-themes",
         "-sharing",
         "sharing-plus",
-        "popup"
+        "popup",
+        "expandable-chapters",
+        "splitter"
     ],
     "pluginsConfig": {
         "anchor-navigation-ex": {
