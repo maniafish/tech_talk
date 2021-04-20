@@ -54,3 +54,4 @@
 		* [附录代码](./gin-vue-admin/project_a.md)
 	
 	* [III. 用户管理](./gin-vue-admin/user.md)
+	* [IV. 开发调试](./gin-vue-admin/debug.md)
